@@ -1,0 +1,23 @@
+.branding-container{
+    background-color: var(--Dark-medium-grey);
+    border-color: var(--White);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+}
+
+.branding-text{
+    font-size: 12px;
+    color: var(--White);
+}
+
+.logo{
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+}

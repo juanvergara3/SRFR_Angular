@@ -1,3 +1,6 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+
 /* Variables del sistema */
 
 :root{
@@ -36,13 +39,15 @@
     background: var(--Dark-medium-grey);
 }
 
+/* Globales */
+
 * {
     box-sizing: border-box;
-    font-family: 'Work Sans' !important;
+    font-family: 'Work Sans', sans-serif !important;
 }
 
 html{
-    font-family: 'Work Sans' !important;
+    font-family: 'Work Sans', sans-serif !important;
     margin: 0 !important;
     height: 100%;
     width: 100%;
