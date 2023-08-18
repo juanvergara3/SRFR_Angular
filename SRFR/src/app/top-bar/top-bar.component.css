@@ -1,0 +1,96 @@
+.top-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.window-title{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--White);
+    margin-left: 10px;
+}
+
+.secondary-menu{
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.secondary-menu-buttons-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.secondary-menu-main-button{
+    width: 136px;
+    height: 32px;
+    color: var(--White);
+    font-size: 12px;
+    background-color: var(--Dark-dark-grey);
+    border-radius: 5px;
+    border-color: var(--Primary) ;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.secondary-menu-secondary-button{
+    width: auto;
+    height: 32px;
+    color: var(--White);
+    font-size: 12px;
+    background-color: var(--Dark-dark-grey);
+    border-radius: 5px;
+    border-color: var(--White) ;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+}
+
+.secondary-menu-secondary-button:disabled{
+    background-color: var(--disabled-bg);
+    border-color: var(--Light-medium-grey);
+    color: var(--Light-medium-grey);
+    cursor: not-allowed;
+}
+
+.image-button{
+    width: 15px;
+    height: 15px;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(360deg) brightness(102%) contrast(102%);
+}
+
+.search-bar-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom-style: solid;
+    border-bottom-color: var(--Light-dark-grey);
+    border-bottom-width: 1px;
+}
+
+.search-bar-input{
+    background-color: transparent;
+    color: var(--Light-dark-grey);
+    font-size: 12px;
+    border: 0;
+}
+
+.search-bar-button{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.search-bar-button:hover{
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(74deg) brightness(109%) contrast(102%);
+}

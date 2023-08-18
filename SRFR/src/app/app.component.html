@@ -1,5 +1,30 @@
+<dialog id="modal" class="modal">
+  <div class="container-column modal-flex">
+      <div class="container-row modal-flex">
+          <label class="modal-label">Nombre</label>
+          <input type="text" class="modal-input">
+      </div>
+      <div class="container-row modal-flex">
+          <label class="modal-label">NIT</label>
+          <input type="text" class="modal-input">
+      </div>
+      <div class="container-row modal-flex">
+          <label class="modal-label">Dígito de verificación</label>
+          <input type="text" class="modal-input">
+      </div>
+      <div class="container-row modal-flex">
+          <button class="modal-secondary-button" onclick="modal.close()">Descartar</button>
+          <button class="modal-main-button">Guardar</button>
+      </div>                    
+  </div>
+</dialog>
+
 <div class="content">
   <main-menu></main-menu>
+  <div class="container-column">
+    <top-bar></top-bar>
+    <item-container class="full-height"></item-container>
+  </div>
 </div>
 
 <!-- * * * * * * * * * * * * * * Routing * * * * * * * * * * * * * *-->
