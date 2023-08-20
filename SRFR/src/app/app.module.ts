@@ -7,6 +7,8 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { BrandingContainerComponent } from './main-menu/branding-container/branding-container.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ItemContainerComponent } from './item-container/item-container.component';
+import { SearchBarComponent } from './top-bar/search-bar/search-bar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { ItemContainerComponent } from './item-container/item-container.componen
     MainMenuComponent,
     BrandingContainerComponent,
     TopBarComponent,
-    ItemContainerComponent
+    ItemContainerComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

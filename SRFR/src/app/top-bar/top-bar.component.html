@@ -1,17 +1,12 @@
 <div class="top-bar">
 
-    <label class="window-title">Clientes</label>
+    <label class="window-title">{{ windowTitle }}</label>
     
     <div class="secondary-menu">
         <div class="secondary-menu-buttons">
             <button class="secondary-menu-main-button" id="nuevo_cliente" onclick="modal.showModal()">+ Nuevo cliente</button>
         </div>
-        <div class="search-bar-container">
-            <input class="search-bar-input" type="text" placeholder="Buscar">
-            <button class="search-bar-button" type="submit">
-                <img src="../../assets/icons/search_icon.png" alt="Ícono de búsqueda">
-            </button>
-        </div>
+        <search-bar></search-bar>
     </div>
 
 </div>
