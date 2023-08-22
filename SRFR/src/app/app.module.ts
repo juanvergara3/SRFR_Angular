@@ -9,6 +9,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ItemContainerComponent } from './item-container/item-container.component';
 import { SearchBarComponent } from './top-bar/search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
+import { VistaFacturasComponent } from './facturas/vista-facturas/vista-facturas.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     BrandingContainerComponent,
     TopBarComponent,
     ItemContainerComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    VistaFacturasComponent
   ],
   imports: [
     BrowserModule,

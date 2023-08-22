@@ -1,7 +1,3 @@
-.container-column{ /*sobreescribe una clase global*/
-    gap: 15px;
-}
-
 .full-height{
     height: 100%;
 }

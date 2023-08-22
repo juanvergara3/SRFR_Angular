@@ -14,12 +14,27 @@
     border: 0;
 }
 
+.search-bar-input:focus{
+    background-color: transparent;
+    color: var(--Light-medium-grey);
+    font-size: 12px;
+    border: none;
+    outline: none;
+}
+
 .search-bar-button{
     background-color: transparent;
     border: 0;
     cursor: pointer;
 }
 
-.search-bar-button:hover{
+.search-bar-button:disabled{
+    background-color: transparent;
+    border: 0;
+    cursor: not-allowed;
+    filter: brightness(0) saturate(100%) invert(0%) sepia(100%) saturate(0%) hue-rotate(74deg) brightness(50%) contrast(50%);
+}
+
+.search-bar-button:hover:enabled{
     filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(74deg) brightness(109%) contrast(102%);
 }
