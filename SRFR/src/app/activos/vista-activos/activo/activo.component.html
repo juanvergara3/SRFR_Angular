@@ -1,0 +1,16 @@
+<div class="item container-row"> 
+    <div class="container-column">
+        <div class="item-title">{{ activoItem.sn }}</div>
+        <div class="container-column" [ngStyle]="{'gap':'2.5px'}">
+            <div class="container-row" [ngStyle]="{'align-items':'center'}">
+                <div class="item-detail">{{ activoItem.tipo }}</div>
+                <div class="item-detail">{{ activoItem.marca }}</div>
+                <div class="item-detail">{{ activoItem.modelo }}</div>
+            </div>
+            <div class="item-detail" [ngStyle]="{'color': '#' + activoItem.colorEstado}">{{ activoItem.estado }}</div>
+        </div>
+    </div>
+    <button class="item-button" id="editar_cliente" onclick="modal.showModal()">
+        <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
+    </button>  
+</div>

@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { BrandingContainerComponent } from './main-menu/branding-container/branding-container.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { ItemContainerComponent } from './item-container/item-container.component';
 import { SearchBarComponent } from './top-bar/search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 import { VistaFacturasComponent } from './facturas/vista-facturas/vista-facturas.component';
+import { VistaClientesComponent } from './clientes/vista-clientes/vista-clientes.component';
+import { VistaActivosComponent } from './activos/vista-activos/vista-activos.component';
+import { GrupoActivosComponent } from './activos/vista-activos/grupo-activos/grupo-activos.component';
+import { ActivoComponent } from './activos/vista-activos/activo/activo.component';
+import { PendientesComponent } from './pendientes/pendientes.component';
 
 @NgModule({
   declarations: [
@@ -17,9 +21,13 @@ import { VistaFacturasComponent } from './facturas/vista-facturas/vista-facturas
     MainMenuComponent,
     BrandingContainerComponent,
     TopBarComponent,
-    ItemContainerComponent,
     SearchBarComponent,
-    VistaFacturasComponent
+    VistaFacturasComponent,
+    VistaClientesComponent,
+    VistaActivosComponent,
+    GrupoActivosComponent,
+    ActivoComponent,
+    PendientesComponent
   ],
   imports: [
     BrowserModule,

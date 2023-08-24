@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'item-container',
-  templateUrl: './item-container.component.html',
-  styleUrls: ['./item-container.component.css']
+  selector: 'vista-clientes',
+  templateUrl: './vista-clientes.component.html',
+  styleUrls: ['./vista-clientes.component.css']
 })
-export class ItemContainerComponent {
+export class VistaClientesComponent {
   listOfItems = [
     {
         nombre: 'Comercializadora textil Coltex Ltda.',
@@ -57,6 +57,7 @@ export class ItemContainerComponent {
         nit: 9012345678,
         digito: null
     }
+    
   ]
 
   totalItemNumber: number = this.listOfItems.length;

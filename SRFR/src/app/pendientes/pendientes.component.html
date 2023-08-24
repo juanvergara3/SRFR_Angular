@@ -1,0 +1,36 @@
+<div class="item-container">
+
+    <div class="item" *ngFor="let item of listOfItems">
+        <div class="container-row" [ngStyle]="{'padding': '5px', 'justify-content': 'space-between'}">
+            <div class="container-column" [ngStyle]="{'gap': '2px', 'width': 'auto'}">
+                <span class="item-detail-primary">S/N {{item.sn}}</span>
+                <span class="item-detail-secondary">{{item.tipo}} {{item.marca}} modelo {{item.modelo}}</span>
+                <span class="item-detail-secondary" [ngStyle]="{'color': '#' + item.colorEstado}">{{item.estado}}</span>
+            </div>
+            <div class="container-column">
+                <div class="container-row">
+                    <span class="item-detail-primary">Anterior periodo:</span>
+                    <span class="item-detail-primary">{{item.fechaInicio}}</span>
+                    <hr class="item-detail-separator">
+                    <span class="item-detail-primary">{{item.fechaFin}}</span>
+                </div>
+                <div class="container-row">
+                    <span class="item-detail-primary">Nuevo periodo:</span>
+                    <span class="item-detail-editable">{{incrementDate(item.fechaInicio)}}</span>
+                    <hr class="item-detail-separator">
+                    <span class="item-detail-editable">{{incrementDate(item.fechaFin)}}</span>
+                </div>
+                <div class="container-row">
+                    <span class="item-detail-primary">Prestado a:</span>
+                    <span class="item-detail-editable">{{item.cliente}}</span>
+                </div>
+            </div>
+            <div class="checkbox-container">
+                <input name="name" id="id" type="checkbox" class="css-checkbox" aria-label="label">
+                <!--No se puede quitar este label, de lo contrario nada que tenga que ver con el checkbox funciona-->
+                <label for="id"></label>
+            </div>
+        </div>
+    </div>
+
+</div>
