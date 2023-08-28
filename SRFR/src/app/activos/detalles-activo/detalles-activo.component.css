@@ -2,15 +2,8 @@
     height: 100%;
 }
 
-.container-row{ /*sobreescribe una clase global*/
-    align-items: center;
-}
+/* Estilos de los items */
 
-.container-column{ /*sobreescribe una clase global*/
-    justify-content: space-around;
-}
-
-/*
 .item-details{
     background-color: var(--Dark-light-grey);
     width: 100%;
@@ -24,8 +17,21 @@
 .item-details-title{
     color: var(--White);
     font-weight: 600;
+    font-size: 18px;
+}
+
+.item-details-text{
+    color: var(--White);
     font-size: 16px;
-}*/
+}
+
+.item{
+    width: 100%;
+    height: fit-content;
+    background-color: var(--Light-light-grey);
+    border-radius: 10px;
+    padding: 5px;
+}
 
 .item-container{
     --gap: 10px;
@@ -35,37 +41,13 @@
     height: 100%;
     border-radius: 10px;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     align-content: flex-start;
     overflow:hidden;
     overflow-y:scroll;
     gap: var(--gap);
     padding: 10px;
-}
-
-.item{
-    width: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns)));
-    height: 70px;
-    background-color: var(--Light-light-grey);
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.item-title{
-    color: black;
-    font-size: 14px;
-}
-
-.item-title:hover{
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.item-detail{
-    color: var(--Light-dark-grey);
-    font-size: 12px;
 }
 
 .item-button{
@@ -101,3 +83,52 @@
         filter: brightness(0) saturate(100%) invert(39%) sepia(5%) saturate(216%) hue-rotate(182deg) brightness(95%) contrast(86%);
     }
 }
+
+.separator{
+    width: 100%;
+    height: 1px;
+    background-color: var(--White);
+}
+
+.window-title{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--White);
+    margin-left: 10px;
+}
+
+/* Estilos de las input en las ventanas modales*/
+
+.dropdown{
+    width: 100%;
+    padding-bottom: 2px;
+    background-color: var(--Dark-light-grey);
+    color: white;
+    border-width: 0px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--White);
+    border-bottom-width: 1px;
+    cursor: pointer;
+}
+
+.dropdown:focus{
+    outline: none;
+}
+
+input[type="date"] { 
+    font-size: 14px;
+}
+
+input[type="date"]::-webkit-datetime-edit-text { 
+    padding: 0 5px; 
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator { 
+    filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(210%) hue-rotate(194deg) brightness(116%) contrast(100%);
+    border-radius: 5px;
+}
+
+input::-webkit-calendar-picker-indicator:hover {
+    filter: brightness(0) saturate(100%) invert(76%) sepia(71%) saturate(573%) hue-rotate(17deg) brightness(101%) contrast(81%);
+    cursor: pointer;
+} 

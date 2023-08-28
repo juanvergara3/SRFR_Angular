@@ -20,6 +20,11 @@
     font-size: 14px;
 }
 
+.item-title:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .item-detail{
     color: var(--Light-dark-grey);
     font-size: 12px;

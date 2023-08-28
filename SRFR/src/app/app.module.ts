@@ -12,8 +12,10 @@ import { VistaFacturasComponent } from './facturas/vista-facturas/vista-facturas
 import { VistaClientesComponent } from './clientes/vista-clientes/vista-clientes.component';
 import { VistaActivosComponent } from './activos/vista-activos/vista-activos.component';
 import { GrupoActivosComponent } from './activos/vista-activos/grupo-activos/grupo-activos.component';
-import { ActivoComponent } from './activos/vista-activos/activo/activo.component';
+import { ActivoComponent } from './activos/vista-activos/grupo-activos/activo/activo.component';
 import { PendientesComponent } from './pendientes/pendientes.component';
+import { DetallesActivoComponent } from './activos/detalles-activo/detalles-activo.component';
+import { DetallesClienteComponent } from './clientes/detalles-cliente/detalles-cliente.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PendientesComponent } from './pendientes/pendientes.component';
     VistaActivosComponent,
     GrupoActivosComponent,
     ActivoComponent,
-    PendientesComponent
+    PendientesComponent,
+    DetallesActivoComponent,
+    DetallesClienteComponent
   ],
   imports: [
     BrowserModule,

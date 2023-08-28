@@ -1,6 +1,6 @@
 <div class="item container-row"> 
     <div class="container-column">
-        <div class="item-title">{{ activoItem.sn }}</div>
+        <div class="item-title" routerLink="/detalles-activo">{{ activoItem.sn }}</div>
         <div class="container-column" [ngStyle]="{'gap':'2.5px'}">
             <div class="container-row" [ngStyle]="{'align-items':'center'}">
                 <div class="item-detail">{{ activoItem.tipo }}</div>

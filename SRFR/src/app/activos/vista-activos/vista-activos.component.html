@@ -1,19 +1,5 @@
 <div class="item-container">
 
-    <div class="container-column" style="width: 100%; height: auto;">
-        <div style="background-color: lightgrey; border-radius: 10px; width: fit-content; padding: 5px; display: flex; justify-content: center; flex-direction: row; flex-wrap: nowrap; align-items: center;">
-            grupo de activos 1
-            <button style="background-color: transparent; border: none; ">
-                <img src="https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png" alt="icon" style="max-width: 20px; max-height: 20px;">
-            </button>
-        </div>
-        <div class="item-container" style="background-color:transparent; border-color: black;
-        border-width: 2px;
-        border-style: solid; overflow-y: hidden;">
+    <grupo-activos></grupo-activos> <!--poner un ngFor para ver varios grupos de activos-->
 
-            <activo *ngFor="let item of listOfItems" [activoItem]="item"></activo>
-
-        </div>
-    </div>
-    
 </div>
