@@ -16,6 +16,11 @@ import { ActivoComponent } from './activos/vista-activos/grupo-activos/activo/ac
 import { PendientesComponent } from './pendientes/pendientes.component';
 import { DetallesActivoComponent } from './activos/detalles-activo/detalles-activo.component';
 import { DetallesClienteComponent } from './clientes/detalles-cliente/detalles-cliente.component';
+import { DetallesFacturaComponent } from './facturas/detalles-factura/detalles-factura.component';
+import { VistaResponsablesComponent } from './responsables/vista-responsables/vista-responsables.component';
+import { VistaUbicacionesComponent } from './ubicaciones/vista-ubicaciones/vista-ubicaciones.component';
+import { DetallesUbicacionComponent } from './ubicaciones/detalles-ubicacion/detalles-ubicacion.component';
+import { DetallesResponsableComponent } from './responsables/detalles-responsable/detalles-responsable.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,12 @@ import { DetallesClienteComponent } from './clientes/detalles-cliente/detalles-c
     ActivoComponent,
     PendientesComponent,
     DetallesActivoComponent,
-    DetallesClienteComponent
+    DetallesClienteComponent,
+    DetallesFacturaComponent,
+    VistaResponsablesComponent,
+    VistaUbicacionesComponent,
+    DetallesUbicacionComponent,
+    DetallesResponsableComponent
   ],
   imports: [
     BrowserModule,

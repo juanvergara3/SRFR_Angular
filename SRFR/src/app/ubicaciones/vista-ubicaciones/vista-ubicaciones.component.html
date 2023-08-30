@@ -1,0 +1,26 @@
+<div class="item-container">
+
+    <div class="container-column" [ngStyle]="{'width': '100%', 'height': 'auto', 'gap':'0px'}">
+        <div class="group-label-container" [ngStyle]="{'border-radius': showGroup ? '10px 10px 0px 0px' : '10px'}">
+            Comercializadora textil Coltex Ltda.
+            <button type="button" [ngClass]="{'collapse-button-open': true, 'collapse-button-closed': !showGroup}" (click)="collapse()">
+                <img class="down-arrow-icon" src="../../../../assets/icons/down_arrow_icon.png" alt="Ícono de colapsar/desplegar grupo">
+            </button>
+        </div>
+        <div class="asset-container" *ngIf="showGroup">
+    
+            <div class="item container-row"> 
+                <div class="container-column">
+                    <div class="item-title" routerLink="/detalles-ubicacion">{{ item.nombre }}</div>
+                    <div class="item-detail">{{ item.direccion }}</div>
+                    <div class="item-detail">{{ item.telefono }}</div>
+                </div>
+                <button class="item-button" id="editar_cliente" onclick="modal.showModal()">
+                    <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
+                </button>  
+            </div>
+            
+        </div>
+    </div>
+
+</div>

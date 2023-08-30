@@ -1,0 +1,92 @@
+<div class="container-column" [ngStyle]="{'gap':'15px'}">
+    <div class="item-details">
+        <div class="item-details-title" routerLink="/detalles-responsable">{{ item.nombre }}</div>
+        <div class="item-details-text">Cédula: {{ item.cedula }}</div>
+        <div class="item-details-text">Correo: {{ item.correo }}</div>
+        <div class="item-details-text">Teléfono: {{ item.telefono }}</div>
+    </div>
+
+    <div class="container-column">
+        <label class="window-title">Entregas</label>
+        <div class="item-container">
+            
+            <div class="item container-column">
+
+                <div class="container-row" [ngStyle]="{'height':'auto'}">
+                    <div class="container-column">
+                        <span>Moft Mayorca</span> <!--Hacer que la ubicación se subraye y que permita ir a los detalles de la factura-->
+                        <span>23-01-2023 | ...</span>
+                        <span>Activos que se entregaron:</span>
+                    </div>
+                    <div class="container-column" [ngStyle]="{'gap': '5px', 'align-items': 'end'}">
+                        <button class="item-button" id="editar_entrega" onclick="editar_entrega_modal.showModal()">
+                            <img class="item-icon" src="../../../assets/icons/edit_icon.png" alt="Ícono de edición">
+                        </button>
+                        <button class="item-button" onclick="confirmar_borrar.showModal()" id="eliminar_entrega">
+                            <img class="item-icon" src="../../../assets/icons/delete_icon.png" alt="Ícono de edición">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="asset-container">
+                    <div class="sub-item container-row"> 
+                        <div class="container-column">
+                            <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
+                            <div class="container-row" [ngStyle]="{'align-items':'center'}">
+                                <div class="item-detail">tipo</div>
+                                <div class="item-detail">marca</div>
+                                <div class="item-detail">modelo</div>
+                            </div>
+                            <div class="item-detail" [ngStyle]="{'color': '#7fba00'}">estado</div>
+                        </div> 
+                    </div>
+                    <div class="sub-item container-row"> 
+                        <div class="container-column">
+                            <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
+                            <div class="container-row" [ngStyle]="{'align-items':'center'}">
+                                <div class="item-detail">tipo</div>
+                                <div class="item-detail">marca</div>
+                                <div class="item-detail">modelo</div>
+                            </div>
+                            <div class="item-detail" [ngStyle]="{'color': '#7fba00'}">estado</div>
+                        </div> 
+                    </div>
+                    <div class="sub-item container-row"> 
+                        <div class="container-column">
+                            <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
+                            <div class="container-row" [ngStyle]="{'align-items':'center'}">
+                                <div class="item-detail">tipo</div>
+                                <div class="item-detail">marca</div>
+                                <div class="item-detail">modelo</div>
+                            </div>
+                            <div class="item-detail" [ngStyle]="{'color': '#7fba00'}">estado</div>
+                        </div> 
+                    </div>
+                    <div class="sub-item container-row"> 
+                        <div class="container-column">
+                            <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
+                            <div class="container-row" [ngStyle]="{'align-items':'center'}">
+                                <div class="item-detail">tipo</div>
+                                <div class="item-detail">marca</div>
+                                <div class="item-detail">modelo</div>
+                            </div>
+                            <div class="item-detail" [ngStyle]="{'color': '#7fba00'}">estado</div>
+                        </div> 
+                    </div>
+                    <div class="sub-item container-row"> 
+                        <div class="container-column">
+                            <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
+                            <div class="container-row" [ngStyle]="{'align-items':'center'}">
+                                <div class="item-detail">tipo</div>
+                                <div class="item-detail">marca</div>
+                                <div class="item-detail">modelo</div>
+                            </div>
+                            <div class="item-detail" [ngStyle]="{'color': '#7fba00'}">estado</div>
+                        </div> 
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

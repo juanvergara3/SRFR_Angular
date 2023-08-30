@@ -2,10 +2,8 @@
 
     <div class="item container-row" *ngFor="let item of listOfItems"> <!--item template-->
         <div class="container-column">
-            <div class="item-title">RM{{ item.numero }}</div>
-            <div class="container-row" [ngStyle]="{gap:'0px'}">
-                <div class="item-detail">{{ item.fecha }}</div>
-            </div>
+            <div class="item-title" routerLink="/detalles-factura">RM{{ item.numero }}</div>
+            <div class="item-detail">{{ item.fecha }}</div>
         </div>
         <button class="item-button" id="editar_factura" onclick="modal.showModal()">
             <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
