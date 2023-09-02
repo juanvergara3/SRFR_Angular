@@ -1,5 +1,6 @@
 :host{
     height: 100%;
+    overflow: hidden;
 }
 
 .container-row{ /*sobreescribe una clase global*/
@@ -23,7 +24,7 @@
     justify-content: flex-start;
     align-content: flex-start;
     overflow:hidden;
-    overflow-y:scroll;
+    overflow-y:auto;
     gap: var(--gap);
     padding: 10px;
 }
@@ -44,7 +45,7 @@
     justify-content: flex-start;
     align-content: flex-start;
     overflow: hidden;
-    overflow-y: hidden;
+    overflow-y: auto;
     gap: var(--gap);
     padding: 10px;
 }

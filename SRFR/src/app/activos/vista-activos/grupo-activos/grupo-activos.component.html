@@ -1,13 +1,13 @@
 <div class="container-column" [ngStyle]="{'width': '100%', 'height': 'auto', 'gap':'0px'}">
     <div class="group-label-container" [ngStyle]="{'border-radius': showGroup ? '10px 10px 0px 0px' : '10px'}">
-        grupo de activos 1
+        {{grupoItem.grupo.nombre}} ({{grupoItem.activos.length}})
         <button type="button" [ngClass]="{'collapse-button-open': true, 'collapse-button-closed': !showGroup}" (click)="collapse()">
             <img class="down-arrow-icon" src="../../../../assets/icons/down_arrow_icon.png" alt="Ícono de colapsar/desplegar grupo">
         </button>
     </div>
     <div class="asset-container" *ngIf="showGroup">
 
-        <activo *ngFor="let item of listOfItems" [activoItem]="item"></activo>
+        <activo *ngFor="let activo of grupoItem.activos" [activoItem]="activo"></activo>
         
     </div>
 </div>

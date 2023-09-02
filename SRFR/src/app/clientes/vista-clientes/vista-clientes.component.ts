@@ -1,64 +1,25 @@
 import { Component } from '@angular/core';
 
+import { Cliente } from 'src/app/interfaces/cliente';
+import { ClienteService } from 'src/app/services/cliente.service';
+
 @Component({
   selector: 'vista-clientes',
   templateUrl: './vista-clientes.component.html',
   styleUrls: ['./vista-clientes.component.css']
 })
 export class VistaClientesComponent {
-  listOfItems = [
-    {
-        nombre: 'Comercializadora textil Coltex Ltda.',
-        nit: 1234567890,
-        digito: 3
-    },
-    {
-        nombre: 'ElectroMega S.A.',
-        nit: 987654321,
-        digito: null
-    },
-    {
-        nombre: 'Distribuidora Automotriz Autoparts',
-        nit: 4567890123,
-        digito: 6
-    },
-    {
-        nombre: 'Farmacias SaludPlus',
-        nit: 789012345,
-        digito: 1
-    },
-    {
-        nombre: 'Inversiones Financieras CapitalCorp',
-        nit: 2345678901,
-        digito: 8
-    },
-    {
-        nombre: 'Constructora EdificaTodo',
-        nit: 5678901234,
-        digito: 2
-    },
-    {
-        nombre: 'Tecnología Innovatech',
-        nit: 890123456,
-        digito: null
-    },
-    {
-        nombre: 'Industria Química ChemiCo',
-        nit: 3456789012,
-        digito: 5
-    },
-    {
-        nombre: 'Alimentos Frescos Distribuidos',
-        nit: 6789012345,
-        digito: null
-    },
-    {
-        nombre: 'Servicios Logísticos LogiTrans',
-        nit: 9012345678,
-        digito: null
-    }
-    
-  ]
+    clientesArray: Cliente[] = [];
 
-  totalItemNumber: number = this.listOfItems.length;
+    constructor(private clienteService: ClienteService) { }
+
+    getClientes(): void {
+        this.clienteService.getClientes().subscribe(clientesReturned => this.clientesArray = clientesReturned);
+    }
+
+    ngOnInit(): void {
+        this.getClientes();
+    }
+
+  //totalItemNumber: number = this.listOfItems.length;
 }

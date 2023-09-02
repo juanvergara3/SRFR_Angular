@@ -1,0 +1,44 @@
+/* MessagesComponent's private CSS styles */
+.title{
+    background-color: transparent;
+    color: var(--White);
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.separator{
+    width: 100%;
+    height: 1px;
+    background-color: var(--White);
+}
+
+.message{
+    color: var(--White);
+    background-color: var(--Dark-light-grey);
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.message-container{
+    overflow-y: auto;
+    height: 500px;
+    padding: 0 5px 0 0;
+}
+
+.clear-button{
+    color: var(--White);
+    background-color: var(--Warning);
+    border-style: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.clear-button:hover {
+    background-color: var(--Warning-dark);
+}

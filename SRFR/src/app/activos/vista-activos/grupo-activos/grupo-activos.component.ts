@@ -1,29 +1,22 @@
 import { Component, Input } from '@angular/core';
 
+import { Grupo } from 'src/app/interfaces/grupo';
+import { Activo } from 'src/app/interfaces/activo';
+
+
 @Component({
   selector: 'grupo-activos',
   templateUrl: './grupo-activos.component.html',
   styleUrls: ['./grupo-activos.component.css']
 })
-export class GrupoActivosComponent {
+export class GrupoActivosComponent{
 
-  listOfItems = [
-    {
-        sn:'ABCD-1234-EFGH-5678',
-        tipo:'tipo',
-        marca:'marca',
-        modelo:'modelo',
-        estado:'estado',
-        colorEstado:'7fba00',
-        grupo:1
-    }
-  ]
-
+  @Input()
+  grupoItem!: { index:number, grupo: Grupo, activos: Activo[] };
+ 
   showGroup: boolean = true;
 
   collapse(){
     this.showGroup = !this.showGroup;
   }
-
-  totalItemNumber: number = this.listOfItems.length;
 }

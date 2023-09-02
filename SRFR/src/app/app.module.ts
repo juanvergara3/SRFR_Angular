@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,7 +8,6 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { BrandingContainerComponent } from './main-menu/branding-container/branding-container.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { SearchBarComponent } from './top-bar/search-bar/search-bar.component';
-import { FormsModule } from '@angular/forms';
 import { VistaFacturasComponent } from './facturas/vista-facturas/vista-facturas.component';
 import { VistaClientesComponent } from './clientes/vista-clientes/vista-clientes.component';
 import { VistaActivosComponent } from './activos/vista-activos/vista-activos.component';
@@ -21,6 +21,7 @@ import { VistaResponsablesComponent } from './responsables/vista-responsables/vi
 import { VistaUbicacionesComponent } from './ubicaciones/vista-ubicaciones/vista-ubicaciones.component';
 import { DetallesUbicacionComponent } from './ubicaciones/detalles-ubicacion/detalles-ubicacion.component';
 import { DetallesResponsableComponent } from './responsables/detalles-responsable/detalles-responsable.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DetallesResponsableComponent } from './responsables/detalles-responsabl
     VistaResponsablesComponent,
     VistaUbicacionesComponent,
     DetallesUbicacionComponent,
-    DetallesResponsableComponent
+    DetallesResponsableComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,

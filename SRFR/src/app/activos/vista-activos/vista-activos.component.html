@@ -1,5 +1,5 @@
 <div class="item-container">
 
-    <grupo-activos></grupo-activos> <!--poner un ngFor para ver varios grupos de activos-->
+    <grupo-activos *ngFor="let grupo of orderedContent" [grupoItem]="grupo"></grupo-activos> <!--poner un ngFor para ver varios grupos de activos-->
 
 </div>

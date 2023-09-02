@@ -1,0 +1,12 @@
+<div class="container-column" [ngStyle]="{'gap':'10px', 'height':'auto'}" *ngIf="messageService.messagesArray.length">
+    <hr class="separator">
+    <div class="container-row" [ngStyle]="{'align-items':'center'}">
+        <div class="title">Mensajes</div>
+        <button type="button" class="clear-button" (click)="messageService.clear()">
+                Borrar
+        </button>
+    </div>
+    <div class="containter-column message-container">
+        <div class="message" *ngFor='let message of messageService.messagesArray'> {{message}} </div>
+    </div>
+</div>
