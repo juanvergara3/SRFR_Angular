@@ -1,13 +1,13 @@
 <div class="item container-row"> 
     <div class="container-column">
-        <div class="item-title" routerLink="/detalles-activo">{{ activoItem.sn }}</div>
+        <div class="item-title" routerLink="/detalles-activo/{{activoItem.id}}">{{ activoItem.sn }}</div>
         <div class="container-column" [ngStyle]="{'gap':'2.5px'}">
             <div class="container-row" [ngStyle]="{'align-items':'center'}">
                 <div class="item-detail">{{ this.tipo }}</div>
                 <div class="item-detail">{{ this.marca }}</div>
-                <div class="item-detail">{{ activoItem.modelo }}</div>
+                <div class="item-detail">modelo {{ activoItem.modelo }}</div>
             </div>
-            <div class="item-detail" [ngStyle]="{'color': '#' + this.estado.color}">{{ this.estado.estado }}</div>
+            <div class="item-details-estado" [ngStyle]="{'background-color': '#' + this.estado.color, 'color':this.estado.contrast}">{{ this.estado.estado }}</div>
         </div>
     </div>
     <button class="item-button" id="editar_cliente" onclick="modal.showModal()">

@@ -1,6 +1,6 @@
 :host{
     --gap: 10px;
-    --columns: 5;
+    --columns: 4;
     --item-width: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns))); 
     width: var(--item-width);
     
@@ -8,7 +8,7 @@
 
 .item{
     min-width: var(--item-width);
-    height: 70px;
+    height: 75px;
     background-color: var(--Light-light-grey);
     border-radius: 10px;
     padding: 10px;
@@ -28,6 +28,13 @@
 .item-detail{
     color: var(--Light-dark-grey);
     font-size: 12px;
+}
+
+.item-details-estado{
+    font-size: 12px;
+    width: fit-content;
+    padding: 2px;
+    border-radius: 5px;
 }
 
 .item-button{

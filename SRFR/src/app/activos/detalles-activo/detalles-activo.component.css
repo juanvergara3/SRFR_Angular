@@ -16,13 +16,23 @@
 
 .item-details-title{
     color: var(--White);
-    font-weight: 600;
-    font-size: 18px;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .item-details-text{
     color: var(--White);
     font-size: 16px;
+}
+
+.item-details-estado{
+    font-size: 16px;
+    font-weight:600;
+    width: fit-content;
+    padding: 3px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
 }
 
 .item{
@@ -48,6 +58,19 @@
     overflow-y:auto;
     gap: var(--gap);
     padding: 10px;
+}
+
+.go-back-button{
+    width: auto;
+    height: auto;
+    color: var(--Black);
+    font-size: 12px;
+    background-color: var(--Light-light-grey);
+    border-radius: 5px;
+    border-color: var(--Black) ;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
 }
 
 .item-button{

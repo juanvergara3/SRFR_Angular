@@ -16,8 +16,6 @@ export class VistaActivosComponent implements OnInit {
 
   orderedContent: {index: number, grupo: Grupo, activos: Activo[] }[] = [];
 
-  showGroup: boolean[] = [];
-
   constructor(private activoService: ActivoService) { }
 
   getActivos(): void {
@@ -53,19 +51,11 @@ export class VistaActivosComponent implements OnInit {
         activos = [];
       }
     }
-
-    for(let i = 0; i < this.orderedContent.length; i++){
-      this.showGroup.push(true);
-    }
   }
 
   ngOnInit(): void {
     this.getGrupos();
     this.getActivos();
     this.orderContent();
-  }
-
-  collapse(index: number){
-    this.showGroup[index] = !this.showGroup[index];
   }
 }

@@ -25,7 +25,7 @@ const routes: Routes = [
   { path:'vista-clientes', component:VistaClientesComponent },
   { path:'detalles-cliente', component:DetallesClienteComponent },
   { path:'vista-activos', component:VistaActivosComponent },
-  { path:'detalles-activo', component:DetallesActivoComponent },
+  { path:'detalles-activo/:id', component:DetallesActivoComponent },
   { path:'vista-responsables', component:VistaResponsablesComponent },
   { path:'detalles-responsable', component:DetallesResponsableComponent },
   { path:'vista-ubicaciones', component:VistaUbicacionesComponent },

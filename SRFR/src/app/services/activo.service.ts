@@ -16,6 +16,12 @@ import { marcasPlaceholderArray } from '../placeholder_data/placeholder-marcas';
 import { Estado } from '../interfaces/estado';
 import { estadosPlaceholderArray } from '../placeholder_data/placeholder-estados';
 
+import { Proveedor } from '../interfaces/proveedor';
+import { proveedoresPlaceholderArray } from '../placeholder_data/placeholder-proveedores';
+
+import { Prestador } from '../interfaces/prestador';
+import { prestadoresPlaceholderArray } from '../placeholder_data/placeholder-prestadores';
+
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -31,6 +37,14 @@ export class ActivoService {
     this.messageService.add('ActivoService: Activos obtenidos con éxito.');
 
     return activosArrayObservable;
+  }
+
+  getActivo(id: number): Observable<Activo> {
+    const activoObservable = of(activosPlaceholderArray.find(x => x.id == id)!);
+
+    this.messageService.add(`ActivoService: con id=${id} obtenidos con éxito.`);
+
+    return activoObservable;
   }
 
   getGrupos(): Observable<Grupo[]> {
@@ -57,5 +71,17 @@ export class ActivoService {
     const estadoObservable = of(estadosPlaceholderArray.find(x => x.id == id)!);
 
     return estadoObservable;
+  }
+
+  getProveedor(id: number): Observable<Proveedor>{
+    const proveedorObservable = of(proveedoresPlaceholderArray.find(x => x.id == id)!);
+
+    return proveedorObservable;
+  }
+
+  getPrestador(id: number): Observable<Prestador>{
+    const prestadorObservable = of(prestadoresPlaceholderArray.find(x => x.id == id)!);
+
+    return prestadorObservable;
   }
 }

@@ -1,3 +1,5 @@
+
+<!--
 <dialog id="confirmar_borrar" class="modal">
     <div class="container-column modal-flex" style="align-items: center;">
         <p class="modal-text">
@@ -81,28 +83,38 @@
             <button class="modal-main-button">Guardar</button>
         </div>                    
     </div>
-</dialog>
+</dialog> -->
 
 <!--FIN DE LAS VENTANAS MODALES-->
 <!--ROMPER EN COMPONENTES MÁS PEQUEÑOS-->
 
-
-
 <div class="container-row" [ngStyle]="{'gap':'15px'}">
 
     <div class="item-details">
-        <span class="item-details-title">{{activo.sn}}</span>
+        <div class="container-row" [ngStyle]="{'height':'auto', 'justify-content':'space-between'}">
+            <span class="item-details-title">{{activo.sn}}</span>
+            <button class="go-back-button" type="button" (click)="goBack()">Volver &#60;---</button>
+        </div>
         <hr class="separator">
-        <span class="item-details-text">{{activo.tipo}}</span>
-        <span class="item-details-text">{{activo.marca}}</span>
-        <span class="item-details-text">{{activo.modelo}}</span>
-        <span class="item-details-text">{{activo.estado}}</span>
-        <span class="item-details-text">{{activo.precioRenta}}</span>
-        <span class="item-details-text">{{activo.valorActivo}}</span>
-        <span class="item-details-text">{{activo.proveedor}}</span>
-        <span class="item-details-text">{{activo.facturaCompra}}</span>
-        <span class="item-details-text">{{activo.fechaCompra}}</span>
-        <span class="item-details-text">{{activo.prestador}}</span>
+        <div class="container-row" [ngStyle]="{'height':'auto', 'align-items':'center'}">
+            <div class="item-details-text">{{ this.tipo }}</div>
+            <div class="item-details-text">{{ this.marca }}</div>
+            <div class="item-details-text">modelo {{ activo.modelo }}</div>
+        </div>
+        <hr class="separator">
+        <div class="container-row" [ngStyle]="{'height':'auto', 'align-items':'center'}">
+            <div class="item-details-text">Estado:</div>
+            <div class="item-details-estado" [ngStyle]="{'background-color': '#' + this.estado.color, 'color': this.estado.contrast, 'border-color': this.estado.contrast}">{{this.estado.estado}}</div>
+        </div>
+        <hr class="separator">
+        <div class="item-details-text">Precio de renta mensual: ${{activo.precioRenta}}</div>
+        <hr class="separator">
+        <div class="item-details-text">Proveedor: {{this.proveedor}}</div>
+        <div class="item-details-text">Comprado con factura: {{activo.facturaCompra}}</div>
+        <div class="item-details-text">Comprado en: {{activo.fechaCompra}}</div>
+        <div class="item-details-text">Valor comercial: ${{activo.valorActivo}}</div>
+        <hr class="separator">
+        <div class="item-details-text">Activo prestado por: {{this.prestador}}</div>
     </div>
 
     <div class="container-column">
