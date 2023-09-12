@@ -1,6 +1,6 @@
 <div class="item-container">
 
-    <div class="item container-row" *ngFor="let responsable of responsablesArray"> <!--item template-->
+    <div class="item container-row" *ngFor="let responsable of filteredResponsablesArray()"> <!--item template-->
         <div class="container-column">
             <div class="item-title" routerLink="/detalles-responsable">{{ responsable.nombre }}</div>
             <div class="item-detail">{{ responsable.cedula }}</div>

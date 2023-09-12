@@ -1,6 +1,6 @@
 <div class="item-container">
 
-    <div class="item container-row" *ngFor="let factura of facturasArray"> <!--item template-->
+    <div class="item container-row" *ngFor="let factura of filteredFacturasArray()"> <!--item template-->
         <div class="container-column">
             <div class="item-title" routerLink="/detalles-factura">RM{{ factura.numero }}</div>
             <div class="item-detail">{{ factura.fecha }}</div>

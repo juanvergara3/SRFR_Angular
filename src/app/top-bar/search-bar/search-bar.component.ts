@@ -1,4 +1,6 @@
-import { Component, Output } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
+
+import { SearchBarService } from 'src/app/services/search-bar.service';
 
 @Component({
   selector: 'search-bar',
@@ -6,5 +8,12 @@ import { Component, Output } from '@angular/core';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
+
+  constructor(private searchBarService: SearchBarService) { }
+
   searchText: string = '';
+
+  onSearchSubmit(){
+    this.searchBarService.setSearch(this.searchText);
+  }
 }

@@ -1,6 +1,6 @@
 <div class="item-container">
 
-    <div class="item container-row" *ngFor="let cliente of clientesArray"> <!--item template-->
+    <div class="item container-row" *ngFor="let cliente of filteredClientesArray()"> <!--item template-->
         <div class="container-column">
             <div class="item-title" routerLink="/detalles-cliente">{{ cliente.nombre }}</div>
             <div class="container-row" [ngStyle]="{gap:'0px'}">
