@@ -1,4 +1,4 @@
-import { Component, Signal, computed } from '@angular/core';
+import { Component, Signal, computed, WritableSignal, signal } from '@angular/core';
 
 import { Factura } from 'src/app/interfaces/factura';
 import { FacturaService } from 'src/app/services/factura.service';
@@ -11,22 +11,25 @@ import { SearchBarService } from 'src/app/services/search-bar.service';
   styleUrls: ['./vista-facturas.component.css']
 })
 export class VistaFacturasComponent {
-    facturasArray: Factura[] = [];
 
-    filterText: Signal<string> = computed( 
-        () => this.searchBarService.searchTextSignal().replace(/^\D+/g, '')
-        );
+    facturasArray: WritableSignal<Factura[]> = signal([]);
 
-    filteredFacturasArray: Signal<Factura[]> = computed(
-        () => this.facturasArray.filter( 
-            factura => factura?.numero.toString().includes(this.filterText()) 
-            )
-        );
+    filterText: Signal<string> = computed(() => {
+        return this.searchBarService.searchTextSignal().replace(/^\D+/g, '')
+    });
+
+    filteredFacturasArray: Signal<Factura[]> = computed(() => 
+        this.facturasArray().filter(factura =>
+            factura?.numero_factura.toString().includes(this.filterText())
+        )
+    );
 
     constructor(private facturaService: FacturaService, public searchBarService: SearchBarService) { }
 
-    getFacturas(): void {
-        this.facturaService.getFacturas().subscribe(facturasReturned => this.facturasArray = facturasReturned);
+    getFacturas(): void{
+        this.facturaService.getFacturas().subscribe(facturasReturned => 
+            this.facturasArray.set(facturasReturned)
+        );
     }
 
     ngOnInit(): void {

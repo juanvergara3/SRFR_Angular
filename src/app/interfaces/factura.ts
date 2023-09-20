@@ -1,5 +1,5 @@
 export interface Factura {
-    id: number;
-    numero: number;
-    fecha: string;
+    id_factura: number;
+    numero_factura: number;
+    fecha_generacion: string;
 }
