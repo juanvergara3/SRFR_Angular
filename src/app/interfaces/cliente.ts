@@ -1,6 +1,6 @@
 export interface Cliente {
-    id: number;
+    id_cliente: number;
     nombre: string;
     nit: number;
-    digito?: number;
+    digito_verificacion?: number;
 }

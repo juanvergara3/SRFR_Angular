@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { VistaFacturasComponent } from './facturas/vista-facturas/vista-facturas.component';
@@ -19,18 +19,18 @@ import { DetallesUbicacionComponent } from './ubicaciones/detalles-ubicacion/det
 import { PendientesComponent } from './pendientes/pendientes.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/pendientes-facturacion', pathMatch: 'full' },
-  { path:'vista-facturas', component:VistaFacturasComponent },
-  { path:'detalles-factura', component:DetallesFacturaComponent },
-  { path:'vista-clientes', component:VistaClientesComponent },
-  { path:'detalles-cliente', component:DetallesClienteComponent },
-  { path:'vista-activos', component:VistaActivosComponent },
-  { path:'detalles-activo/:id', component:DetallesActivoComponent },
-  { path:'vista-responsables', component:VistaResponsablesComponent },
-  { path:'detalles-responsable', component:DetallesResponsableComponent },
-  { path:'vista-ubicaciones', component:VistaUbicacionesComponent },
-  { path:'detalles-ubicacion', component:DetallesUbicacionComponent },
-  { path:'pendientes-facturacion', component:PendientesComponent }
+  { path: '', redirectTo: '/pendientes', pathMatch: 'full' },
+  { path:'facturas', component:VistaFacturasComponent },
+  { path:'factura', component:DetallesFacturaComponent },
+  { path:'clientes', component:VistaClientesComponent },
+  { path:'cliente/:id', component:DetallesClienteComponent },
+  { path:'activos', component:VistaActivosComponent },
+  { path:'activo/:id', component:DetallesActivoComponent },
+  { path:'responsables', component:VistaResponsablesComponent },
+  { path:'responsable/:id', component:DetallesResponsableComponent },
+  { path:'ubicaciones', component:VistaUbicacionesComponent },
+  { path:'ubicacion/:id', component:DetallesUbicacionComponent },
+  { path:'pendientes', component:PendientesComponent }
 ];
 
 @NgModule({

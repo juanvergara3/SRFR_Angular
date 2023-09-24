@@ -5,7 +5,7 @@
             <div class="item-title" routerLink="/detalles-cliente">{{ cliente.nombre }}</div>
             <div class="container-row" [ngStyle]="{gap:'0px'}">
                 <div class="item-detail">{{ cliente.nit }}</div>
-                <div class="item-detail" *ngIf="cliente.digito != undefined">-{{ cliente.digito }}</div>
+                <div class="item-detail" *ngIf="cliente.digito_verificacion != undefined">-{{ cliente.digito_verificacion }}</div>
             </div>
         </div>
         <button class="item-button" id="editar_cliente" onclick="modal.showModal()">

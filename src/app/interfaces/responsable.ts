@@ -1,5 +1,5 @@
 export interface Responsable {
-    id: number;
+    id_responsable: number;
     nombre: string;
     cedula: number;
     telefono: string;
