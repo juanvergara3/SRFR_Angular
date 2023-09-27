@@ -7,6 +7,7 @@ import { Cliente } from 'src/app/interfaces/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 import { SearchBarService } from 'src/app/services/search-bar.service';
+import { WindowTitleService } from 'src/app/services/window-title.service';
 
 @Component({
   selector: 'vista-ubicaciones',
@@ -18,6 +19,8 @@ export class VistaUbicacionesComponent {
   ubicacionesArray: WritableSignal<Ubicacion[]> = signal([]);
   clientesArray: WritableSignal<Cliente[]> = signal([]);
 
+  windowTitle = `Ubicaciones(${this.ubicacionesArray().length})`;
+
   orderedContent: {index: number, cliente: Cliente, ubicaciones: Ubicacion[] }[] = [];
 
   //orderedContent: Signal<{index: number, cliente: Cliente, ubicaciones: Ubicacion[] }[]> =  computed(() => {
@@ -25,7 +28,7 @@ export class VistaUbicacionesComponent {
   //});
 
   filteredClientesArray: Signal<Cliente[]> = computed(() => 
-  this.clientesArray().filter(cliente => 
+    this.clientesArray().filter(cliente => 
       cliente?.nombre.toLowerCase().includes(this.filterText()) || 
       cliente?.nit.toString().includes(this.filterText())
     )
@@ -37,7 +40,7 @@ export class VistaUbicacionesComponent {
     () => this.searchBarService.searchTextSignal().toLocaleLowerCase()
   );
 
-  constructor(private ubicacionService: UbicacionService, private clienteService: ClienteService, public searchBarService: SearchBarService) { }
+  constructor(private ubicacionService: UbicacionService, private clienteService: ClienteService, public searchBarService: SearchBarService, public windowTitleService: WindowTitleService) { }
 
   getUbicaciones(): void {
     this.ubicacionService.getUbicaciones().subscribe(ubicacionesReturned => this.ubicacionesArray.set(ubicacionesReturned));
@@ -82,6 +85,8 @@ export class VistaUbicacionesComponent {
     this.getClientes();
     this.getUbicaciones();
     this.orderContent();
+
+    this.windowTitleService.setWindowTitle(this.windowTitle);
   }
 
   collapse(index: number){

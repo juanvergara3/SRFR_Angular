@@ -4,6 +4,7 @@ import { Factura } from 'src/app/interfaces/factura';
 import { FacturaService } from 'src/app/services/factura.service';
 
 import { SearchBarService } from 'src/app/services/search-bar.service';
+import { WindowTitleService } from 'src/app/services/window-title.service';
 
 @Component({
   selector: 'vista-facturas',
@@ -13,6 +14,8 @@ import { SearchBarService } from 'src/app/services/search-bar.service';
 export class VistaFacturasComponent {
 
     facturasArray: WritableSignal<Factura[]> = signal([]);
+
+    windowTitle = `Facturas(${this.facturasArray().length})`;
 
     filterText: Signal<string> = computed(() => {
         return this.searchBarService.searchTextSignal().replace(/^\D+/g, '')
@@ -24,7 +27,7 @@ export class VistaFacturasComponent {
         )
     );
 
-    constructor(private facturaService: FacturaService, public searchBarService: SearchBarService) { }
+    constructor(private facturaService: FacturaService, public searchBarService: SearchBarService, public windowTitleService: WindowTitleService) { }
 
     getFacturas(): void{
         this.facturaService.getFacturas().subscribe(facturasReturned => 
@@ -34,6 +37,8 @@ export class VistaFacturasComponent {
 
     ngOnInit(): void {
         this.getFacturas();
+
+        this.windowTitleService.setWindowTitle(this.windowTitle);
     }
 
     //totalItemNumber: number = this.listOfItems.length;

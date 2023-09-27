@@ -4,6 +4,8 @@ import { Activo } from 'src/app/interfaces/activo';
 import { Grupo } from 'src/app/interfaces/grupo';
 import { ActivoService } from 'src/app/services/activo.service';
 
+import { WindowTitleService } from 'src/app/services/window-title.service';
+
 @Component({
   selector: 'vista-activos',
   templateUrl: './vista-activos.component.html',
@@ -14,9 +16,11 @@ export class VistaActivosComponent implements OnInit {
   activosArray: Activo[] = [];
   gruposArray: Grupo[] = [];
 
+  windowTitle = `Activos(${this.activosArray.length})`;
+
   orderedContent: {index: number, grupo: Grupo, activos: Activo[] }[] = [];
 
-  constructor(private activoService: ActivoService) { }
+  constructor(private activoService: ActivoService, public windowTitleService: WindowTitleService) { }
 
   getActivos(): void {
     this.activoService.getActivos().subscribe(activosReturned => this.activosArray = activosReturned);
@@ -57,5 +61,7 @@ export class VistaActivosComponent implements OnInit {
     this.getGrupos();
     this.getActivos();
     this.orderContent();
+
+    this.windowTitleService.setWindowTitle(this.windowTitle);
   }
 }

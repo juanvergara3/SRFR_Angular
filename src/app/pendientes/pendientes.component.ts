@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { WindowTitleService } from 'src/app/services/window-title.service';
 
 @Component({
   selector: 'pendientes',
   templateUrl: './pendientes.component.html',
   styleUrls: ['./pendientes.component.css']
 })
-export class PendientesComponent {
+export class PendientesComponent implements OnInit {
+
+  constructor(public windowTitleService: WindowTitleService) { }
 
   listOfItems = [
     {
@@ -21,6 +25,8 @@ export class PendientesComponent {
     }
   ];
 
+  windowTitle = `Pendientes(${this.listOfItems.length})`;
+
   incrementDate(date:string) { //buscar una forma más eficiente de hacer esto
 
     let month:number = +(date.substring(3, 5));
@@ -32,5 +38,9 @@ export class PendientesComponent {
     } else {
       return date.substring(0, 3) + month + date.substring(5);
     }
+  }
+
+  ngOnInit(): void {
+    this.windowTitleService.setWindowTitle(this.windowTitle);
   }
 }

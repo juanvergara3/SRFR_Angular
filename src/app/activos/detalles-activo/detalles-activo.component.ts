@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { ActivoService } from 'src/app/services/activo.service';
 
 import { Activo } from 'src/app/interfaces/activo';
+import { ActivoService } from 'src/app/services/activo.service';
+
+import { WindowTitleService } from 'src/app/services/window-title.service';
 
 @Component({
   selector: 'detalles-activo',
   templateUrl: './detalles-activo.component.html',
   styleUrls: ['./detalles-activo.component.css']
 })
-export class DetallesActivoComponent {
+export class DetallesActivoComponent implements OnInit {
+
+  windowTitle = `Detalles activo`;
 
   activo!: Activo;
   marca = '';
@@ -19,7 +23,7 @@ export class DetallesActivoComponent {
   proveedor = '';
   prestador = '';
 
-  constructor( private route: ActivatedRoute, private activoService : ActivoService, private location: Location ) { }
+  constructor( private route: ActivatedRoute, private activoService : ActivoService, private location: Location, public windowTitleService: WindowTitleService ) { }
 
   getActivo(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -91,5 +95,7 @@ export class DetallesActivoComponent {
     this.getEstado(this.activo.id_estado);
     this.getProveedor(this.activo.id_proveedor);
     this.getPrestador(this.activo.id_prestador);
+
+    this.windowTitleService.setWindowTitle(this.windowTitle);
   }
 }

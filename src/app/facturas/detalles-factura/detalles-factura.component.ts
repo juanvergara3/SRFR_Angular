@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { WindowTitleService } from 'src/app/services/window-title.service';
 
 @Component({
   selector: 'detalles-factura',
   templateUrl: './detalles-factura.component.html',
   styleUrls: ['./detalles-factura.component.css']
 })
-export class DetallesFacturaComponent {
+export class DetallesFacturaComponent implements OnInit {
+
+  windowTitle = `Detalles factura`;
+
   item = {
     "numero": 1234,
     "fecha": '2023-08-21'
@@ -19,5 +24,11 @@ export class DetallesFacturaComponent {
     estado:'estado',
     colorEstado:'7fba00',
     grupo:1
+  }
+
+  constructor (public windowTitleService: WindowTitleService) {}
+
+  ngOnInit(): void {
+    this.windowTitleService.setWindowTitle(this.windowTitle);
   }
 }

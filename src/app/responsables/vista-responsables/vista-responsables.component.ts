@@ -4,6 +4,7 @@ import { Responsable } from 'src/app/interfaces/responsable';
 import { ResponsableService } from 'src/app/services/responsable.service';
 
 import { SearchBarService } from 'src/app/services/search-bar.service';
+import { WindowTitleService } from 'src/app/services/window-title.service';
 
 @Component({
   selector: 'vista-responsables',
@@ -12,6 +13,8 @@ import { SearchBarService } from 'src/app/services/search-bar.service';
 })
 export class VistaResponsablesComponent {
   responsablesArray: WritableSignal<Responsable[]> = signal([]);
+
+  windowTitle = `Responsables(${this.responsablesArray().length})`;
 
   filterText: Signal<string> = computed( 
     () => this.searchBarService.searchTextSignal().toLocaleLowerCase()
@@ -28,7 +31,7 @@ export class VistaResponsablesComponent {
       )
     );
 
-  constructor(private responsableService: ResponsableService, public searchBarService: SearchBarService) { }
+  constructor(private responsableService: ResponsableService, public searchBarService: SearchBarService, public windowTitleService: WindowTitleService) { }
 
   getResponsables(): void {
       this.responsableService.getResponsables().subscribe(responsablesReturned => this.responsablesArray.set(responsablesReturned));
@@ -36,6 +39,8 @@ export class VistaResponsablesComponent {
 
   ngOnInit(): void {
       this.getResponsables();
+
+      this.windowTitleService.setWindowTitle(this.windowTitle);
   }
 
 }

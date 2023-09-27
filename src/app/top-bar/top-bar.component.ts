@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Signal, computed } from '@angular/core';
+
+import { WindowTitleService } from '../services/window-title.service';
 
 @Component({
   selector: 'top-bar',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent {
-  windowTitle:string = "Clientes";
+
+  constructor(public windowTitleService: WindowTitleService) {}
+
+  windowTitle:Signal<string> = computed(() => this.windowTitleService.windowTitleSignal());
 }

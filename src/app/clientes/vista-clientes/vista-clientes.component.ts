@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/interfaces/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 import { SearchBarService } from 'src/app/services/search-bar.service';
+import { WindowTitleService } from 'src/app/services/window-title.service';
 
 @Component({
   selector: 'vista-clientes',
@@ -11,7 +12,10 @@ import { SearchBarService } from 'src/app/services/search-bar.service';
   styleUrls: ['./vista-clientes.component.css']
 })
 export class VistaClientesComponent {
+
     clientesArray:  WritableSignal<Cliente[]> = signal([]);
+
+    windowTitle = `Clientes(${this.clientesArray().length})`;
 
     filterText: Signal<string> = computed(() => 
       this.searchBarService.searchTextSignal().toLocaleLowerCase()
@@ -24,7 +28,7 @@ export class VistaClientesComponent {
       )
     );
 
-    constructor(private clienteService: ClienteService, public searchBarService: SearchBarService) { }
+    constructor(private clienteService: ClienteService, public searchBarService: SearchBarService, public windowTitleService: WindowTitleService) { }
 
     getClientes(): void {
         this.clienteService.getClientes().subscribe(clientesReturned => 
@@ -34,6 +38,8 @@ export class VistaClientesComponent {
 
     ngOnInit(): void {
         this.getClientes();
+
+        this.windowTitleService.setWindowTitle(this.windowTitle);
     }
 
   //totalItemNumber: number = this.listOfItems.length;
