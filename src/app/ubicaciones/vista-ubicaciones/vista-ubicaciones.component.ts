@@ -1,4 +1,4 @@
-import { Component, Signal, computed, signal, WritableSignal } from '@angular/core';
+import { Component, Signal, computed, signal, WritableSignal, inject } from '@angular/core';
 
 import { Ubicacion } from 'src/app/interfaces/ubicacion';
 import { UbicacionService } from 'src/app/services/ubicacion.service';
@@ -15,6 +15,11 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
   styleUrls: ['./vista-ubicaciones.component.css']
 })
 export class VistaUbicacionesComponent {
+
+  private ubicacionService = inject(UbicacionService);
+  private clienteService = inject(ClienteService);
+  public searchBarService = inject(SearchBarService);
+  public windowTitleService = inject(WindowTitleService);
 
   ubicacionesArray: WritableSignal<Ubicacion[]> = signal([]);
   clientesArray: WritableSignal<Cliente[]> = signal([]);
@@ -39,8 +44,6 @@ export class VistaUbicacionesComponent {
   filterText: Signal<string> = computed( 
     () => this.searchBarService.searchTextSignal().toLocaleLowerCase()
   );
-
-  constructor(private ubicacionService: UbicacionService, private clienteService: ClienteService, public searchBarService: SearchBarService, public windowTitleService: WindowTitleService) { }
 
   getUbicaciones(): void {
     this.ubicacionService.getUbicaciones().subscribe(ubicacionesReturned => this.ubicacionesArray.set(ubicacionesReturned));

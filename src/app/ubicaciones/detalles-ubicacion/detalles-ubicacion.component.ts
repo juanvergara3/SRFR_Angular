@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { WindowTitleService } from 'src/app/services/window-title.service';
 
@@ -9,6 +9,8 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 })
 export class DetallesUbicacionComponent implements OnInit {
 
+  public windowTitleService = inject(WindowTitleService);
+
   windowTitle = `Detalles ubicación`;
 
   item = {
@@ -16,8 +18,6 @@ export class DetallesUbicacionComponent implements OnInit {
     direccion:'Cl. 51 Sur #48-57 PISO 3, Sabaneta, Antioquia',
     telefono:'3094848'
   }
-
-  constructor (public windowTitleService: WindowTitleService) {}
 
   ngOnInit(): void {
     this.windowTitleService.setWindowTitle(this.windowTitle);

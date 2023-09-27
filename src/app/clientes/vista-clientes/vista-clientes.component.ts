@@ -1,4 +1,4 @@
-import { Component, Signal, computed, signal, WritableSignal } from '@angular/core';
+import { Component, Signal, computed, signal, WritableSignal, inject } from '@angular/core';
 
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -13,34 +13,36 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 })
 export class VistaClientesComponent {
 
-    clientesArray:  WritableSignal<Cliente[]> = signal([]);
+  private clienteService = inject(ClienteService);
+  public searchBarService = inject(SearchBarService);
+  public windowTitleService = inject(WindowTitleService);
 
-    windowTitle = `Clientes(${this.clientesArray().length})`;
+  clientesArray:  WritableSignal<Cliente[]> = signal([]);
 
-    filterText: Signal<string> = computed(() => 
-      this.searchBarService.searchTextSignal().toLocaleLowerCase()
-    );
+  windowTitle = `Clientes(${this.clientesArray().length})`;
 
-    filteredClientesArray: Signal<Cliente[]> = computed(() => 
-      this.clientesArray().filter(cliente => 
-        cliente?.nombre.toLowerCase().includes(this.filterText()) || 
-        cliente?.nit.toString().includes(this.filterText())
-      )
-    );
+  filterText: Signal<string> = computed(() => 
+    this.searchBarService.searchTextSignal().toLocaleLowerCase()
+  );
 
-    constructor(private clienteService: ClienteService, public searchBarService: SearchBarService, public windowTitleService: WindowTitleService) { }
+  filteredClientesArray: Signal<Cliente[]> = computed(() => 
+    this.clientesArray().filter(cliente => 
+      cliente?.nombre.toLowerCase().includes(this.filterText()) || 
+      cliente?.nit.toString().includes(this.filterText())
+    )
+  );
 
-    getClientes(): void {
-        this.clienteService.getClientes().subscribe(clientesReturned => 
-          this.clientesArray.set(clientesReturned)
-        );
-    }
+  getClientes(): void {
+      this.clienteService.getClientes().subscribe(clientesReturned => 
+        this.clientesArray.set(clientesReturned)
+      );
+  }
 
-    ngOnInit(): void {
-        this.getClientes();
+  ngOnInit(): void {
+      this.getClientes();
 
-        this.windowTitleService.setWindowTitle(this.windowTitle);
-    }
+      this.windowTitleService.setWindowTitle(this.windowTitle);
+  }
 
-  //totalItemNumber: number = this.listOfItems.length;
+//totalItemNumber: number = this.listOfItems.length;
 }

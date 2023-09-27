@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, of, find } from 'rxjs';
 
 import { Activo } from '../interfaces/activo';
@@ -29,7 +29,7 @@ import { MessageService } from './message.service';
 })
 export class ActivoService {
 
-  constructor(private messageService: MessageService) { }
+  private messageService = inject(MessageService);
 
   getActivos(): Observable<Activo[]> {
     const activosArrayObservable = of(activosPlaceholderArray);

@@ -1,4 +1,4 @@
-import { Component, Signal, computed, WritableSignal, signal } from '@angular/core';
+import { Component, Signal, computed, WritableSignal, signal, inject } from '@angular/core';
 
 import { Factura } from 'src/app/interfaces/factura';
 import { FacturaService } from 'src/app/services/factura.service';
@@ -13,6 +13,10 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 })
 export class VistaFacturasComponent {
 
+    private facturaService = inject(FacturaService);
+    public searchBarService = inject(SearchBarService);
+    public windowTitleService = inject(WindowTitleService);
+
     facturasArray: WritableSignal<Factura[]> = signal([]);
 
     windowTitle = `Facturas(${this.facturasArray().length})`;
@@ -26,8 +30,6 @@ export class VistaFacturasComponent {
             factura?.numero_factura.toString().includes(this.filterText())
         )
     );
-
-    constructor(private facturaService: FacturaService, public searchBarService: SearchBarService, public windowTitleService: WindowTitleService) { }
 
     getFacturas(): void{
         this.facturaService.getFacturas().subscribe(facturasReturned => 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { WindowTitleService } from 'src/app/services/window-title.service';
 
@@ -8,6 +8,8 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
   styleUrls: ['./detalles-factura.component.css']
 })
 export class DetallesFacturaComponent implements OnInit {
+
+  public windowTitleService = inject(WindowTitleService);
 
   windowTitle = `Detalles factura`;
 
@@ -25,8 +27,6 @@ export class DetallesFacturaComponent implements OnInit {
     colorEstado:'7fba00',
     grupo:1
   }
-
-  constructor (public windowTitleService: WindowTitleService) {}
 
   ngOnInit(): void {
     this.windowTitleService.setWindowTitle(this.windowTitle);

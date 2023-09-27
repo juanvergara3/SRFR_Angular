@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { Activo } from 'src/app/interfaces/activo';
 import { Grupo } from 'src/app/interfaces/grupo';
@@ -13,14 +13,15 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 })
 export class VistaActivosComponent implements OnInit {
 
+  private activoService = inject(ActivoService);
+  public windowTitleService = inject(WindowTitleService);
+
   activosArray: Activo[] = [];
   gruposArray: Grupo[] = [];
 
   windowTitle = `Activos(${this.activosArray.length})`;
 
   orderedContent: {index: number, grupo: Grupo, activos: Activo[] }[] = [];
-
-  constructor(private activoService: ActivoService, public windowTitleService: WindowTitleService) { }
 
   getActivos(): void {
     this.activoService.getActivos().subscribe(activosReturned => this.activosArray = activosReturned);

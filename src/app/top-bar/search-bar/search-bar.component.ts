@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, inject } from '@angular/core';
 
 import { SearchBarService } from 'src/app/services/search-bar.service';
 
@@ -9,7 +9,7 @@ import { SearchBarService } from 'src/app/services/search-bar.service';
 })
 export class SearchBarComponent {
 
-  constructor(private searchBarService: SearchBarService) { }
+  private searchBarService = inject(SearchBarService);
 
   searchText: string = '';
 

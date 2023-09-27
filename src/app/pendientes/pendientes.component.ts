@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { WindowTitleService } from 'src/app/services/window-title.service';
 
@@ -9,7 +9,7 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 })
 export class PendientesComponent implements OnInit {
 
-  constructor(public windowTitleService: WindowTitleService) { }
+  public windowTitleService = inject(WindowTitleService);
 
   listOfItems = [
     {

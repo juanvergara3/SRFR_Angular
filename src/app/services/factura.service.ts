@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Factura } from 'src/app/interfaces/factura';
@@ -12,16 +12,18 @@ import { RouterService } from './router.service';
 })
 export class FacturaService {
 
-  url: string = this.router.getRoute();
+  private apiService = inject(ApiService);
+  private router = inject(RouterService);
+  private messageService = inject(MessageService);
 
-  constructor(private apiService: ApiService, private router: RouterService,private messageService: MessageService) { }
+  url: string = this.router.getRoute();
 
   getFacturas(): Observable<Factura[]> {
 
-      const facturasArrayObservable = this.apiService.getRequest(this.url) as Observable<Factura[]>;
-      
-      this.messageService.add('FacturaService: Facturas obtenidas con éxito :)');
+    const facturasArrayObservable = this.apiService.getRequest(this.url) as Observable<Factura[]>;
+    
+    this.messageService.add('FacturaService: Facturas obtenidas con éxito :)');
 
-      return facturasArrayObservable;
+    return facturasArrayObservable;
   }
 }

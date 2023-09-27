@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Responsable } from 'src/app/interfaces/responsable';
@@ -12,9 +12,11 @@ import { RouterService } from './router.service';
 })
 export class ResponsableService {
 
-  url: string = this.router.getRoute();
+  private apiService = inject(ApiService);
+  private router = inject(RouterService);
+  private messageService = inject(MessageService);
 
-  constructor(private apiService: ApiService, private router: RouterService,private messageService: MessageService) { }
+  url: string = this.router.getRoute();
 
   getResponsables(): Observable<Responsable[]> {
 

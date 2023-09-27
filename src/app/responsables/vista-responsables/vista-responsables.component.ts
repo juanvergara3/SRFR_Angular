@@ -1,4 +1,4 @@
-import { Component, Signal, computed, signal, WritableSignal } from '@angular/core';
+import { Component, Signal, computed, signal, WritableSignal, inject } from '@angular/core';
 
 import { Responsable } from 'src/app/interfaces/responsable';
 import { ResponsableService } from 'src/app/services/responsable.service';
@@ -12,6 +12,11 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
   styleUrls: ['./vista-responsables.component.css']
 })
 export class VistaResponsablesComponent {
+
+  public windowTitleService = inject(WindowTitleService);
+  private responsableService = inject(ResponsableService);
+  public searchBarService = inject(SearchBarService);
+
   responsablesArray: WritableSignal<Responsable[]> = signal([]);
 
   windowTitle = `Responsables(${this.responsablesArray().length})`;
@@ -30,8 +35,6 @@ export class VistaResponsablesComponent {
         } 
       )
     );
-
-  constructor(private responsableService: ResponsableService, public searchBarService: SearchBarService, public windowTitleService: WindowTitleService) { }
 
   getResponsables(): void {
       this.responsableService.getResponsables().subscribe(responsablesReturned => this.responsablesArray.set(responsablesReturned));

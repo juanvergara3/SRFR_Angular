@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -14,6 +14,11 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 })
 export class DetallesActivoComponent implements OnInit {
 
+  private route = inject(ActivatedRoute);
+  private activoService = inject(ActivoService);
+  private location = inject(Location);
+  public windowTitleService = inject(WindowTitleService);
+ 
   windowTitle = `Detalles activo`;
 
   activo!: Activo;
@@ -22,8 +27,6 @@ export class DetallesActivoComponent implements OnInit {
   estado = {estado:'', color:'', contrast:''};
   proveedor = '';
   prestador = '';
-
-  constructor( private route: ActivatedRoute, private activoService : ActivoService, private location: Location, public windowTitleService: WindowTitleService ) { }
 
   getActivo(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));

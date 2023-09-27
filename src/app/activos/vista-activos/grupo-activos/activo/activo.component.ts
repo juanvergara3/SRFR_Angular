@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 
 import { Activo } from 'src/app/interfaces/activo';
 import { ActivoService } from 'src/app/services/activo.service';
@@ -14,14 +14,14 @@ import { Estado } from 'src/app/interfaces/estado';
 })
 export class ActivoComponent implements OnInit {
 
+  private activoService = inject(ActivoService);
+
   marca = '';
   tipo = '';
   estado = {estado:'', color:'', contrast:''};
 
   @Input()
   activoItem!: Activo;
-
-  constructor(private activoService: ActivoService) { }
 
   getTipo(id: number): void{
     this.activoService.getTipo(id).subscribe(tipoReturned => this.tipo = tipoReturned.formfactor);
