@@ -23,11 +23,6 @@ import { VistaUbicacionesComponent } from './ubicaciones/vista-ubicaciones/vista
 import { DetallesUbicacionComponent } from './ubicaciones/detalles-ubicacion/detalles-ubicacion.component';
 import { DetallesResponsableComponent } from './responsables/detalles-responsable/detalles-responsable.component';
 import { MessagesComponent } from './messages/messages.component';
-import { ModalesActivosComponent } from './activos/modales-activos/modales-activos.component';
-import { ModalesClientesComponent } from './clientes/modales-clientes/modales-clientes.component';
-import { ModalesFacturasComponent } from './facturas/modales-facturas/modales-facturas.component';
-import { ModalesResponsablesComponent } from './responsables/modales-responsables/modales-responsables.component';
-import { ModalesUbicacionesComponent } from './ubicaciones/modales-ubicaciones/modales-ubicaciones.component';
 
 @NgModule({
   declarations: [
@@ -50,11 +45,6 @@ import { ModalesUbicacionesComponent } from './ubicaciones/modales-ubicaciones/m
     DetallesUbicacionComponent,
     DetallesResponsableComponent,
     MessagesComponent,
-    ModalesActivosComponent,
-    ModalesClientesComponent,
-    ModalesFacturasComponent,
-    ModalesResponsablesComponent,
-    ModalesUbicacionesComponent,
   ],
   imports: [
     BrowserModule,
