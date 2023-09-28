@@ -26,4 +26,13 @@ export class FacturaService {
 
     return facturasArrayObservable;
   }
+
+  newFactura(numero: number, fecha: string) {
+
+    let response = this.apiService.postRequest(this.url, {numero_factura: numero, fecha_generacion: fecha});
+
+    response.subscribe((data) => 
+      this.messageService.add(data.toString())
+    );
+  }
 }

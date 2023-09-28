@@ -23,6 +23,7 @@ import { VistaUbicacionesComponent } from './ubicaciones/vista-ubicaciones/vista
 import { DetallesUbicacionComponent } from './ubicaciones/detalles-ubicacion/detalles-ubicacion.component';
 import { DetallesResponsableComponent } from './responsables/detalles-responsable/detalles-responsable.component';
 import { MessagesComponent } from './messages/messages.component';
+import { ModalesVistaFacturasComponent } from './facturas/vista-facturas/modales-vista-facturas/modales-vista-facturas.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MessagesComponent } from './messages/messages.component';
     DetallesUbicacionComponent,
     DetallesResponsableComponent,
     MessagesComponent,
+    ModalesVistaFacturasComponent,
   ],
   imports: [
     BrowserModule,

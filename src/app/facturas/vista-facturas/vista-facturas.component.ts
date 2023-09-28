@@ -5,6 +5,7 @@ import { FacturaService } from 'src/app/services/factura.service';
 
 import { SearchBarService } from 'src/app/services/search-bar.service';
 import { WindowTitleService } from 'src/app/services/window-title.service';
+import { RouterService } from 'src/app/services/router.service';
 
 @Component({
   selector: 'vista-facturas',
@@ -16,6 +17,7 @@ export class VistaFacturasComponent {
     private facturaService = inject(FacturaService);
     public searchBarService = inject(SearchBarService);
     public windowTitleService = inject(WindowTitleService);
+    private routerService = inject(RouterService);
 
     facturasArray: WritableSignal<Factura[]> = signal([]);
 
@@ -35,6 +37,10 @@ export class VistaFacturasComponent {
         this.facturaService.getFacturas().subscribe(facturasReturned => 
             this.facturasArray.set(facturasReturned)
         );
+    }
+    
+    refresh(){
+        this.routerService.reload();
     }
 
     ngOnInit(): void {

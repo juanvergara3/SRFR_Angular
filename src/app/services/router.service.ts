@@ -14,4 +14,11 @@ export class RouterService {
 
     return this.backendHost + this.router.url;
   }
+
+  reload(): void {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+  }
 }

@@ -146,6 +146,12 @@ dialog::backdrop{
     outline: none;
 }
 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .modal-main-button{
     width: 50%;
     height: 32px;
@@ -158,6 +164,12 @@ dialog::backdrop{
     border-width: 1px;
     cursor: pointer;
     font-size: 14px;
+}
+
+.modal-main-button:disabled{
+    background-color: var(--disabled-bg);
+    color: var(--Light-medium-grey);
+    border-color: var(--Light-medium-grey);
 }
 
 .modal-secondary-button{
@@ -187,3 +199,37 @@ dialog::backdrop{
     cursor: pointer;
     font-size: 14px;
 }
+
+.dropdown{
+    width: 100%;
+    padding-bottom: 2px;
+    background-color: var(--Dark-light-grey);
+    color: white;
+    border-width: 0px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--White);
+    border-bottom-width: 1px;
+    cursor: pointer;
+}
+
+.dropdown:focus{
+    outline: none;
+}
+
+input[type="date"] { 
+    font-size: 14px;
+}
+
+input[type="date"]::-webkit-datetime-edit-text { 
+    padding: 0 5px; 
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator { 
+    filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(210%) hue-rotate(194deg) brightness(116%) contrast(100%);
+    border-radius: 5px;
+}
+
+input::-webkit-calendar-picker-indicator:hover {
+    filter: brightness(0) saturate(100%) invert(76%) sepia(71%) saturate(573%) hue-rotate(17deg) brightness(101%) contrast(81%);
+    cursor: pointer;
+} 

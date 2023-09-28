@@ -13,7 +13,10 @@ export class ApiService {
     return this.httpClient.get(url);
   }
 
-  // postRequest(url: string) {
-  //   return this.httpClient.post(url);
-  // }
+  postRequest(url: string, body: any) {
+
+    let response = this.httpClient.post(url, body);
+
+    return response;
+  }
 }
