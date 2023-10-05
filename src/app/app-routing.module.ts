@@ -21,7 +21,7 @@ import { PendientesComponent } from './pendientes/pendientes.component';
 const routes: Routes = [
   { path: '', redirectTo: '/pendientes', pathMatch: 'full' },
   { path:'facturas', component:VistaFacturasComponent },
-  { path:'factura', component:DetallesFacturaComponent },
+  { path:'factura/:id', component:DetallesFacturaComponent },
   { path:'clientes', component:VistaClientesComponent },
   { path:'cliente/:id', component:DetallesClienteComponent },
   { path:'activos', component:VistaActivosComponent },

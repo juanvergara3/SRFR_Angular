@@ -9,7 +9,5 @@ export class SearchBarService {
 
   setSearch(text: string): void{
     this.searchTextSignal.set(text);
-
-    console.log(`signal updated with this value ${this.searchTextSignal()}`);
   }
 }

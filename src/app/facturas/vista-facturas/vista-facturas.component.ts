@@ -19,16 +19,16 @@ export class VistaFacturasComponent {
     public windowTitleService = inject(WindowTitleService);
     private routerService = inject(RouterService);
 
+    windowTitle = 'Facturas';
+
+    filterText: Signal<string> = computed(() => 
+        this.searchBarService.searchTextSignal().replace(/^\D+/g, '')
+    );
+
     facturasArray: WritableSignal<Factura[]> = signal([]);
 
-    windowTitle = `Facturas(${this.facturasArray().length})`;
-
-    filterText: Signal<string> = computed(() => {
-        return this.searchBarService.searchTextSignal().replace(/^\D+/g, '')
-    });
-
     filteredFacturasArray: Signal<Factura[]> = computed(() => 
-        this.facturasArray().filter(factura =>
+         this.facturasArray().filter(factura =>
             factura?.numero_factura.toString().includes(this.filterText())
         )
     );

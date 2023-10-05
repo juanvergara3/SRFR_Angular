@@ -11,5 +11,5 @@ export class TopBarComponent {
 
   public windowTitleService = inject(WindowTitleService);
 
-  windowTitle:Signal<string> = computed(() => this.windowTitleService.windowTitleSignal());
+  windowTitle:Signal<string> = computed(() => this.windowTitleService.composedTitleSignal());
 }

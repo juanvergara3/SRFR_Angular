@@ -1,8 +1,8 @@
 <div class="container-column" [ngStyle]="{'gap':'15px'}">
     <div class="item-details">
-        <div class="item-details-title" routerLink="/detalles-factura">RM{{ item.numero }}</div>
+        <div class="item-details-title" routerLink="/detalles-factura">RM{{ facturaItem.numero_factura }}</div>
         <hr class="separator">
-        <div class="item-details-text">Generada en: {{ item.fecha }}</div>
+        <div class="item-details-text">Generada en: {{ facturaItem.fecha_generacion | date: 'dd/MM/yyyy':'+0:01' }}</div>
     </div>
 
     <div class="container-column">

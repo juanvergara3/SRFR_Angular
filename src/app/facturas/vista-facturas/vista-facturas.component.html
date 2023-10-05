@@ -1,15 +1,7 @@
 <modales-vista-facturas (modalSubmited)="refresh()" ></modales-vista-facturas>
 
 <div class="item-container">
-
-    <div class="item container-row" *ngFor="let factura of filteredFacturasArray()"> <!--item template-->
-        <div class="container-column">
-            <div class="item-title" routerLink="/factura">RM{{ factura.numero_factura }}</div>
-            <div class="item-detail">{{ factura.fecha_generacion | date: 'dd/MM/yyyy':'+0:01' }}</div>
-        </div>
-        <button class="item-button" id="editar_factura" onclick="modal.showModal()">
-            <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
-        </button>  
-    </div>
+        
+    <factura *ngFor="let factura of filteredFacturasArray()" [facturaItem]="factura"></factura>
 
 </div>

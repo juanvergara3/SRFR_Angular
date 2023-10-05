@@ -1,4 +1,7 @@
+import { state } from '@angular/animations';
 import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Factura } from 'src/app/interfaces/factura';
 
 import { WindowTitleService } from 'src/app/services/window-title.service';
 
@@ -10,13 +13,11 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 export class DetallesFacturaComponent implements OnInit {
 
   public windowTitleService = inject(WindowTitleService);
+  public activatedRoute = inject(ActivatedRoute);
 
   windowTitle = `Detalles factura`;
 
-  item = {
-    "numero": 1234,
-    "fecha": '2023-08-21'
-  };
+  facturaItem!: Factura;
 
   activoItem = {
     sn:'ABCD-1234-EFGH-5678',
@@ -30,5 +31,7 @@ export class DetallesFacturaComponent implements OnInit {
 
   ngOnInit(): void {
     this.windowTitleService.setWindowTitle(this.windowTitle);
+
+    this.facturaItem = history.state as Factura;
   }
 }
