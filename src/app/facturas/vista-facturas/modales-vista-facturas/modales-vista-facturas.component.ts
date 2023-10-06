@@ -14,15 +14,12 @@ export class ModalesVistaFacturasComponent {
   @Output() 
   modalSubmited = new EventEmitter();
 
-  numeroFactura?: number;
+  idFactura!: number;
+  numeroFactura!: number;
   fechaGeneracion: string = '';
 
-  submit() {
-
-    if(this.numeroFactura) {
+  submitNewFactura() {
       this.facturaService.newFactura(this.numeroFactura, this.fechaGeneracion);
       this.modalSubmited.emit();
-    }
   }
-
 }

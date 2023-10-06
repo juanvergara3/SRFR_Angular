@@ -1,9 +1,31 @@
 <div class="item container-row"> <!--item template-->
-    <div class="container-column">
-        <div class="item-title" routerLink="/factura/{{facturaItem.id_factura}}" [state]="this.facturaItem">RM{{ facturaItem.numero_factura }}</div>
-        <div class="item-detail">{{ facturaItem.fecha_generacion | date: 'dd/MM/yyyy':'+0:01' }}</div>
+    <div class="container-column" [ngStyle]="{'height':'fit-content'}">
+        <div class="container-row" [ngStyle]="{'align-items': 'center', 'gap':'0px'}">
+            <div class="item-title">RM</div>
+            <input 
+            type="number" 
+            class="item-input item-title-input" 
+            [readonly]="!editing" 
+            placeholder="####"
+            [(ngModel)]="numeroFactura" 
+            [routerLink]="!editing ? '/factura/{{facturaItem.id_factura}}' : null" 
+            [state]="this.facturaItem"
+        >
+        </div>
+        <input 
+            type='date'
+            class="item-input item-detail" 
+            [readonly]="!editing" 
+            placeholder="please"
+            [ngModel]="fechaGeneracion | date: 'yyyy-MM-dd':'+0:01'"
+            (ngModelChange)="fechaGeneracion = $event"
+        >
     </div>
-    <button class="item-button" id="editar_factura" onclick="modal.showModal()"> <!--PENDIENTE-->
-        <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
-    </button>  
+    <div class="container-column item-button-container">
+        <button class="item-button" id="editar_factura" (click)="editing = true" *ngIf="!editing">
+            <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
+        </button>
+        <button class="item-submit-button" (click)="submitEditFactura()" *ngIf="editing" [disabled]="(numeroFactura == null || fechaGeneracion == '')">✓</button>
+        <button class="item-cancel-button" (click)="resetValues()" *ngIf="editing">X</button> 
+    </div>
 </div>

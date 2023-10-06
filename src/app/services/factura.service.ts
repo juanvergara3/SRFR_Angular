@@ -27,12 +27,22 @@ export class FacturaService {
     return facturasArrayObservable;
   }
 
-  newFactura(numero: number, fecha: string) {
+  newFactura(numeroFactura: number, fechaGeneracion: string) {
 
-    let response = this.apiService.postRequest(this.url, {numero_factura: numero, fecha_generacion: fecha});
+    let response = this.apiService.postRequest(this.url, {numero_factura: numeroFactura, fecha_generacion: fechaGeneracion});
 
     response.subscribe((data) => 
       this.messageService.add(data.toString())
     );
+  }
+
+  editFactura(idFactura:number, numeroFactura?: number, fechaGeneracion?: string){
+
+    let response = this.apiService.patchRequest(this.url, {id_factura:idFactura, numero_factura: numeroFactura, fecha_generacion: fechaGeneracion});
+
+    response.subscribe((data) => 
+      this.messageService.add(data.toString())
+    );
+
   }
 }

@@ -19,4 +19,10 @@ export class ApiService {
 
     return response;
   }
+
+  patchRequest(url: string, body: any){
+    let response = this.httpClient.patch(url, body);
+
+    return response;
+  }
 }

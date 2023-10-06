@@ -10,7 +10,7 @@
         </div>
         <div class="container-row modal-flex">
             <button class="modal-secondary-button" onclick="newFacturaModal.close()">Descartar</button>
-            <button class="modal-main-button" [disabled]="(numeroFactura == undefined || fechaGeneracion =='')" (click)="submit()" onclick="newFacturaModal.close()">Guardar</button>
+            <button class="modal-main-button" [disabled]="(numeroFactura == undefined || fechaGeneracion =='')" (click)="submitNewFactura()" onclick="newFacturaModal.close()">Guardar</button>
         </div>                    
     </div>
-  </dialog>
+</dialog>
