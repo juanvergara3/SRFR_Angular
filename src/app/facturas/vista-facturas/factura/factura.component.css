@@ -107,6 +107,7 @@
     background-color: var(--disabled-bg);
     color: var(--Light-medium-grey);
     border-color: var(--Light-medium-grey);
+    cursor:not-allowed;
 }
 
 .item-cancel-button{

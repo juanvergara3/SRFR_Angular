@@ -8,6 +8,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 
 import { SearchBarService } from 'src/app/services/search-bar.service';
 import { WindowTitleService } from 'src/app/services/window-title.service';
+import { RouterService } from 'src/app/services/router.service';
 
 @Component({
   selector: 'vista-ubicaciones',
@@ -16,21 +17,18 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 })
 export class VistaUbicacionesComponent {
 
-  private ubicacionService = inject(UbicacionService);
   private clienteService = inject(ClienteService);
   public searchBarService = inject(SearchBarService);
   public windowTitleService = inject(WindowTitleService);
+  private routerService = inject(RouterService);
 
-  ubicacionesArray: WritableSignal<Ubicacion[]> = signal([]);
   clientesArray: WritableSignal<Cliente[]> = signal([]);
 
-  windowTitle = `Ubicaciones(${this.ubicacionesArray().length})`;
+  windowTitle = `Ubicaciones`;
 
-  orderedContent: {index: number, cliente: Cliente, ubicaciones: Ubicacion[] }[] = [];
-
-  //orderedContent: Signal<{index: number, cliente: Cliente, ubicaciones: Ubicacion[] }[]> =  computed(() => {
-    //return 
-  //});
+  filterText: Signal<string> = computed(() => 
+  this.searchBarService.searchTextSignal().toLocaleLowerCase()
+);
 
   filteredClientesArray: Signal<Cliente[]> = computed(() => 
     this.clientesArray().filter(cliente => 
@@ -39,60 +37,18 @@ export class VistaUbicacionesComponent {
     )
   );
 
-  showGroup: boolean[] = [];
-
-  filterText: Signal<string> = computed( 
-    () => this.searchBarService.searchTextSignal().toLocaleLowerCase()
-  );
-
-  getUbicaciones(): void {
-    this.ubicacionService.getUbicaciones().subscribe(ubicacionesReturned => this.ubicacionesArray.set(ubicacionesReturned));
-  }
-
   getClientes(): void {
     this.clienteService.getClientes().subscribe(clientesReturned => this.clientesArray.set(clientesReturned));
   }
 
-  orderContent(): void { // esta función debe ser reemplazada por una querry de sql, esto es demasiado lento y añade mucha complejidad.
-
-    let index: number = 0;
-    let cliente: Cliente;
-    let ubicaciones: Ubicacion[] = [];
-
-    for(let i = 0, id:number; i < this.clientesArray.length; i++){
-      
-      id = this.clientesArray()[i].id_cliente;
-
-      for(let j = 0; j < this.ubicacionesArray.length; j++){
-        if(this.ubicacionesArray()[j].id_cliente == id){
-          ubicaciones.push(this.ubicacionesArray()[j]);
-        }
-      }
-
-      if(ubicaciones.length != 0){
-
-        cliente = this.clientesArray()[i];
-
-        //this.orderedContent.push({index, cliente, ubicaciones});
-        index++;
-        ubicaciones = [];
-      }
-    }
-
-    for(let i = 0; i < this.orderedContent.length; i++){
-      this.showGroup.push(true);
-    }
+  refresh(){
+    this.routerService.reload();
   }
 
   ngOnInit(): void {
     this.getClientes();
-    this.getUbicaciones();
-    this.orderContent();
 
     this.windowTitleService.setWindowTitle(this.windowTitle);
   }
 
-  collapse(index: number){
-    this.showGroup[index] = !this.showGroup[index];
-  }
 }

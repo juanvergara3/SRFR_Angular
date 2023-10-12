@@ -1,0 +1,10 @@
+<div class="item container-row"> 
+    <div class="container-column">
+        <div class="item-title" routerLink="/detalles-ubicacion">{{ ubicacionItem.nombre }}</div>
+        <div class="item-detail">{{ ubicacionItem.direccion }}</div>
+        <div class="item-detail">{{ ubicacionItem.telefono }}</div>
+    </div>
+    <button class="item-button" id="editar_cliente" onclick="modal.showModal()"> <!--EDICION PENDIENTE-->
+        <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
+    </button>  
+</div>

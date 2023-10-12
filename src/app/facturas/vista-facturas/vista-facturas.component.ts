@@ -48,6 +48,5 @@ export class VistaFacturasComponent {
 
         this.windowTitleService.setWindowTitle(this.windowTitle);
     }
-
-    //totalItemNumber: number = this.listOfItems.length;
+    
 }

@@ -17,11 +17,10 @@ export class FacturaComponent {
   numeroFactura!: number;
   fechaGeneracion!: string;
 
-
   @Input()
   facturaItem!: Factura;
 
-  ngOnInit() :void{
+  ngOnInit(): void {
     this.numeroFactura = this.facturaItem.numero_factura;
     this.fechaGeneracion = this.facturaItem.fecha_generacion;
   }
@@ -35,7 +34,7 @@ export class FacturaComponent {
     this.editing = false;
   }
 
-  resetValues(){
+  resetValues() {
     this.numeroFactura = this.facturaItem.numero_factura;
     this.fechaGeneracion = this.facturaItem.fecha_generacion;
 

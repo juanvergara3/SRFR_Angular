@@ -1,26 +1,5 @@
 <div class="item-container">
 
-    <div class="container-column" *ngFor="let item of orderedContent; " [ngStyle]="{'width': '100%', 'height': 'auto', 'gap':'0px'}">
-        <div class="group-label-container" [ngStyle]="{'border-radius': showGroup[item.index] ? '10px 10px 0px 0px' : '10px'}">
-            {{item.cliente.nombre}}
-            <button type="button" [ngClass]="{'collapse-button-open': true, 'collapse-button-closed': !showGroup[item.index]}" (click)="collapse(item.index)">
-                <img class="down-arrow-icon" src="../../../../assets/icons/down_arrow_icon.png" alt="Ícono de colapsar/desplegar grupo">
-            </button>
-        </div>
-        <div class="asset-container" *ngIf="showGroup[item.index]">
-    
-            <div class="item container-row" *ngFor="let ubicacion of item.ubicaciones"> 
-                <div class="container-column">
-                    <div class="item-title" routerLink="/detalles-ubicacion">{{ ubicacion.nombre }}</div>
-                    <div class="item-detail">{{ ubicacion.direccion }}</div>
-                    <div class="item-detail">{{ ubicacion.telefono }}</div>
-                </div>
-                <button class="item-button" id="editar_cliente" onclick="modal.showModal()">
-                    <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
-                </button>  
-            </div>
-            
-        </div>
-    </div>
+    <grupo-ubicaciones *ngFor="let cliente of filteredClientesArray()" [clienteItem]="cliente"></grupo-ubicaciones>
 
 </div>
