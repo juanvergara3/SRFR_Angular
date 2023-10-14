@@ -28,31 +28,31 @@ export class DetallesActivoComponent implements OnInit {
   proveedor = '';
   prestador = '';
 
-  getActivo(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+  // getActivo(): void {
+  //   const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.activoService.getActivo(id).subscribe(activoReturned => this.activo = activoReturned);
-  }
+  //   this.activoService.getActivo(id).subscribe(activoReturned => this.activo = activoReturned);
+  // }
   
-  getTipo(id: number): void{
-    this.activoService.getTipo(id).subscribe(tipoReturned => this.tipo = tipoReturned.formfactor);
-  }
+  // getTipo(id: number): void{
+  //   this.activoService.getTipo(id).subscribe(tipoReturned => this.tipo = tipoReturned.formfactor);
+  // }
 
-  getMarca(id: number): void{
-    this.activoService.getMarca(id).subscribe(marcaReturned => this.marca = marcaReturned.nombre);
-  }
+  // getMarca(id: number): void{
+  //   this.activoService.getMarca(id).subscribe(marcaReturned => this.marca = marcaReturned.nombre);
+  // }
 
-  getEstado(id: number): void{
-    this.activoService.getEstado(id).subscribe(estadoReturned => this.estado = {estado: estadoReturned.estado, color: estadoReturned.color, contrast:this.calculteContrast(estadoReturned.color)});
-  }
+  // getEstado(id: number): void{
+  //   this.activoService.getEstado(id).subscribe(estadoReturned => this.estado = {estado: estadoReturned.estado, color: estadoReturned.color, contrast:this.calculteContrast(estadoReturned.color)});
+  // }
 
-  getProveedor(id: number): void{
-    this.activoService.getProveedor(id).subscribe(proveedorReturned => this.proveedor = proveedorReturned.nombre);
-  }
+  // getProveedor(id: number): void{
+  //   this.activoService.getProveedor(id).subscribe(proveedorReturned => this.proveedor = proveedorReturned.nombre);
+  // }
 
-  getPrestador(id: number): void{
-    this.activoService.getPrestador(id).subscribe(prestadorReturned => this.prestador = prestadorReturned.nombre);
-  }
+  // getPrestador(id: number): void{
+  //   this.activoService.getPrestador(id).subscribe(prestadorReturned => this.prestador = prestadorReturned.nombre);
+  // }
 
   goBack(){
     this.location.back()
@@ -92,12 +92,12 @@ export class DetallesActivoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getActivo();
-    this.getTipo(this.activo.id_tipo);
-    this.getMarca(this.activo.id_marca);
-    this.getEstado(this.activo.id_estado);
-    this.getProveedor(this.activo.id_proveedor);
-    this.getPrestador(this.activo.id_prestador);
+    // this.getActivo();
+    // this.getTipo(this.activo.id_tipo);
+    // this.getMarca(this.activo.id_marca);
+    // this.getEstado(this.activo.id_estado);
+    // this.getProveedor(this.activo.id_proveedor);
+    // this.getPrestador(this.activo.id_prestador);
 
     this.windowTitleService.setWindowTitle(this.windowTitle);
   }

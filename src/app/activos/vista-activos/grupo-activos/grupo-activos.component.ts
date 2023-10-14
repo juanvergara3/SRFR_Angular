@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, WritableSignal, signal, inject, Input } from '@angular/core';
+
+import { Activo } from 'src/app/interfaces/activo';
+import { ActivoService } from 'src/app/services/activo.service';
 
 import { Grupo } from 'src/app/interfaces/grupo';
-import { Activo } from 'src/app/interfaces/activo';
-
 
 @Component({
   selector: 'grupo-activos',
@@ -11,12 +12,26 @@ import { Activo } from 'src/app/interfaces/activo';
 })
 export class GrupoActivosComponent{
 
+  private activoService = inject(ActivoService);
+
+  activosArray: WritableSignal<Activo[]> = signal([]);
+
   @Input()
-  grupoItem!: { index:number, grupo: Grupo, activos: Activo[] };
+  grupoItem!: Grupo;
  
   showGroup: boolean = true;
 
   collapse(){
     this.showGroup = !this.showGroup;
+  }
+
+  getActivosByGrupo(idGrupo: number) {
+    this.activoService.getActivosByGrupo(idGrupo).subscribe(activosReturned =>
+      this.activosArray.set(activosReturned)  
+    );
+  }
+
+  ngOnInit(): void {
+    this.getActivosByGrupo(this.grupoItem.id_grupo);
   }
 }

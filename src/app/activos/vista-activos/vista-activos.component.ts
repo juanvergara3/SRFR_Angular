@@ -1,67 +1,69 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Signal, computed, signal, WritableSignal, inject } from '@angular/core';
 
-import { Activo } from 'src/app/interfaces/activo';
 import { Grupo } from 'src/app/interfaces/grupo';
-import { ActivoService } from 'src/app/services/activo.service';
+import { GrupoService } from 'src/app/services/grupo.service';
 
+import { Marca } from 'src/app/interfaces/marca';
+import { MarcaService } from 'src/app/services/marca.service';
+
+import { Tipo } from 'src/app/interfaces/tipo';
+import { TipoService } from 'src/app/services/tipo.service';
+
+import { SearchBarService } from 'src/app/services/search-bar.service';
 import { WindowTitleService } from 'src/app/services/window-title.service';
+import { RouterService } from 'src/app/services/router.service';
 
 @Component({
   selector: 'vista-activos',
   templateUrl: './vista-activos.component.html',
   styleUrls: ['./vista-activos.component.css']
 })
-export class VistaActivosComponent implements OnInit {
+export class VistaActivosComponent {
 
-  private activoService = inject(ActivoService);
+  private grupoService = inject(GrupoService);
+  private marcaService = inject(MarcaService);
+  private tipoService = inject(TipoService);
+
+  public searchBarService = inject(SearchBarService);
   public windowTitleService = inject(WindowTitleService);
+  private routerService = inject(RouterService);
 
-  activosArray: Activo[] = [];
-  gruposArray: Grupo[] = [];
+  gruposArray: WritableSignal<Grupo[]> = signal([]);
+  //marcasArray: WritableSignal<Marca[]> = signal([]);
+  tiposArray: WritableSignal<Tipo[]> = signal([]);
 
-  windowTitle = `Activos(${this.activosArray.length})`;
+  windowTitle = `Activos`;
 
-  orderedContent: {index: number, grupo: Grupo, activos: Activo[] }[] = [];
+  filterText: Signal<string> = computed(() => 
+    this.searchBarService.searchTextSignal().toLocaleLowerCase()
+  );
 
-  getActivos(): void {
-    this.activoService.getActivos().subscribe(activosReturned => this.activosArray = activosReturned);
-  }
+  filteredGruposArray: Signal<Grupo[]> = computed(() => 
+    this.gruposArray().filter(grupo => 
+      grupo?.nombre.toLowerCase().includes(this.filterText())
+    )
+  );
 
   getGrupos(): void {
-    this.activoService.getGrupos().subscribe(gruposReturned => this.gruposArray = gruposReturned);
+    this.grupoService.getGrupos().subscribe(gruposReturned => this.gruposArray.set(gruposReturned));
   }
 
-  orderContent(): void { // esta función debe ser reemplazada por una querry de sql, esto es demasiado lento y añade mucha complejidad.
+  // getMarcas(): void {
+  //   this.marcaService.getMarcas().subscribe(marcasReturned => this.marcasArray.set(marcasReturned));
+  // }
 
-    let index: number = 0;
-    let grupo: Grupo;
-    let activos: Activo[] = [];
+  getTipos(): void {
+    this.tipoService.getTipos().subscribe(tiposReturned => this.tiposArray.set(tiposReturned));
+  }
 
-    for(let i = 0, id:number; i < this.gruposArray.length; i++){
-      
-      id = this.gruposArray[i].id;
-
-      for(let j = 0; j < this.activosArray.length; j++){
-        if(this.activosArray[j].id_grupo == id){
-          activos.push(this.activosArray[j]);
-        }
-      }
-
-      if(activos.length != 0){
-
-        grupo = this.gruposArray[i];
-
-        this.orderedContent.push({index, grupo, activos});
-        index++;
-        activos = [];
-      }
-    }
+  refresh(){
+    this.routerService.reload();
   }
 
   ngOnInit(): void {
     this.getGrupos();
-    this.getActivos();
-    this.orderContent();
+    //this.getMarcas();
+    this.getTipos();
 
     this.windowTitleService.setWindowTitle(this.windowTitle);
   }

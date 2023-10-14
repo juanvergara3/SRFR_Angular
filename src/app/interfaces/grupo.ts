@@ -1,4 +1,4 @@
 export interface Grupo {
-    id: number;
+    id_grupo: number;
     nombre: string;
 }

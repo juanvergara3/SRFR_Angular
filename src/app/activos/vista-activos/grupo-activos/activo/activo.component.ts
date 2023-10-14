@@ -1,11 +1,16 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, WritableSignal, signal, computed, Signal } from '@angular/core';
 
 import { Activo } from 'src/app/interfaces/activo';
 import { ActivoService } from 'src/app/services/activo.service';
 
 import { Tipo } from 'src/app/interfaces/tipo';
+import { TipoService } from 'src/app/services/tipo.service';
+
 import { Marca } from 'src/app/interfaces/marca';
+import { MarcaService } from 'src/app/services/marca.service';
+
 import { Estado } from 'src/app/interfaces/estado';
+import { EstadoService } from 'src/app/services/estado.service';
 
 @Component({
   selector: 'activo',
@@ -15,24 +20,37 @@ import { Estado } from 'src/app/interfaces/estado';
 export class ActivoComponent implements OnInit {
 
   private activoService = inject(ActivoService);
+  private marcaService =  inject(MarcaService);
+  private tipoService = inject(TipoService);
+  private estadoService = inject(EstadoService);
 
-  marca = '';
-  tipo = '';
-  estado = {estado:'', color:'', contrast:''};
+  marcaSignal: WritableSignal<Marca> = signal({}) as WritableSignal<Marca>;
+  tipoSignal: WritableSignal<Tipo> = signal({}) as WritableSignal<Tipo>;
+  estadoSignal: WritableSignal<Estado> = signal({}) as WritableSignal<Estado>;
+
+  contrastColorComputed: Signal<string> = computed(() => 
+    this.calculteContrast(this.estadoSignal().color)
+  );
 
   @Input()
   activoItem!: Activo;
 
-  getTipo(id: number): void{
-    this.activoService.getTipo(id).subscribe(tipoReturned => this.tipo = tipoReturned.formfactor);
+  getMarca(): void {
+    this.marcaService.getMarcaById(this.activoItem.id_marca).subscribe(marcaReturned =>
+      this.marcaSignal.set(marcaReturned)
+    );
   }
 
-  getMarca(id: number): void{
-    this.activoService.getMarca(id).subscribe(marcaReturned => this.marca = marcaReturned.nombre);
+  getTipo(): void {
+    this.tipoService.getTipoById(this.activoItem.id_tipo).subscribe(tipoReturned =>
+      this.tipoSignal.set(tipoReturned)
+    );
   }
 
-  getEstado(id: number): void{
-    this.activoService.getEstado(id).subscribe(estadoReturned => this.estado = {estado: estadoReturned.estado, color: estadoReturned.color, contrast:this.calculteContrast(estadoReturned.color)});
+  getEstado(): void {
+    this.estadoService.getEstadoById(this.activoItem.id_estado).subscribe(estadoReturned =>
+      this.estadoSignal.set(estadoReturned)
+    );
   }
 
   calculteContrast(color: string): string{
@@ -69,9 +87,8 @@ export class ActivoComponent implements OnInit {
   }
 
   ngOnInit(): void{
-    this.getTipo(this.activoItem.id_tipo);
-    this.getMarca(this.activoItem.id_marca);
-    this.getEstado(this.activoItem.id_estado);
+    this.getMarca();
+    this.getTipo();
+    this.getEstado();
   }
-
 }

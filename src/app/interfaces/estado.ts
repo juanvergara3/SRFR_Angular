@@ -1,5 +1,5 @@
 export interface Estado {
-    id: number;
+    id_estado: number;
     estado: string;
     color: string;
 }
