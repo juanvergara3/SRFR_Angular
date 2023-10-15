@@ -1,4 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Ubicacion } from 'src/app/interfaces/ubicacion';
 
 import { WindowTitleService } from 'src/app/services/window-title.service';
 
@@ -10,16 +13,15 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 export class DetallesUbicacionComponent implements OnInit {
 
   public windowTitleService = inject(WindowTitleService);
+  public activatedRoute = inject(ActivatedRoute);
 
   windowTitle = `Detalles ubicación`;
 
-  item = {
-    nombre:'Moft Mayorca local 204',
-    direccion:'Cl. 51 Sur #48-57 PISO 3, Sabaneta, Antioquia',
-    telefono:'3094848'
-  }
+  ubicacionItem!: Ubicacion;
 
   ngOnInit(): void {
     this.windowTitleService.setWindowTitle(this.windowTitle);
+
+    this.ubicacionItem =  history.state as Ubicacion;
   }
 }

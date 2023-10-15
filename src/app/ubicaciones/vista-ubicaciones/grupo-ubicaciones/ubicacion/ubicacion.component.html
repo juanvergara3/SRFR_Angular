@@ -1,6 +1,6 @@
 <div class="item container-row"> 
     <div class="container-column">
-        <div class="item-title" routerLink="/detalles-ubicacion">{{ ubicacionItem.nombre }}</div>
+        <div class="item-title" routerLink="/ubicacion/{{ubicacionItem.id_ubicacion}}" [state]="this.ubicacionItem">{{ ubicacionItem.nombre }}</div>
         <div class="item-detail">{{ ubicacionItem.direccion }}</div>
         <div class="item-detail">{{ ubicacionItem.telefono }}</div>
     </div>
