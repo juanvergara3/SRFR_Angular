@@ -28,6 +28,7 @@ import { FacturaComponent } from './facturas/vista-facturas/factura/factura.comp
 import { GrupoUbicacionesComponent } from './ubicaciones/vista-ubicaciones/grupo-ubicaciones/grupo-ubicaciones.component';
 import { UbicacionComponent } from './ubicaciones/vista-ubicaciones/grupo-ubicaciones/ubicacion/ubicacion.component';
 import { ClienteComponent } from './clientes/vista-clientes/cliente/cliente.component';
+import { ResponsableComponent } from './responsables/vista-responsables/responsable/responsable.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ClienteComponent } from './clientes/vista-clientes/cliente/cliente.comp
     GrupoUbicacionesComponent,
     UbicacionComponent,
     ClienteComponent,
+    ResponsableComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,8 +13,8 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 })
 export class VistaResponsablesComponent {
 
-  public windowTitleService = inject(WindowTitleService);
   private responsableService = inject(ResponsableService);
+  public windowTitleService = inject(WindowTitleService);
   public searchBarService = inject(SearchBarService);
 
   responsablesArray: WritableSignal<Responsable[]> = signal([]);

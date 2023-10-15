@@ -1,0 +1,11 @@
+<div class="item container-row"> <!--item template-->
+    <div class="container-column">
+        <div class="item-title" routerLink="/responsable/{{responsableItem.id_responsable}}" [state]="this.responsableItem">{{ responsableItem.nombre }}</div>
+        <div class="item-detail">{{ responsableItem.cedula }}</div>
+        <div class="item-detail">{{ responsableItem.correo }}</div>
+        <div class="item-detail">{{ responsableItem.telefono }}</div>
+    </div>
+    <button class="item-button" id="editar_factura" onclick="modal.showModal()">
+        <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
+    </button>  
+</div>
