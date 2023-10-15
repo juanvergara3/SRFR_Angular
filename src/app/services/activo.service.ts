@@ -20,17 +20,17 @@ export class ActivoService {
 
   getActivos(): Observable<Activo[]> {
 
-    const ActivosArrayObservable = this.apiService.getRequest(this.url) as Observable<Activo[]>;
+    const activosArrayObservable = this.apiService.getRequest(this.url) as Observable<Activo[]>;
 
     this.messageService.add('ActivoService: Activos obtenidos con éxito.');
 
-    return ActivosArrayObservable;
+    return activosArrayObservable;
   }
 
   getActivosByGrupo(idGrupo: number): Observable<Activo[]> {
 
-    const ActivosArrayObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idGrupo', value: idGrupo}) as Observable<Activo[]>;
+    const activosArrayObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idGrupo', value: idGrupo}) as Observable<Activo[]>;
 
-    return ActivosArrayObservable;
+    return activosArrayObservable;
   }
 }

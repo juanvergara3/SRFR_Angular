@@ -1,6 +1,6 @@
 <div class="item container-row"> 
     <div class="container-column">
-        <div class="item-title" routerLink="/activo/{{activoItem.id_activo}}">{{ activoItem.numero_serie }}</div>
+        <div class="item-title" routerLink="/activo/{{activoItem.id_activo}}" [state]="this.activoItem">{{ activoItem.numero_serie }}</div>
         <div class="container-column" [ngStyle]="{'gap':'2.5px'}">
             <div class="container-row" [ngStyle]="{'align-items':'center'}">
                 <div class="item-detail">{{ tipoSignal().formfactor }}</div>

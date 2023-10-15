@@ -16,15 +16,15 @@ export class TipoService {
 
   getTipos(): Observable<Tipo[]> {
 
-    const TiposArrayObservable = this.apiService.getRequest(this.url) as Observable<Tipo[]>;
+    const tiposArrayObservable = this.apiService.getRequest(this.url) as Observable<Tipo[]>;
 
-    return TiposArrayObservable;
+    return tiposArrayObservable;
   }
 
   getTipoById(idTipo: number): Observable<Tipo> {
     
-    const TipoObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idTipo', value: idTipo}) as Observable<Tipo>;
+    const tipoObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idTipo', value: idTipo}) as Observable<Tipo>;
 
-    return TipoObservable;
+    return tipoObservable;
   }
 }

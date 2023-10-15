@@ -16,15 +16,15 @@ export class EstadoService {
 
   getEstados(): Observable<Estado[]> {
 
-    const EstadosArrayObservable = this.apiService.getRequest(this.url) as Observable<Estado[]>;
+    const estadosArrayObservable = this.apiService.getRequest(this.url) as Observable<Estado[]>;
 
-    return EstadosArrayObservable;
+    return estadosArrayObservable;
   }
 
   getEstadoById(idEstado: number): Observable<Estado> {
     
-    const EstadoObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idEstado', value: idEstado}) as Observable<Estado>;
+    const estadoObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idEstado', value: idEstado}) as Observable<Estado>;
 
-    return EstadoObservable;
+    return estadoObservable;
   }
 }

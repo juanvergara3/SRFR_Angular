@@ -92,29 +92,29 @@
 
     <div class="item-details">
         <div class="container-row" [ngStyle]="{'height':'auto', 'justify-content':'space-between'}">
-            <span class="item-details-title">{{activo.numero_serie}}</span>
+            <span class="item-details-title">{{activoItem.numero_serie}}</span>
             <button class="go-back-button" type="button" (click)="goBack()">Volver &#60;---</button>
         </div>
         <hr class="separator">
         <div class="container-row" [ngStyle]="{'height':'auto', 'align-items':'center'}">
-            <div class="item-details-text">{{ this.tipo }}</div>
-            <div class="item-details-text">{{ this.marca }}</div>
-            <div class="item-details-text">modelo {{ activo.modelo }}</div>
+            <div class="item-details-text">{{ tipoSignal().formfactor }}</div>
+            <div class="item-details-text">{{ marcaSignal().nombre }}</div>
+            <div class="item-details-text">modelo {{ activoItem.modelo }}</div>
         </div>
         <hr class="separator">
         <div class="container-row" [ngStyle]="{'height':'auto', 'align-items':'center'}">
             <div class="item-details-text">Estado:</div>
-            <div class="item-details-estado" [ngStyle]="{'background-color': '#' + this.estado.color, 'color': this.estado.contrast, 'border-color': this.estado.contrast}">{{this.estado.estado}}</div>
+            <div class="item-details-estado" [ngStyle]="{'background-color': '#' + estadoSignal().color, 'color': contrastColorComputed(), 'border-color': contrastColorComputed()}">{{estadoSignal().estado}}</div>
         </div>
         <hr class="separator">
-        <div class="item-details-text">Precio de renta mensual: ${{activo.precio_renta}}</div>
+        <div class="item-details-text">Precio de renta mensual: ${{activoItem.precio_renta}}</div>
         <hr class="separator">
-        <div class="item-details-text">Proveedor: {{this.proveedor}}</div>
-        <div class="item-details-text">Comprado con factura: {{activo.factura_compra}}</div>
-        <div class="item-details-text">Comprado en: {{activo.fecha_compra}}</div>
-        <div class="item-details-text">Valor comercial: ${{activo.valor}}</div>
+        <div class="item-details-text">Proveedor: {{proveedorSignal().nombre}}</div>
+        <div class="item-details-text">Comprado con factura: {{activoItem.factura_compra}}</div>
+        <div class="item-details-text">Comprado en: {{activoItem.fecha_compra | date: 'yyyy-MM-dd':'+0:01'}}</div>
+        <div class="item-details-text">Valor comercial: ${{activoItem.valor}}</div>
         <hr class="separator">
-        <div class="item-details-text">Activo prestado por: {{this.prestador}}</div>
+        <div class="item-details-text">Activo prestado por: {{prestadorSignal().nombre}}</div>
     </div>
 
     <div class="container-column">
