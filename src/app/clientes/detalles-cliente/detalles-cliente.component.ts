@@ -1,4 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Cliente } from 'src/app/interfaces/cliente';
 
 import { WindowTitleService } from 'src/app/services/window-title.service';
 
@@ -10,16 +13,15 @@ import { WindowTitleService } from 'src/app/services/window-title.service';
 export class DetallesClienteComponent implements OnInit {
 
   public windowTitleService = inject(WindowTitleService);
+  public activatedRoute = inject(ActivatedRoute);
 
   windowTitle = `Detalles cliente`;
 
-  item = {
-    nombre: 'Comercializadora textil Coltex Ltda.',
-    nit: 1234567890,
-    digito: 3
-  }
+  clienteItem!: Cliente;
 
   ngOnInit(): void {
     this.windowTitleService.setWindowTitle(this.windowTitle);
+
+    this.clienteItem = history.state as Cliente;
   }
 }

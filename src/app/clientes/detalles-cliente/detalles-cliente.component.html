@@ -89,11 +89,11 @@
 <div class="container-column" [ngStyle]="{'gap':'15px'}">
     <div class="container-row" [ngStyle]="{'gap':'15px'}">
         <div class="item-details">
-            <div class="item-details-title" routerLink="/detalles-cliente">{{ item.nombre }}</div>
+            <div class="item-details-title" routerLink="/detalles-cliente">{{ clienteItem.nombre }}</div>
             <hr class="separator">
             <div class="container-row" [ngStyle]="{gap:'0px'}">
-                <div class="item-details-text">NIT: {{ item.nit }}</div>
-                <div class="item-details-text" *ngIf="item.digito != null">-{{ item.digito }}</div>
+                <div class="item-details-text">NIT: {{ clienteItem.nit }}</div>
+                <div class="item-details-text" *ngIf="clienteItem.digito_verificacion != null">-{{ clienteItem.digito_verificacion }}</div>
             </div>
         </div>
 

@@ -1,6 +1,6 @@
-import { state } from '@angular/animations';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { Factura } from 'src/app/interfaces/factura';
 
 import { WindowTitleService } from 'src/app/services/window-title.service';

@@ -44,5 +44,4 @@ export class VistaClientesComponent {
       this.windowTitleService.setWindowTitle(this.windowTitle);
   }
 
-//totalItemNumber: number = this.listOfItems.length;
 }
