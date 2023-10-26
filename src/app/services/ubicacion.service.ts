@@ -29,7 +29,7 @@ export class UbicacionService {
 
   getUbicacionesByCliente(idCliente: number): Observable<Ubicacion[]> {
 
-    const ubicacionesArrayObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idCliente', value: idCliente}) as Observable<Ubicacion[]>;
+    const ubicacionesArrayObservable = this.apiService.getRequest(`http://localhost:3000/ubicaciones/p/`, {name: 'idCliente', value: idCliente}) as Observable<Ubicacion[]>;
 
     //this.messageService.add('UbicacionService: ubicaciones obtenidas con éxito.');
 
