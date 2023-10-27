@@ -9,8 +9,7 @@
             placeholder="####"
             [(ngModel)]="numeroFactura" 
             [routerLink]="!editing ? '/factura/{{facturaItem.id_factura}}' : null" 
-            [state]="this.facturaItem"
-        >
+            [state]="this.facturaItem">
         </div>
         <input 
             type='date'
@@ -18,8 +17,7 @@
             [readonly]="!editing" 
             placeholder="please"
             [ngModel]="fechaGeneracion | date: 'yyyy-MM-dd':'+0:01'"
-            (ngModelChange)="fechaGeneracion = $event"
-        >
+            (ngModelChange)="fechaGeneracion = $event">
     </div>
     <div class="container-column item-button-container">
         <button class="item-button" id="editar_factura" (click)="editing = true" *ngIf="!editing">

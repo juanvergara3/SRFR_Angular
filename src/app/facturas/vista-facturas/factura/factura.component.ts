@@ -1,4 +1,4 @@
-import { Component, Input, Output, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 
 import { Factura } from 'src/app/interfaces/factura';
 import { FacturaService } from 'src/app/services/factura.service';
@@ -21,8 +21,7 @@ export class FacturaComponent {
   facturaItem!: Factura;
 
   ngOnInit(): void {
-    this.numeroFactura = this.facturaItem.numero_factura;
-    this.fechaGeneracion = this.facturaItem.fecha_generacion;
+    this.initValues();
   }
 
   submitEditFactura() {
@@ -35,9 +34,13 @@ export class FacturaComponent {
   }
 
   resetValues() {
-    this.numeroFactura = this.facturaItem.numero_factura;
-    this.fechaGeneracion = this.facturaItem.fecha_generacion;
+    this.initValues();
 
     this.editing = false;
+  }
+
+  initValues() {
+    this.numeroFactura = this.facturaItem.numero_factura;
+    this.fechaGeneracion = this.facturaItem.fecha_generacion;
   }
 }

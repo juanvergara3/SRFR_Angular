@@ -26,4 +26,14 @@ export class ResponsableService {
 
     return responsablesArrayObservable;
   }
+
+  editResponsable(idResponsable: number, nombre?: string, cedula?: number, telefono?: string, correo?: string){
+
+    let response = this.apiService.patchRequest(this.url, {id_responsable: idResponsable, nombre: nombre, cedula: cedula, telefono: telefono, correo: correo});
+
+    response.subscribe((data) => 
+      this.messageService.add(data.toString())
+    );
+
+  }
 }
