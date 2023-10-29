@@ -23,8 +23,6 @@ export class ClienteComponent {
 
   ngOnInit(): void {
     this.initValues();
-
-    console.log(this.digitoVerificacion);
   }
 
   submitEditResponsable() {

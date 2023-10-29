@@ -35,4 +35,13 @@ export class UbicacionService {
 
     return ubicacionesArrayObservable;
   }
+
+  editUbicacion(idUbicacion: number, idCliente?: number, nombre?: string, direccion?: string, telefono?: string){
+
+    let response = this.apiService.patchRequest(this.url, {id_ubicacion: idUbicacion, id_cliente: idCliente, nombre: nombre, direccion: direccion, telefono: telefono});
+
+    response.subscribe((data) => 
+      this.messageService.add(data.toString())
+    );
+  }
 }

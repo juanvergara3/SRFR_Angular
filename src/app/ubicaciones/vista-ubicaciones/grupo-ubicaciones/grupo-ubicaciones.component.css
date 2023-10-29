@@ -60,3 +60,8 @@
     flex-wrap: nowrap; 
     align-items: center;
 }
+
+.group-label:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
