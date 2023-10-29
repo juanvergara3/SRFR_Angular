@@ -13,9 +13,6 @@ export class ResponsableComponent {
   private responsableService = inject(ResponsableService);
 
   editing: boolean = false; 
-  
-  numeroFactura!: number;
-  fechaGeneracion!: string;
 
   nombre!: string;
   cedula!: number;

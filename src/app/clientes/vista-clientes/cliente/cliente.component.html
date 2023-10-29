@@ -1,12 +1,39 @@
 <div class="item container-row"> <!--item template-->
     <div class="container-column">
-        <div class="item-title" routerLink="/cliente/{{clienteItem.id_cliente}}" [state]="this.clienteItem">{{ clienteItem.nombre }}</div>
-        <div class="container-row" [ngStyle]="{gap:'0px'}">
-            <div class="item-detail">{{ clienteItem.nit }}</div>
-            <div class="item-detail" *ngIf="clienteItem.digito_verificacion != undefined">-{{ clienteItem.digito_verificacion }}</div>
+        <input 
+            type="text" 
+            class="item-input item-title-input" 
+            [readonly]="!editing" 
+            placeholder="Nombre"
+            [(ngModel)]="nombre" 
+            [routerLink]="!editing ? '/cliente/{{clienteItem.id_cliente}}' : null" 
+            [state]="this.clienteItem">
+        <div class="container-row" [ngStyle]="{'height':'auto', 'align-items': 'center', 'gap': !editing ? (nit.toString().length < 10 ? '0px' : '1ch') : '1ch'}">
+            <input 
+            type="number" 
+            class="item-input item-detail" 
+            [ngStyle]="{'max-width': '10ch'}"
+            [readonly]="!editing" 
+            placeholder="NIT"
+            [(ngModel)]="nit">
+
+            <div class="container-row" [ngStyle]="{'gap':'1ch', 'width':'auto'}" *ngIf="!editing && digitoVerificacion != null ? true : editing">
+                <div class="item-detail" [ngStyle]="{'width': '1ch'}">-</div>
+                <input 
+                type="number" 
+                class="item-input item-detail" 
+                [ngStyle]="{'width': '2ch'}"
+                [readonly]="!editing" 
+                placeholder="#"
+                [(ngModel)]="digitoVerificacion">
+            </div>
         </div>
     </div>
-    <button class="item-button" id="editar_cliente" onclick="modal.showModal()">
-        <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
-    </button>  
+    <div class="container-column item-button-container">
+        <button class="item-button" id="editar_responsable" (click)="editing = true" *ngIf="!editing">
+            <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
+        </button>
+        <button class="item-submit-button" (click)="submitEditResponsable()" *ngIf="editing" [disabled]="(nombre == '' || nit == null || nit < 0 || digitoVerificacion === undefined ? true : (digitoVerificacion < 0 || digitoVerificacion > 9) )">✓</button>
+        <button class="item-cancel-button" (click)="resetValues()" *ngIf="editing">X</button> 
+    </div> 
 </div>

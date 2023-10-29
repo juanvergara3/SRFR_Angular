@@ -27,4 +27,14 @@ export class ClienteService {
 
     return clientesArrayObservable;
   }
+
+  editCliente(idCliente: number, nit?: number, digitoVerificacion?: number, nombre?: string){
+
+    let response = this.apiService.patchRequest(this.url, {id_cliente: idCliente, nit:nit, digito_verificacion: digitoVerificacion, nombre: nombre});
+
+    response.subscribe((data) => 
+      this.messageService.add(data.toString())
+    );
+
+  }
 }
