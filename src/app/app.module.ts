@@ -30,6 +30,7 @@ import { UbicacionComponent } from './ubicaciones/vista-ubicaciones/grupo-ubicac
 import { ClienteComponent } from './clientes/vista-clientes/cliente/cliente.component';
 import { ResponsableComponent } from './responsables/vista-responsables/responsable/responsable.component';
 import { UbicacionDetallesClienteComponent } from './clientes/detalles-cliente/ubicacion-detalles-cliente/ubicacion-detalles-cliente.component';
+import { PeriodoDetallesActivoComponent } from './activos/detalles-activo/periodo-detalles-activo/periodo-detalles-activo.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { UbicacionDetallesClienteComponent } from './clientes/detalles-cliente/u
     ClienteComponent,
     ResponsableComponent,
     UbicacionDetallesClienteComponent,
+    PeriodoDetallesActivoComponent,
   ],
   imports: [
     BrowserModule,

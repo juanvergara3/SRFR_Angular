@@ -144,25 +144,8 @@
     <div class="container-column">
         <label class="window-title">Entregas asociadas</label>
         <div class="item-container">
-            
-            <div class="item">
-                <div class="container-row">
-                    <div class="container-column">
-                        <span>Entregado a: Compretex S.A.S.</span> <!--Hacer que la ubicación se subraye y que permita ir a los detalles de la factura-->
-                        <span>Moft Mayorca</span> <!--Hacer que la ubicación se subraye y que permita ir a los detalles de la factura-->
-                        <span>Recibido por: Catalina Bedolla</span> <!--Hacer que el responsable se subraye y que permita ir a los detalles de la factura-->
-                        <span>23-01-2023 | ...</span>
-                    </div>
-                    <div class="container-column" [ngStyle]="{'gap': '5px', 'align-items': 'end'}">
-                        <button class="item-button" id="editar_entrega" onclick="editar_entrega_modal.showModal()">
-                            <img class="item-icon" src="../../../assets/icons/edit_icon.png" alt="Ícono de edición">
-                        </button>
-                        <button class="item-button" onclick="confirmar_borrar.showModal()" id="eliminar_entrega">
-                            <img class="item-icon" src="../../../assets/icons/delete_icon.png" alt="Ícono de edición">
-                        </button>
-                    </div>
-                </div>
-            </div>
+
+            <entrega-detalles-activo></entrega-detalles-activo>
 
         </div>
     </div>

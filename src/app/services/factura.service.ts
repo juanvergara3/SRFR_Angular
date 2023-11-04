@@ -27,6 +27,11 @@ export class FacturaService {
     return facturasArrayObservable;
   }
 
+  getFacturaById(idFactura: number): Observable<Factura> {
+
+    return this.apiService.getRequest(`http://localhost:3000/facturas/p/`, {name: 'id_factura', value: idFactura}) as Observable<Factura>;
+  }
+
   newFactura(numeroFactura: number, fechaGeneracion: string) {
 
     let response = this.apiService.postRequest(this.url, {numero_factura: numeroFactura, fecha_generacion: fechaGeneracion});

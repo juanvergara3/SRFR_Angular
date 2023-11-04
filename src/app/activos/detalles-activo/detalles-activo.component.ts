@@ -19,6 +19,9 @@ import { ProveedorService } from 'src/app/services/proveedor.service';
 import { Prestador } from 'src/app/interfaces/prestador';
 import { PrestadorService } from 'src/app/services/prestador.service';
 
+import { Periodo } from 'src/app/interfaces/periodo';
+import { PeriodoService } from 'src/app/services/periodo.service';
+
 import { WindowTitleService } from 'src/app/services/window-title.service';
 
 @Component({
@@ -34,16 +37,18 @@ export class DetallesActivoComponent implements OnInit {
   private estadoService = inject(EstadoService);
   private proveedorService = inject(ProveedorService);
   private prestadorService = inject(PrestadorService);
+  private periodoService = inject(PeriodoService);
 
   public windowTitleService = inject(WindowTitleService);
   private location = inject(Location);
-
 
   marcaSignal: WritableSignal<Marca> = signal({}) as WritableSignal<Marca>;
   tipoSignal: WritableSignal<Tipo> = signal({}) as WritableSignal<Tipo>;
   estadoSignal: WritableSignal<Estado> = signal({}) as WritableSignal<Estado>;
   proveedorSignal: WritableSignal<Proveedor> = signal({}) as WritableSignal<Proveedor>;
   prestadorSignal: WritableSignal<Prestador> = signal({}) as WritableSignal<Prestador>;
+
+  periodosArray: WritableSignal<Periodo[]> = signal([]);
 
   contrastColorComputed: Signal<string> = computed(() => 
     this.calculteContrast(this.estadoSignal().color)
@@ -81,6 +86,10 @@ export class DetallesActivoComponent implements OnInit {
     this.prestadorService.getPrestadorById(this.activoItem.id_prestador).subscribe(prestadorReturned =>
       this.prestadorSignal.set(prestadorReturned)
     );
+  }
+
+  getPeriodos(): void {
+    this.periodoService.getPeriodosByActivo(this.activoItem.id_activo).subscribe(periodosReturned => this.periodosArray.set(periodosReturned));
   }
 
   goBack(){
@@ -132,6 +141,8 @@ export class DetallesActivoComponent implements OnInit {
     this.getEstado();
     this.getProveedor();
     this.getPrestador();
+
+    this.getPeriodos();
 
     this.windowTitleService.setWindowTitle(this.windowTitle);
   }
