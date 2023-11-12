@@ -23,7 +23,7 @@ export class TipoService {
 
   getTipoById(idTipo: number): Observable<Tipo> {
     
-    const tipoObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idTipo', value: idTipo}) as Observable<Tipo>;
+    const tipoObservable = this.apiService.getRequest(`${this.url}/id/p/`, {name: 'idTipo', value: idTipo}) as Observable<Tipo>;
 
     return tipoObservable;
   }

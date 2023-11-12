@@ -23,7 +23,7 @@ export class PrestadorService {
 
   getPrestadorById(idPrestador: number): Observable<Prestador> {
     
-    const prestadorObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idPrestador', value: idPrestador}) as Observable<Prestador>;
+    const prestadorObservable = this.apiService.getRequest(`${this.url}/id/p/`, {name: 'idPrestador', value: idPrestador}) as Observable<Prestador>;
 
     return prestadorObservable;
   }

@@ -23,7 +23,7 @@ export class MarcaService {
 
   getMarcaById(idMarca: number): Observable<Marca> {
     
-    const marcaObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idMarca', value: idMarca}) as Observable<Marca>;
+    const marcaObservable = this.apiService.getRequest(`${this.url}/id/p/`, {name: 'idMarca', value: idMarca}) as Observable<Marca>;
 
     return marcaObservable;
   }

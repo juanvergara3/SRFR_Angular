@@ -27,7 +27,7 @@ export class FacturaService {
 
   getFacturaById(idFactura: number): Observable<Factura> {
 
-    return this.apiService.getRequest(`${this.url}/p/`, {name: 'id_factura', value: idFactura}) as Observable<Factura>;
+    return this.apiService.getRequest(`${this.url}/id/p/`, {name: 'id_factura', value: idFactura}) as Observable<Factura>;
   }
 
   newFactura(numeroFactura: number, fechaGeneracion: string) {

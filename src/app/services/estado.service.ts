@@ -23,7 +23,7 @@ export class EstadoService {
 
   getEstadoById(idEstado: number): Observable<Estado> {
     
-    const estadoObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idEstado', value: idEstado}) as Observable<Estado>;
+    const estadoObservable = this.apiService.getRequest(`${this.url}/id/p/`, {name: 'idEstado', value: idEstado}) as Observable<Estado>;
 
     return estadoObservable;
   }
