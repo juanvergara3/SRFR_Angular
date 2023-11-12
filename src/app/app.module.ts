@@ -31,6 +31,7 @@ import { ClienteComponent } from './clientes/vista-clientes/cliente/cliente.comp
 import { ResponsableComponent } from './responsables/vista-responsables/responsable/responsable.component';
 import { UbicacionDetallesClienteComponent } from './clientes/detalles-cliente/ubicacion-detalles-cliente/ubicacion-detalles-cliente.component';
 import { PeriodoDetallesActivoComponent } from './activos/detalles-activo/periodo-detalles-activo/periodo-detalles-activo.component';
+import { PendienteComponent } from './pendientes/pendiente/pendiente.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { PeriodoDetallesActivoComponent } from './activos/detalles-activo/period
     ResponsableComponent,
     UbicacionDetallesClienteComponent,
     PeriodoDetallesActivoComponent,
+    PendienteComponent,
   ],
   imports: [
     BrowserModule,

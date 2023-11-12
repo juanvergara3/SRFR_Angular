@@ -1,0 +1,35 @@
+<div class="item">
+    <div class="container-row" [ngStyle]="{'padding': '5px', 'justify-content': 'space-between'}">
+        <div class="container-column" [ngStyle]="{'gap': '2px', 'width': 'auto'}">
+            <div class="item-detail-primary">S/N {{activoItem.numero_serie}}</div>
+            <div class="item-detail-secondary">{{tipoSignal().formfactor}} {{marcaSignal().nombre}} modelo {{activoItem.modelo}}</div>
+            <div class="item-details-estado" 
+                [ngStyle]="{'background-color': '#' + estadoSignal().color, 'color': contrastColorComputed()}">
+                    {{ estadoSignal().estado }}
+            </div>
+        </div>
+        <div class="container-column" [ngStyle]="{'gap': '2px', 'width': 'auto'}">
+            <div class="container-row">
+                <div class="item-detail-primary">Anterior periodo:</div>
+                <div class="item-detail-primary">{{periodoSignal().fecha_inicio | date: 'yyyy-MM-dd':'+0:01'}}</div>
+                <hr class="item-detail-separator">
+                <div class="item-detail-primary">{{periodoSignal().fecha_fin | date: 'yyyy-MM-dd':'+0:01'}}</div>
+            </div>
+            <div class="container-row">
+                <div class="item-detail-primary">Nuevo periodo:</div>
+                <div class="item-detail-editable">{{incrementDate(periodoSignal().fecha_inicio) | date: 'yyyy-MM-dd':'+0:01'}}</div>
+                <hr class="item-detail-separator">
+                <div class="item-detail-editable">{{incrementDate(periodoSignal().fecha_fin) | date: 'yyyy-MM-dd':'+0:01'}}</div>
+            </div>
+            <div class="container-row">
+                <div class="item-detail-primary">Prestado a:</div>
+                <!-- <div class="item-detail-editable">{{activoItem.cliente}}</div> -->
+            </div>
+        </div>
+        <div class="checkbox-container" [ngStyle]="{'margin': '0 10px 0 10px'}">
+            <input name="name" id="id" type="checkbox" class="css-checkbox" aria-label="label">
+            <!--No se puede quitar este label, de lo contrario nada que tenga que ver con el checkbox funciona-->
+            <label for="id"></label>
+        </div>
+    </div>
+</div>
