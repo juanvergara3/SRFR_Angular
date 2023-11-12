@@ -12,7 +12,7 @@ export class EstadoService {
 
   private apiService = inject(ApiService);
 
-  url: string = 'http://localhost:3000/estados';
+  url: string = 'estados';
 
   getEstados(): Observable<Estado[]> {
 

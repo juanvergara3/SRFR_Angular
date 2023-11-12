@@ -9,25 +9,31 @@ export class ApiService {
 
   private httpClient = inject(HttpClient);
 
+  backendHost: string = 'http://localhost:3000/';
+
   getRequest(url: string, params?: any) {
     if(params) {
       let queryParams = new HttpParams().append(params.name, params.value);
       
-      return this.httpClient.get(url, {params: queryParams});
+      return this.httpClient.get(this.getCompositeUrl(url), {params: queryParams});
     }
 
-    return this.httpClient.get(url);
+    return this.httpClient.get(this.getCompositeUrl(url));
   }
 
   postRequest(url: string, body: any) {
-    let response = this.httpClient.post(url, body);
+    let response = this.httpClient.post(this.getCompositeUrl(url), body);
 
     return response;
   }
 
   patchRequest(url: string, body: any){
-    let response = this.httpClient.patch(url, body);
+    let response = this.httpClient.patch(this.getCompositeUrl(url), body);
 
     return response;
+  }
+
+  private getCompositeUrl(url:string): string{
+    return `${this.backendHost}${url}`;
   }
 }

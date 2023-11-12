@@ -16,8 +16,13 @@ export class PeriodoService {
   private router = inject(RouterService);
   private messageService = inject(MessageService);
 
-  getPeriodosByActivo(idActivo: number): Observable<Periodo[]> {
+  url: string = 'periodos';
 
-    return this.apiService.getRequest(`http://localhost:3000/periodos/p/`, {name: 'id_activo', value: idActivo}) as Observable<Periodo[]>;
+  getPeriodosByActivo(idActivo: number): Observable<Periodo[]> {
+    return this.apiService.getRequest(`${this.url}/p/`, {name: 'id_activo', value: idActivo}) as Observable<Periodo[]>;
+  }
+
+  getLastPeriodoByActivo(idActivo: number): Observable<Periodo> {
+    return this.apiService.getRequest(`${this.url}/latest/p/`, {name: 'id_activo', value: idActivo}) as Observable<Periodo>;
   }
 }

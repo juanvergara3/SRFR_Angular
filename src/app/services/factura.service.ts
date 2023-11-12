@@ -5,7 +5,6 @@ import { Factura } from 'src/app/interfaces/factura';
 
 import { MessageService } from './message.service';
 import { ApiService } from './api.service';
-import { RouterService } from './router.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +12,9 @@ import { RouterService } from './router.service';
 export class FacturaService {
 
   private apiService = inject(ApiService);
-  private router = inject(RouterService);
   private messageService = inject(MessageService);
 
-  url: string = this.router.getRoute();
+  url: string = 'facturas'
 
   getFacturas(): Observable<Factura[]> {
 
@@ -29,7 +27,7 @@ export class FacturaService {
 
   getFacturaById(idFactura: number): Observable<Factura> {
 
-    return this.apiService.getRequest(`http://localhost:3000/facturas/p/`, {name: 'id_factura', value: idFactura}) as Observable<Factura>;
+    return this.apiService.getRequest(`${this.url}/p/`, {name: 'id_factura', value: idFactura}) as Observable<Factura>;
   }
 
   newFactura(numeroFactura: number, fechaGeneracion: string) {

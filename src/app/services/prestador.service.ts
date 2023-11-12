@@ -12,7 +12,7 @@ export class PrestadorService {
 
   private apiService = inject(ApiService);
 
-  url: string = 'http://localhost:3000/prestadores';
+  url: string = 'prestadores';
 
   getPrestadores(): Observable<Prestador> {
 

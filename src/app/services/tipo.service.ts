@@ -12,7 +12,7 @@ export class TipoService {
 
   private apiService = inject(ApiService);
 
-  url: string = 'http://localhost:3000/tipos';
+  url: string = 'tipos';
 
   getTipos(): Observable<Tipo[]> {
 

@@ -2,8 +2,7 @@
     --gap: 10px;
     --columns: 4;
     --item-width: calc((100% / var(--columns)) - var(--gap) + (var(--gap) / var(--columns))); 
-    width: var(--item-width);
-    
+    width: var(--item-width);  
 }
 
 .item{

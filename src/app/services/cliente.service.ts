@@ -5,7 +5,6 @@ import { Cliente } from '../interfaces/cliente';
 
 import { MessageService } from './message.service';
 import { ApiService } from './api.service';
-import { RouterService } from './router.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +12,13 @@ import { RouterService } from './router.service';
 export class ClienteService {
 
   private apiService = inject(ApiService);
-  private router = inject(RouterService);
   private messageService = inject(MessageService);
 
-  url: string = this.router.getRoute();
+  url: string = 'clientes';
 
   getClientes(): Observable<Cliente[]> {
 
-    const clientesArrayObservable = this.apiService.getRequest('http://localhost:3000/clientes') as Observable<Cliente[]>; //i need a way to fix this lol
-    //const clientesArrayObservable = this.apiService.getRequest(this.url) as Observable<Cliente[]>;
+    const clientesArrayObservable = this.apiService.getRequest(this.url) as Observable<Cliente[]>;
 
     this.messageService.add('ClienteService: Clientes obtenidos con éxito.');
 

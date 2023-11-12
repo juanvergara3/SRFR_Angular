@@ -5,7 +5,6 @@ import { Ubicacion } from '../interfaces/ubicacion';
 
 import { MessageService } from './message.service';
 import { ApiService } from './api.service';
-import { RouterService } from './router.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +12,9 @@ import { RouterService } from './router.service';
 export class UbicacionService {
 
   private apiService = inject(ApiService);
-  private router = inject(RouterService);
   private messageService = inject(MessageService);
 
-  url: string = this.router.getRoute();
+  url: string = 'ubicaciones';
 
   getUbicaciones(): Observable<Ubicacion[]> {
 
@@ -29,7 +27,7 @@ export class UbicacionService {
 
   getUbicacionesByCliente(idCliente: number): Observable<Ubicacion[]> {
 
-    const ubicacionesArrayObservable = this.apiService.getRequest(`http://localhost:3000/ubicaciones/p/`, {name: 'idCliente', value: idCliente}) as Observable<Ubicacion[]>;
+    const ubicacionesArrayObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idCliente', value: idCliente}) as Observable<Ubicacion[]>;
 
     //this.messageService.add('UbicacionService: ubicaciones obtenidas con éxito.');
 

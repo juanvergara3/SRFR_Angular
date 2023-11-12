@@ -12,7 +12,7 @@ export class MarcaService {
 
   private apiService = inject(ApiService);
 
-  url: string = 'http://localhost:3000/marcas';
+  url: string = 'marcas';
 
   getMarcas(): Observable<Marca[]> {
 

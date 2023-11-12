@@ -8,13 +8,6 @@ export class RouterService {
 
   private router = inject(Router);
 
-  backendHost: string = 'http://localhost:3000';
-
-  getRoute(): string {
-
-    return this.backendHost + this.router.url;
-  }
-
   reload(): void {
     let currentUrl = this.router.url;
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {

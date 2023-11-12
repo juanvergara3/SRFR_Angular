@@ -5,7 +5,6 @@ import { Responsable } from 'src/app/interfaces/responsable';
 
 import { MessageService } from './message.service';
 import { ApiService } from './api.service';
-import { RouterService } from './router.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +12,9 @@ import { RouterService } from './router.service';
 export class ResponsableService {
 
   private apiService = inject(ApiService);
-  private router = inject(RouterService);
   private messageService = inject(MessageService);
 
-  url: string = this.router.getRoute();
+  url: string = 'responsables';
 
   getResponsables(): Observable<Responsable[]> {
 
