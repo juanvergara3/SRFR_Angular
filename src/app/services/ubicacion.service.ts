@@ -25,6 +25,13 @@ export class UbicacionService {
     return ubicacionesArrayObservable;
   }
 
+  getUbicacionById(idUbicacion: number): Observable<Ubicacion> {
+    
+    const ubicacionObservable = this.apiService.getRequest(`${this.url}/id/p/`, {name: 'idUbicacion', value: idUbicacion}) as Observable<Ubicacion>;
+
+    return ubicacionObservable;
+  }
+
   getUbicacionesByCliente(idCliente: number): Observable<Ubicacion[]> {
 
     const ubicacionesArrayObservable = this.apiService.getRequest(`${this.url}/p/`, {name: 'idCliente', value: idCliente}) as Observable<Ubicacion[]>;

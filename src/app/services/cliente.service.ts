@@ -25,6 +25,13 @@ export class ClienteService {
     return clientesArrayObservable;
   }
 
+  getClienteById(idCliente: number): Observable<Cliente> {
+    
+    const clienteObservable = this.apiService.getRequest(`${this.url}/id/p/`, {name: 'idCliente', value: idCliente}) as Observable<Cliente>;
+
+    return clienteObservable;
+  }
+
   editCliente(idCliente: number, nit?: number, digitoVerificacion?: number, nombre?: string){
 
     let response = this.apiService.patchRequest(this.url, {id_cliente: idCliente, nit:nit, digito_verificacion: digitoVerificacion, nombre: nombre});

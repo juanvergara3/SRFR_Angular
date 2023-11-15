@@ -22,6 +22,9 @@ import { PrestadorService } from 'src/app/services/prestador.service';
 import { Periodo } from 'src/app/interfaces/periodo';
 import { PeriodoService } from 'src/app/services/periodo.service';
 
+import { Entrega } from 'src/app/interfaces/entrega';
+import { EntregaService } from 'src/app/services/entrega.service';
+
 import { WindowTitleService } from 'src/app/services/window-title.service';
 
 @Component({
@@ -38,6 +41,7 @@ export class DetallesActivoComponent implements OnInit {
   private proveedorService = inject(ProveedorService);
   private prestadorService = inject(PrestadorService);
   private periodoService = inject(PeriodoService);
+  private entregaService = inject(EntregaService);
 
   public windowTitleService = inject(WindowTitleService);
   private location = inject(Location);
@@ -49,6 +53,7 @@ export class DetallesActivoComponent implements OnInit {
   prestadorSignal: WritableSignal<Prestador> = signal({}) as WritableSignal<Prestador>;
 
   periodosArray: WritableSignal<Periodo[]> = signal([]);
+  entregasArray: WritableSignal<Entrega[]> = signal([]);
 
   contrastColorComputed: Signal<string> = computed(() => 
     this.activoService.calculteContrast(this.estadoSignal().color)
@@ -92,6 +97,10 @@ export class DetallesActivoComponent implements OnInit {
     this.periodoService.getPeriodosByActivo(this.activoItem.id_activo).subscribe(periodosReturned => this.periodosArray.set(periodosReturned));
   }
 
+  getEntregas(): void {
+    this.entregaService.getEntregasByActivo(this.activoItem.id_activo).subscribe(entregasReturned => this.entregasArray.set(entregasReturned));
+  }
+
   goBack(){
     this.location.back()
   }
@@ -106,6 +115,7 @@ export class DetallesActivoComponent implements OnInit {
     this.getPrestador();
 
     this.getPeriodos();
+    this.getEntregas();
 
     this.windowTitleService.setWindowTitle(this.windowTitle);
   }

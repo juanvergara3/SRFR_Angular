@@ -25,6 +25,13 @@ export class ResponsableService {
     return responsablesArrayObservable;
   }
 
+  getResponsableById(idResponsable: number): Observable<Responsable> {
+    
+    const responsableObservable = this.apiService.getRequest(`${this.url}/id/p/`, {name: 'idResponsable', value: idResponsable}) as Observable<Responsable>;
+
+    return responsableObservable;
+  }
+
   editResponsable(idResponsable: number, nombre?: string, cedula?: number, telefono?: string, correo?: string){
 
     let response = this.apiService.patchRequest(this.url, {id_responsable: idResponsable, nombre: nombre, cedula: cedula, telefono: telefono, correo: correo});

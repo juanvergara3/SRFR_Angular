@@ -17,7 +17,7 @@ export class PeriodoDetallesActivoComponent {
   facturaSignal: WritableSignal<Factura> = signal({}) as WritableSignal<Factura>;
 
   @Input()
-  periodoItem!: Periodo
+  periodoItem!: Periodo;
 
   getFactura(): void {
     this.facturaService.getFacturaById(this.periodoItem.id_factura).subscribe(facturaReturned =>

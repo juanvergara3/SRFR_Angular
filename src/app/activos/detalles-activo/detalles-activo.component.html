@@ -130,7 +130,7 @@
         <label class="window-title">Entregas asociadas</label>
         <div class="item-container">
 
-            <entrega-detalles-activo></entrega-detalles-activo>
+            <entrega-detalles-activo *ngFor="let entrega of entregasArray()" [entregaItem]="entrega"></entrega-detalles-activo>
 
         </div>
     </div>
