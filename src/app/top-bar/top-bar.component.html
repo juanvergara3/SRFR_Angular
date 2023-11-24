@@ -1,10 +1,10 @@
 <div class="top-bar">
 
     <div class="window-title">{{ windowTitle() }}</div>
-    
+
     <div class="secondary-menu">
-        <div class="secondary-menu-buttons">
-            <button class="secondary-menu-main-button" id="nuevo_cliente" onclick="newFacturaModal.showModal()">+ Nuevo cliente</button>
+        <div class="secondary-menu-buttons-container">
+            <ng-content ></ng-content>
         </div>
         <search-bar></search-bar>
     </div>

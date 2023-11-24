@@ -1,3 +1,8 @@
+<top-bar>
+    <button class="secondary-menu-main-button" id="nuevo_activo" onclick="newFacturaModal.showModal()">+ Nuevo activo</button>
+    <button class="secondary-menu-secondary-button" id="nuevo_grupo" onclick="newFacturaModal.showModal()">+ Nuevo grupo</button>
+</top-bar>
+
 <div class="item-container">
 
     <grupo-activos *ngFor="let grupo of gruposArray()" [grupoItem]="grupo"></grupo-activos> <!--poner un ngFor para ver varios grupos de activos-->

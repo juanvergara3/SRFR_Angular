@@ -1,5 +1,9 @@
 :host{
     height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Estilos de los items */
@@ -12,6 +16,7 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .item-details-title{

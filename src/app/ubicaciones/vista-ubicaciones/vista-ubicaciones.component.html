@@ -1,3 +1,7 @@
+<top-bar>
+    <button class="secondary-menu-main-button" id="nueva_ubicacion" onclick="newFacturaModal.showModal()">+ Nueva ubicación</button>
+</top-bar>
+
 <div class="item-container">
 
     <grupo-ubicaciones *ngFor="let cliente of filteredClientesArray()" [clienteItem]="cliente"></grupo-ubicaciones>

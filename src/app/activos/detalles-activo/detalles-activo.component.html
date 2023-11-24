@@ -90,7 +90,7 @@
 
 <div class="container-row" [ngStyle]="{'gap':'15px'}">
 
-    <div class="item-details">
+    <div class="item-details" [ngStyle]="{'overflow':'hidden', 'overflow-y':'hidden', 'height':'auto'}">
         <div class="container-row" [ngStyle]="{'height':'auto', 'justify-content':'space-between'}">
             <span class="item-details-title">{{activoItem.numero_serie}}</span>
             <button class="go-back-button" type="button" (click)="goBack()">Volver &#60;---</button>
@@ -117,7 +117,7 @@
         <div class="item-details-text">Activo prestado por: {{prestadorSignal().nombre}}</div>
     </div>
 
-    <div class="container-column">
+    <div class="container-column" [ngStyle]="{'overflow':'hidden', 'overflow-y':'hidden', 'height':'auto'}">
         <label class="window-title">Periodos asociados</label>
         <div class="item-container">
 
@@ -126,7 +126,7 @@
         </div>
     </div>
 
-    <div class="container-column">
+    <div class="container-column" [ngStyle]="{'overflow':'hidden', 'overflow-y':'hidden', 'height':'auto'}">
         <label class="window-title">Entregas asociadas</label>
         <div class="item-container">
 

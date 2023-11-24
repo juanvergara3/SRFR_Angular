@@ -1,3 +1,7 @@
+<top-bar>
+    <button class="secondary-menu-main-button" id="nuevo_responsable" onclick="newFacturaModal.showModal()">+ Nuevo responsable</button>
+</top-bar>
+
 <div class="item-container">
 
     <responsable  *ngFor="let responsable of filteredResponsablesArray()" [responsableItem]="responsable"></responsable>

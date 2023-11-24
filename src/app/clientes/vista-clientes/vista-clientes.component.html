@@ -1,3 +1,7 @@
+<top-bar>
+    <button class="secondary-menu-main-button" id="nuevo_cliente" onclick="newFacturaModal.showModal()">+ Nuevo cliente</button>
+</top-bar>
+
 <div class="item-container">
 
     <cliente *ngFor="let cliente of filteredClientesArray()" [clienteItem]="cliente"></cliente>
