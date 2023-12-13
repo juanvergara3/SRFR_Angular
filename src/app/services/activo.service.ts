@@ -38,6 +38,12 @@ export class ActivoService {
     return activosArrayObservable;
   }
 
+  getActivosByPeriodo(idPeriodo: number): Observable<Activo[]> {
+    const activosArrayObservable = this.apiService.getRequest(`${this.url}/periodo/p/`, {name: 'id_periodo', value: idPeriodo}) as Observable<Activo[]>;
+
+    return activosArrayObservable;
+  }
+  
   calculteContrast(color: string): string {
 
     if(color){

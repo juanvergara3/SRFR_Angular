@@ -86,9 +86,12 @@
 <!--FIN DE LAS VENTANAS MODALES-->
 <!--ROMPER EN COMPONENTES MÁS PEQUEÑOS-->
 
-<div class="container-column" [ngStyle]="{'gap':'15px'}">
-    <div class="container-row" [ngStyle]="{'gap':'15px'}">
-        <div class="item-details">
+
+<div class="container-row" [ngStyle]="{'gap':'15px'}">
+
+    <div class="container-column" [ngStyle]="{'width':'33%', 'gap':'20px'}">
+
+        <div class="item-details" [ngStyle]="{'height':'auto'}">
             <div class="item-details-title" routerLink="/detalles-cliente">{{ clienteItem.nombre }}</div>
             <hr class="separator">
             <div class="container-row" [ngStyle]="{gap:'0px'}">
@@ -96,94 +99,24 @@
                 <div class="item-details-text" *ngIf="clienteItem.digito_verificacion != null">-{{ clienteItem.digito_verificacion }}</div>
             </div>
         </div>
-
+    
         <div class="container-column">
             <label class="window-title">Ubicaciones</label>
             <div class="item-container">
-
+    
                 <ubicacion-detalles-cliente *ngFor="let ubicacion of ubicacionesArray()" [ubicacionItem]="ubicacion"></ubicacion-detalles-cliente>
-
+    
             </div>
         </div>
 
-        <div class="container-column">
-            <label class="window-title">Entregas</label>
-            <div class="item-container">
-                
-                <div class="item container-column">
+    </div>
 
-                    <div class="container-row" [ngStyle]="{'height':'auto'}">
-                        <div class="container-column">
-                            <span>Moft Mayorca</span> <!--Hacer que la ubicación se subraye y que permita ir a los detalles de la factura-->
-                            <span>Recibido por: Catalina Bedolla</span> <!--Hacer que el responsable se subraye y que permita ir a los detalles de la factura-->
-                            <span>23-01-2023 | ...</span>
-                            <span>Activos que se entregaron:</span>
-                        </div>
-                        <div class="container-column" [ngStyle]="{'gap': '5px', 'align-items': 'end'}">
-                            <button class="item-button" id="editar_entrega" onclick="editar_entrega_modal.showModal()">
-                                <img class="item-icon" src="../../../assets/icons/edit_icon.png" alt="Ícono de edición">
-                            </button>
-                            <button class="item-button" onclick="confirmar_borrar.showModal()" id="eliminar_entrega">
-                                <img class="item-icon" src="../../../assets/icons/delete_icon.png" alt="Ícono de edición">
-                            </button>
-                        </div>
-                    </div>
+    <div class="container-column">
+        <label class="window-title">Entregas</label>
+        <div class="item-container">
+            
+            <entrega-detalles-cliente *ngFor="let entrega of entregasArray()" [entregaItem]="entrega"></entrega-detalles-cliente>
 
-                    <div class="asset-container">
-                        <div class="sub-item container-row"> 
-                            <div class="container-column">
-                                <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
-                                <div class="container-row" [ngStyle]="{'align-items':'center'}">
-                                    <div class="item-detail">tipo</div>
-                                    <div class="item-detail">marca</div>
-                                    <div class="item-detail">modelo</div>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="sub-item container-row"> 
-                            <div class="container-column">
-                                <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
-                                <div class="container-row" [ngStyle]="{'align-items':'center'}">
-                                    <div class="item-detail">tipo</div>
-                                    <div class="item-detail">marca</div>
-                                    <div class="item-detail">modelo</div>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="sub-item container-row"> 
-                            <div class="container-column">
-                                <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
-                                <div class="container-row" [ngStyle]="{'align-items':'center'}">
-                                    <div class="item-detail">tipo</div>
-                                    <div class="item-detail">marca</div>
-                                    <div class="item-detail">modelo</div>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="sub-item container-row"> 
-                            <div class="container-column">
-                                <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
-                                <div class="container-row" [ngStyle]="{'align-items':'center'}">
-                                    <div class="item-detail">tipo</div>
-                                    <div class="item-detail">marca</div>
-                                    <div class="item-detail">modelo</div>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="sub-item container-row"> 
-                            <div class="container-column">
-                                <div class="item-title" routerLink="/detalles-activo">ABCD-1234-EFGH-5678</div>
-                                <div class="container-row" [ngStyle]="{'align-items':'center'}">
-                                    <div class="item-detail">tipo</div>
-                                    <div class="item-detail">marca</div>
-                                    <div class="item-detail">modelo</div>
-                                </div>
-                            </div> 
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-</div> 
+</div>

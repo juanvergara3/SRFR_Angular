@@ -1,3 +1,7 @@
+<top-bar>
+    <button class="secondary-menu-main-button" id="nueva_factura" onclick="newFacturaModal.showModal()">Facturar</button>
+</top-bar>
+
 <div class="item-container">
     
     <pendiente *ngFor="let pendiente of activosPendientesArray()" [activoItem]="pendiente"></pendiente>

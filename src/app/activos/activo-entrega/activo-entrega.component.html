@@ -1,0 +1,14 @@
+<div class="sub-item container-row"> 
+    <div class="container-column">
+        <div class="item-title" routerLink="/activo/{{activoItem.id_activo}}" [state]="this.activoItem">{{ activoItem.numero_serie }}</div>
+        <div class="container-row" [ngStyle]="{'align-items':'center', 'overflow':'auto'}">
+            <div class="item-detail">{{ tipoSignal().formfactor }}</div>
+            <div class="item-detail">{{ marcaSignal().nombre }}</div>
+            <div class="item-detail">modelo {{ activoItem.modelo }}</div>
+        </div>
+        <div class="item-details-estado" 
+            [ngStyle]="{'background-color': '#' + estadoSignal().color, 'color': contrastColorComputed()}">
+                {{ estadoSignal().estado }}
+        </div>
+    </div> 
+</div>

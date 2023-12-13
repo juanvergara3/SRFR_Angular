@@ -33,6 +33,10 @@ import { UbicacionDetallesClienteComponent } from './clientes/detalles-cliente/u
 import { EntregaDetallesActivoComponent } from './activos/detalles-activo/entrega-detalles-activo/entrega-detalles-activo.component';
 import { PeriodoDetallesActivoComponent } from './activos/detalles-activo/periodo-detalles-activo/periodo-detalles-activo.component';
 import { PendienteComponent } from './pendientes/pendiente/pendiente.component';
+import { EntregaDetallesUbicacionComponent } from './ubicaciones/detalles-ubicacion/entrega-detalles-ubicacion/entrega-detalles-ubicacion.component';
+import { ActivoEntregaComponent } from './activos/activo-entrega/activo-entrega.component';
+import { EntregaDetallesResponsableComponent } from './responsables/detalles-responsable/entrega-detalles-responsable/entrega-detalles-responsable.component';
+import { EntregaDetallesClienteComponent } from './clientes/detalles-cliente/entrega-detalles-cliente/entrega-detalles-cliente.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +69,10 @@ import { PendienteComponent } from './pendientes/pendiente/pendiente.component';
     EntregaDetallesActivoComponent,
     PeriodoDetallesActivoComponent,
     PendienteComponent,
+    EntregaDetallesUbicacionComponent,
+    ActivoEntregaComponent,
+    EntregaDetallesResponsableComponent,
+    EntregaDetallesClienteComponent,
   ],
   imports: [
     BrowserModule,

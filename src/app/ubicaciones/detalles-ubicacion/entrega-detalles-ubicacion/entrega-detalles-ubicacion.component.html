@@ -1,0 +1,25 @@
+<div class="item container-column">
+
+    <div class="container-row" [ngStyle]="{'height':'auto'}">
+        <div class="container-column">
+            <div>Entregado a: {{responsableSignal().nombre}}</div>
+            <div>{{entregaItem.fecha_entrada | date: 'yyyy-MM-dd':'+0:01'}} | {{entregaItem.fecha_salida | date: 'yyyy-MM-dd':'+0:01'}}</div>
+        </div>
+        <div class="container-column" [ngStyle]="{'gap': '5px', 'align-items': 'end'}">
+            <button class="item-button" id="editar_entrega" onclick="editar_entrega_modal.showModal()">
+                <img class="item-icon" src="../../../assets/icons/edit_icon.png" alt="Ícono de edición">
+            </button>
+            <button class="item-button" onclick="confirmar_borrar.showModal()" id="eliminar_entrega">
+                <img class="item-icon" src="../../../assets/icons/delete_icon.png" alt="Ícono de edición">
+            </button>
+        </div>
+    </div>
+
+    <div>Activos que se entregaron:</div>
+
+    <div class="asset-container">
+        
+        <activo-entrega *ngFor="let activo of activosArray()" [activoItem]="activo"></activo-entrega>
+        
+    </div>
+</div>
