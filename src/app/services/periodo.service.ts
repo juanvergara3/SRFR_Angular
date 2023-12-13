@@ -25,8 +25,4 @@ export class PeriodoService {
   getLastPeriodoByActivo(idActivo: number): Observable<Periodo> {
     return this.apiService.getRequest(`${this.url}/latest/p/`, {name: 'id_activo', value: idActivo}) as Observable<Periodo>;
   }
-
-  getPeriodosByFactura(idFactura: number): Observable<Periodo[]> {
-    return this.apiService.getRequest(`${this.url}/factura/p/`, {name: 'id_factura', value: idFactura}) as Observable<Periodo[]>;
-  }
 }

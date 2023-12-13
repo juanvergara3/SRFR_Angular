@@ -44,12 +44,6 @@ export class ActivoService {
     return activosArrayObservable;
   }
   
-  getActivosByEntrega(idEntrega: number): Observable<Activo[]> {
-    const activosArrayObservable = this.apiService.getRequest(`${this.url}/entrega/p/`, {name: 'id_entrega', value: idEntrega}) as Observable<Activo[]>;
-
-    return activosArrayObservable;
-  }
-
   calculteContrast(color: string): string {
 
     if(color){
