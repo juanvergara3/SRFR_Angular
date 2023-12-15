@@ -37,6 +37,7 @@ import { EntregaDetallesUbicacionComponent } from './ubicaciones/detalles-ubicac
 import { ActivoEntregaComponent } from './activos/activo-entrega/activo-entrega.component';
 import { EntregaDetallesResponsableComponent } from './responsables/detalles-responsable/entrega-detalles-responsable/entrega-detalles-responsable.component';
 import { EntregaDetallesClienteComponent } from './clientes/detalles-cliente/entrega-detalles-cliente/entrega-detalles-cliente.component';
+import { PeriodoDetallesFacturaComponent } from './facturas/detalles-factura/periodo-detalles-factura/periodo-detalles-factura.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { EntregaDetallesClienteComponent } from './clientes/detalles-cliente/ent
     ActivoEntregaComponent,
     EntregaDetallesResponsableComponent,
     EntregaDetallesClienteComponent,
+    PeriodoDetallesFacturaComponent,
   ],
   imports: [
     BrowserModule,

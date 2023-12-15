@@ -9,18 +9,7 @@
         <label class="window-title">Activos facturados</label>
         <div class="item-container">
 
-            <div class="item container-column"> 
-                <div class="item-title" routerLink="/detalles-activo">{{ activoItem.sn }}</div>
-                <div class="container-column" [ngStyle]="{'gap':'2.5px'}">
-                    <div class="container-row" [ngStyle]="{'align-items':'center'}">
-                        <div class="item-detail">{{ activoItem.tipo }}</div>
-                        <div class="item-detail">{{ activoItem.marca }}</div>
-                        <div class="item-detail">{{ activoItem.modelo }}</div>
-                    </div>
-                    <div class="item-detail" [ngStyle]="{'color': '#' + activoItem.colorEstado}">{{ activoItem.estado }}</div>
-                    <span>Periodo: 11-03-2023 | 10-04-2023</span>
-                </div>
-            </div>
+            <periodo-detalles-factura *ngFor="let periodo of periodosArray()" [periodoItem]="periodo"></periodo-detalles-factura>
 
         </div>
     </div>
