@@ -4,7 +4,7 @@
             <div>Entregado a: {{clienteComputed().nombre}}</div> <!--Hacer que la ubicación se subraye y que permita ir a los detalles de la factura-->
             <div>Ubicado en: {{ubicacionSignal().nombre}}</div> <!--Hacer que la ubicación se subraye y que permita ir a los detalles de la factura-->
             <div>Recibido por: {{responsableSignal().nombre}}</div> <!--Hacer que el responsable se subraye y que permita ir a los detalles de la factura-->
-            <div>{{entregaItem.fecha_entrada | date: 'yyyy-MM-dd':'+0:01'}} | {{entregaItem.fecha_salida | date: 'yyyy-MM-dd':'+0:01'}}</div>
+            <div>{{entregaItem.fecha_entrega | date: 'yyyy-MM-dd':'+0:01'}} | {{entregaItem.fecha_devolucion | date: 'yyyy-MM-dd':'+0:01'}}</div>
         </div>
         <div class="container-column item-button-container">
             <button class="item-button" id="editar_entrega" onclick="editar_entrega_modal.showModal()">

@@ -4,7 +4,7 @@
         <div class="container-column">
             <div>Entregado en: {{ubicacionSignal().nombre}}</div>
             <div>Entregado a: {{responsableSignal().nombre}}</div>
-            <div>{{entregaItem.fecha_entrada | date: 'yyyy-MM-dd':'+0:01'}} | {{entregaItem.fecha_salida | date: 'yyyy-MM-dd':'+0:01'}}</div>
+            <div>{{entregaItem.fecha_entrega | date: 'yyyy-MM-dd':'+0:01'}} | {{entregaItem.fecha_devolucion | date: 'yyyy-MM-dd':'+0:01'}}</div>
         </div>
         <div class="container-column" [ngStyle]="{'gap': '5px', 'align-items': 'end'}">
             <button class="item-button" id="editar_entrega" onclick="editar_entrega_modal.showModal()">

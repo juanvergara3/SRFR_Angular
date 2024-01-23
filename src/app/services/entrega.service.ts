@@ -30,4 +30,8 @@ export class EntregaService {
     return this.apiService.getRequest(`${this.url}/cliente/p/`, {name: 'id_cliente', value: idCliente}) as Observable<Entrega[]>;
   }
 
+  getLastEntregaByActivo(idActivo: number): Observable<Entrega> {
+    return this.apiService.getRequest(`${this.url}/latest/p/`, {name: 'id_activo', value: idActivo}) as Observable<Entrega>;
+  }
+
 }
