@@ -39,6 +39,9 @@ import { EntregaDetallesResponsableComponent } from './responsables/detalles-res
 import { EntregaDetallesClienteComponent } from './clientes/detalles-cliente/entrega-detalles-cliente/entrega-detalles-cliente.component';
 import { PeriodoDetallesFacturaComponent } from './facturas/detalles-factura/periodo-detalles-factura/periodo-detalles-factura.component';
 import { ModalesDetallesActivoComponent } from './activos/detalles-activo/modales-detalles-activo/modales-detalles-activo/modales-detalles-activo.component';
+import { ModalesVistaUbicacionesComponent } from './ubicaciones/vista-ubicaciones/modales-vista-ubicaciones/modales-vista-ubicaciones.component';
+import { ModalesVistaResponsablesComponent } from './responsables/vista-responsables/modales-vista-responsables/modales-vista-responsables.component';
+import { ModalesVistaClientesComponent } from './clientes/vista-clientes/modales-vista-clientes/modales-vista-clientes.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +80,9 @@ import { ModalesDetallesActivoComponent } from './activos/detalles-activo/modale
     EntregaDetallesClienteComponent,
     PeriodoDetallesFacturaComponent,
     ModalesDetallesActivoComponent,
+    ModalesVistaUbicacionesComponent,
+    ModalesVistaResponsablesComponent,
+    ModalesVistaClientesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+<dialog id="newResponsableModal" class="modal">
+    <div class="container-column modal-flex">
+        <div class="container-row modal-flex">
+            <label class="modal-label">Nombre</label>
+            <input type="text" class="modal-input" [(ngModel)]="nombre">
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">C.C.</label>
+            <input type="number" class="modal-input" [(ngModel)]="cedula">
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Correo</label>
+            <input type="text" class="modal-input" [(ngModel)]="correo">
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Teléfono</label>
+            <input type="text" class="modal-input" [(ngModel)]="telefono">
+        </div>
+        <div class="container-row modal-flex">
+            <button class="modal-secondary-button" onclick="newResponsableModal.close()" (click)="clearSelections()">Descartar</button>
+            <button class="modal-main-button" [disabled]="(nombre =='' || cedula <= 0 || cedula == undefined || correo ==''|| telefono =='')" (click)="submitNewResponsable()" onclick="newResponsableModal.close()">Guardar</button>
+        </div>                    
+    </div>
+</dialog>

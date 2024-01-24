@@ -21,10 +21,6 @@ export class ClienteComponent {
   @Input()
   clienteItem!: Cliente;
 
-  ngOnInit(): void {
-    this.initValues();
-  }
-
   submitEditResponsable() {
     this.clienteService.editCliente(this.clienteItem.id_cliente, this.nit, this.digitoVerificacion, this.nombre);
 
@@ -45,5 +41,9 @@ export class ClienteComponent {
     this.nit = this.clienteItem.nit;
     this.digitoVerificacion = this.clienteItem.digito_verificacion;
     this.nombre = this.clienteItem.nombre;
+  }
+
+  ngOnInit(): void {
+    this.initValues();
   }
 }

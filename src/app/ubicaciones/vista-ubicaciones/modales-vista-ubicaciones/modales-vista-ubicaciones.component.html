@@ -1,0 +1,26 @@
+<dialog id="newUbicacionModal" class="modal">
+    <div class="container-column modal-flex">
+        <div class="container-row modal-flex">
+            <label class="modal-label">Cliente</label>
+            <select class="dropdown" title="cliente_dropdown" [(ngModel)]="idCliente">
+                <option *ngFor="let cliente of clientesArray()" [value]="cliente.id_cliente" ngDefaultControl>{{cliente.nombre}}</option> 
+            </select>
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Nombre</label>
+            <input type="text" class="modal-input" [(ngModel)]="nombre">
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Dirección</label>
+            <input type="text" class="modal-input" [(ngModel)]="direccion">
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Teléfono</label>
+            <input type="text" class="modal-input" [(ngModel)]="telefono">
+        </div>
+        <div class="container-row modal-flex">
+            <button class="modal-secondary-button" onclick="newUbicacionModal.close()" (click)="clearSelections()">Descartar</button>
+            <button class="modal-main-button" [disabled]="(idCliente == 0 || nombre =='' || direccion =='')" (click)="submitNewUbicacion()" onclick="newUbicacionModal.close()">Guardar</button>
+        </div>                    
+    </div>
+</dialog>

@@ -23,8 +23,6 @@
         <div class="container-row modal-flex">
             <button class="modal-secondary-button" onclick="newEntregaModal.close()" (click)="clearSelections()">Descartar</button>
             <button class="modal-main-button" [disabled]="(idResponsable == 0 || idUbicacion == 0  || fechaEntrega =='')" (click)="submitNewEntrega()" onclick="newEntregaModal.close()">Guardar</button>
-
-            
         </div>                    
     </div>
 </dialog>

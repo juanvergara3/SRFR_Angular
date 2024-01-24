@@ -20,5 +20,12 @@ export class ModalesVistaFacturasComponent {
   submitNewFactura() {
       this.facturaService.newFactura(this.numeroFactura, this.fechaGeneracion);
       this.modalSubmited.emit();
+
+      this.clearSelections();
+  }
+
+  clearSelections() {
+    this.numeroFactura = undefined as any; 
+    this.fechaGeneracion = ''; 
   }
 }
