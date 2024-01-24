@@ -44,5 +44,4 @@ export class EntregaService {
       this.messageService.add(data.toString())
     );
   }
-
 }

@@ -49,4 +49,13 @@ export class UbicacionService {
       this.messageService.add(data.toString())
     );
   }
+
+  newUbicacion(idCliente: number, nombre: string, direccion: string, telefono?: string) {
+
+    let response = this.apiService.postRequest(this.url, {id_cliente: idCliente, nombre: nombre, direccion: direccion, telefono: telefono});
+    
+    response.subscribe((data) => 
+      this.messageService.add(data.toString())
+    );
+  }
 }

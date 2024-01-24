@@ -39,6 +39,14 @@ export class ResponsableService {
     response.subscribe((data) => 
       this.messageService.add(data.toString())
     );
+  }
 
+  newResponsable(nombre: string, cedula: number, telefono: string, correo: string) {
+
+    let response = this.apiService.postRequest(this.url, {nombre: nombre, cedula: cedula, telefono: telefono, correo: correo});
+    
+    response.subscribe((data) => 
+      this.messageService.add(data.toString())
+    );
   }
 }

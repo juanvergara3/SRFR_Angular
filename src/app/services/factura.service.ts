@@ -30,6 +30,11 @@ export class FacturaService {
     return this.apiService.getRequest(`${this.url}/id/p/`, {name: 'id_factura', value: idFactura}) as Observable<Factura>;
   }
 
+  getLatestFacturas(cantidad: number): Observable<Factura[]> {
+
+    return this.apiService.getRequest(`${this.url}/latest/p/`, {name: 'cantidadFacturas', value: cantidad}) as Observable<Factura[]>;
+  }
+
   newFactura(numeroFactura: number, fechaGeneracion: string) {
 
     let response = this.apiService.postRequest(this.url, {numero_factura: numeroFactura, fecha_generacion: fechaGeneracion});
