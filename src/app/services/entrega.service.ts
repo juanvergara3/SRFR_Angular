@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Entrega } from '../interfaces/entrega';
 
 import { ApiService } from './api.service';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { ApiService } from './api.service';
 export class EntregaService {
 
   private apiService = inject(ApiService);
+  private messageService = inject(MessageService);
 
   url: string = 'entregas';
 
@@ -32,6 +34,15 @@ export class EntregaService {
 
   getLastEntregaByActivo(idActivo: number): Observable<Entrega> {
     return this.apiService.getRequest(`${this.url}/latest/p/`, {name: 'id_activo', value: idActivo}) as Observable<Entrega>;
+  }
+
+  newEntrega(idActivo: number, idResponsable: number, idUbicacion: number, fechaEntrega: string, fechaDevolucion?: string) {
+
+    let response = this.apiService.postRequest(this.url, {id_activo: idActivo, id_responsable: idResponsable, id_ubicacion: idUbicacion, fecha_entrega: fechaEntrega, fecha_devolucion: fechaDevolucion });
+    
+    response.subscribe((data) => 
+      this.messageService.add(data.toString())
+    );
   }
 
 }

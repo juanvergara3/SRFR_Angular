@@ -1,0 +1,115 @@
+<dialog id="newEntregaModal" class="modal">
+    <div class="container-column modal-flex">
+        <div class="container-row modal-flex">
+            <label class="modal-label">Responsable</label>
+            <select class="dropdown" title="responsable_dropdown" [(ngModel)]="idResponsable">
+                <option *ngFor="let responsable of responsablesArray()" [value]="responsable.id_responsable" ngDefaultControl>{{responsable.nombre}}</option> 
+            </select>
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Ubicación</label>
+            <select class="dropdown" title="ubicacion_dropdown" [(ngModel)]="idUbicacion">
+                <option *ngFor="let ubicacion of ubicacionesArray()" [value]="ubicacion.id_ubicacion" ngDefaultControl>{{ubicacion.nombre}}</option> 
+            </select>
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Fecha de entrega</label>
+            <input type="date" class="modal-input" [(ngModel)]="fechaEntrega">
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Fecha de devolución</label>
+            <input type="date" class="modal-input" [(ngModel)]="fechaDevolucion">
+        </div>
+        <div class="container-row modal-flex">
+            <button class="modal-secondary-button" onclick="newEntregaModal.close()" (click)="clearSelections()">Descartar</button>
+            <button class="modal-main-button" [disabled]="(idResponsable == 0 || idUbicacion == 0  || fechaEntrega =='')" (click)="submitNewEntrega()" onclick="newEntregaModal.close()">Guardar</button>
+
+            
+        </div>                    
+    </div>
+</dialog>
+
+<!-- <dialog id="confirmar_borrar" class="modal">
+    <div class="container-column modal-flex" style="align-items: center;">
+        <p class="modal-text">
+            ¿Está seguro de que desea eliminar la entrada?
+        </p>
+        <p class="modal-text">
+            Esta acción es
+            <u class="modal-label" style="font-weight: 600;">
+                permanente
+            </u>
+        </p>
+        <div class="container-row modal-flex">
+            <button class="modal-secondary-button" onclick="confirmar_borrar.close()">Cancelar</button>
+            <button class="modal-warning-button">Confirmar</button>
+        </div>                    
+    </div>
+</dialog> -->
+
+<!-- <dialog id="editar_periodo_modal" class="modal">
+    <div class="container-column modal-flex">
+        <div class="container-row modal-flex">
+            <label class="modal-label">Factura</label>
+            <select class="dropdown" name="Factura" id="Factura" aria-label="label">
+                <option value="RM9876">RM9876</option>
+                <option value="RM9985">RM9985</option>
+                <option value="RM9876">RM8962</option>
+            </select>
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Fecha de inicio</label>
+            <input type="date" class="modal-input">
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Fecha de fin</label>
+            <input type="date" class="modal-input">
+        </div>
+        <div class="container-row modal-flex">
+            <button class="modal-secondary-button" onclick="editar_periodo_modal.close()">Descartar</button>
+            <button class="modal-main-button">Guardar</button>
+        </div>                    
+    </div>
+</dialog> -->
+
+<!-- <dialog id="editar_entrega_modal" class="modal">
+    <div class="container-column modal-flex">
+        <div class="container-row modal-flex">
+            <label class="modal-label">Prestado a</label>
+            <select class="dropdown" name="Factura" id="Factura" aria-label="label">
+                <option value="RM9876">Comercializadora textil Coltex Ltda.</option>
+                <option value="RM9985">Placeholder AaBbCcDdEeFfGgHh</option>
+                <option value="RM9876">Placeholder AaBbCcDdEeFfGgHh</option>
+            </select>
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Entregado en</label>
+            <select class="dropdown" name="Factura" id="Factura" aria-label="label">
+                <option value="RM9876">Moft Mayorca</option>
+                <option value="RM9985">Placeholder AaBbCcDdEeFfGgHh</option>
+                <option value="RM9876">Placeholder AaBbCcDdEeFfGgHh</option>
+            </select>
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Rebido por</label>
+            <select class="dropdown" name="Factura" id="Factura" aria-label="label">
+                <option value="RM9876">Catalina Bedoya</option>
+                <option value="RM9985">Placeholder AaBbCcDdEeFfGgHh</option>
+                <option value="RM9876">Placeholder AaBbCcDdEeFfGgHh</option>
+            </select>
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Fecha de entrega</label>
+            <input type="date" class="modal-input">
+        </div>
+        <div class="container-row modal-flex">
+            <label class="modal-label">Fecha de devolución</label>
+            <input type="date" class="modal-input">
+        </div>
+        
+        <div class="container-row modal-flex">
+            <button class="modal-secondary-button" onclick="editar_entrega_modal.close()">Descartar</button>
+            <button class="modal-main-button">Guardar</button>
+        </div>                    
+    </div>
+</dialog> -->

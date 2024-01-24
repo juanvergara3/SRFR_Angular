@@ -38,6 +38,7 @@ import { ActivoEntregaComponent } from './activos/activo-entrega/activo-entrega.
 import { EntregaDetallesResponsableComponent } from './responsables/detalles-responsable/entrega-detalles-responsable/entrega-detalles-responsable.component';
 import { EntregaDetallesClienteComponent } from './clientes/detalles-cliente/entrega-detalles-cliente/entrega-detalles-cliente.component';
 import { PeriodoDetallesFacturaComponent } from './facturas/detalles-factura/periodo-detalles-factura/periodo-detalles-factura.component';
+import { ModalesDetallesActivoComponent } from './activos/detalles-activo/modales-detalles-activo/modales-detalles-activo/modales-detalles-activo.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { PeriodoDetallesFacturaComponent } from './facturas/detalles-factura/per
     EntregaDetallesResponsableComponent,
     EntregaDetallesClienteComponent,
     PeriodoDetallesFacturaComponent,
+    ModalesDetallesActivoComponent,
   ],
   imports: [
     BrowserModule,
