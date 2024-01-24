@@ -13,8 +13,7 @@ export class ModalesVistaFacturasComponent {
 
   @Output() 
   modalSubmited = new EventEmitter();
-
-  idFactura!: number;
+  
   numeroFactura!: number;
   fechaGeneracion: string = '';
 
