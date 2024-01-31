@@ -65,6 +65,11 @@
     width: fit-content;
 }
 
+.item-detail-primary:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .item-detail-secondary{
     font-size: 12px;
     color: var(--Light-dark-grey);
@@ -74,8 +79,12 @@
 .item-detail-editable{
     font-size: 14px;
     color: var(--Black);
-    text-decoration: underline;
     width: fit-content;
+}
+
+.item-detail-editable:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .item-detail-separator{

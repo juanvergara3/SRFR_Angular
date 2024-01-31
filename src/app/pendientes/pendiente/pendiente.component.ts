@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject, WritableSignal, signal, computed, Signal } from '@angular/core';
+import { Component, Input, OnInit, inject, WritableSignal, signal, computed, Signal, Output, EventEmitter, effect } from '@angular/core';
 
 import { Activo } from 'src/app/interfaces/activo';
 import { ActivoService } from 'src/app/services/activo.service';
@@ -15,6 +15,12 @@ import { EstadoService } from 'src/app/services/estado.service';
 import { Periodo } from 'src/app/interfaces/periodo';
 import { PeriodoService } from 'src/app/services/periodo.service';
 
+import { Entrega } from 'src/app/interfaces/entrega';
+import { EntregaService } from 'src/app/services/entrega.service';
+
+import { Cliente } from 'src/app/interfaces/cliente';
+import { ClienteService } from 'src/app/services/cliente.service';
+
 @Component({
   selector: 'pendiente',
   templateUrl: './pendiente.component.html',
@@ -27,11 +33,21 @@ export class PendienteComponent {
   private tipoService = inject(TipoService);
   private estadoService = inject(EstadoService);
   private periodoService = inject(PeriodoService);
+  private clienteService = inject(ClienteService);
+  private entregaService = inject(EntregaService);
 
   marcaSignal: WritableSignal<Marca> = signal({}) as WritableSignal<Marca>;
   tipoSignal: WritableSignal<Tipo> = signal({}) as WritableSignal<Tipo>;
   estadoSignal: WritableSignal<Estado> = signal({}) as WritableSignal<Estado>;
   periodoSignal: WritableSignal<Periodo> = signal({}) as WritableSignal<Periodo>;
+  entregaSignal: WritableSignal<Entrega> = signal({}) as WritableSignal<Entrega>;
+  clienteSignal: WritableSignal<Cliente> = signal({}) as WritableSignal<Cliente>;
+
+  entregaClienteEffect = effect(() => { // Se actualiza siempre que entregaSignal cambia.
+    if(this.entregaSignal().id_ubicacion != undefined)
+      this.getCliente();
+    }
+  );
 
   contrastColorComputed: Signal<string> = computed(() => 
     this.activoService.calculteContrast(this.estadoSignal().color)
@@ -39,6 +55,20 @@ export class PendienteComponent {
 
   @Input()
   activoItem!: Activo;
+
+  @Output()
+  isCheckedEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  isChecked: boolean = false;
+
+  emitCheckedEvent(): void {
+    this.isCheckedEvent.emit(this.isChecked);
+  }
+
+  toggleCheck(): void {
+    this.isChecked = !this.isChecked;
+    this.emitCheckedEvent();
+  }
 
   getMarca(): void {
     this.marcaService.getMarcaById(this.activoItem.id_marca).subscribe(marcaReturned =>
@@ -64,20 +94,27 @@ export class PendienteComponent {
     );
    }
 
-  incrementDate(date:string) { //buscar una forma más eficiente de hacer esto
+   getLastEntrega(): void {
+    this.entregaService.getLastEntregaByActivo(this.activoItem.id_activo).subscribe(entregaReturned =>
+      this.entregaSignal.set(entregaReturned)
+    );
+   }
 
-    if(date != undefined){
-      let month: number = +(date.substring(5, 7));
+   getCliente(): void {
+    this.clienteService.getClienteByUbicacion(this.entregaSignal().id_ubicacion).subscribe(clienteReturned =>
+        this.clienteSignal.set(clienteReturned)
+      );
+   }
 
-      month++;
+   incrementDate(dateString:string): string {
+    if(dateString != undefined) {
+      let date = new Date(dateString);
 
-      if(month < 10){
-        return date.substring(0, 5) + '0' + month + date.substring(7);
-      } else {
-        return date.substring(0, 5) + month + date.substring(7);
-      }
+      date.setMonth(date.getMonth() + 1);
+      date.setDate(date.getDate() - 1);
+
+      return date.toISOString().substring(0, 10);
     }
-
     return '';
   }
 
@@ -86,5 +123,6 @@ export class PendienteComponent {
     this.getTipo();
     this.getEstado();
     this.getLastPeriodo();
+    this.getLastEntrega();
   }
 }

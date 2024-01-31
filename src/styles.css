@@ -113,6 +113,13 @@ body {
     cursor: pointer;
 }
 
+.secondary-menu-main-button:disabled{
+    background-color: var(--disabled-bg);
+    border-color: var(--Light-medium-grey);
+    color: var(--Light-medium-grey);
+    cursor: not-allowed;
+}
+
 .secondary-menu-secondary-button{
     width: auto;
     height: 32px;
@@ -141,6 +148,13 @@ body {
     width: 15px;
     height: 15px;
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(360deg) brightness(102%) contrast(102%);
+}
+
+/* secondary menu labels */
+
+.secondary-menu-label{
+    color: var(--White);
+    font-size: 14px;
 }
 
 /*modal (pop-ups)*/
@@ -283,3 +297,47 @@ input::-webkit-calendar-picker-indicator:hover {
     filter: brightness(0) saturate(100%) invert(76%) sepia(71%) saturate(573%) hue-rotate(17deg) brightness(101%) contrast(81%);
     cursor: pointer;
 } 
+
+/* help tip icon */
+
+.help-tip{
+    text-align: center;
+    background-color: var(--White);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 14px;
+    cursor: default;
+
+    position: relative;
+    z-index: auto;
+}
+
+.help-tip:before{
+    content:'?';
+    font-weight: bold;
+    color: var(--Black);
+}
+
+/* help tip text */
+
+.help-tip .help-tip-text{
+    visibility: hidden;
+    width: 300px;
+    background-color: var(--Black);
+    color: var(--White);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    text-align: justify;
+    padding: 5px;
+    border-radius: 5px;
+   
+    top: 22px;
+    right: 0;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .help-tip:hover .help-tip-text{
+    visibility: visible;
+  }

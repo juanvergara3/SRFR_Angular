@@ -1,9 +1,39 @@
 <top-bar>
-    <button class="secondary-menu-main-button" id="nueva_factura" onclick="newFacturaModal.showModal()">Facturar</button>
+    <button class="secondary-menu-main-button" id="facturar_activos" (click)="facturar()" [disabled]="activosSeleccionados.length == 0" >Facturar</button>
+
+    <select class="dropdown" title="factura_dropdown" [(ngModel)]="selectedFactura">
+        <option *ngFor="let factura of latestFacturasArray()" [value]="factura.id_factura">RM{{factura.numero_factura}}</option> 
+    </select>
+
+    <div class="container-row" [ngStyle]="{'width':'auto', 'align-items':'center'}" *ngIf="dateOverride">
+        <label class="secondary-menu-label" for="global_date">Inicio:</label>
+        <input 
+            type="date" 
+            name="global_date" 
+            title="fecha_global" 
+            class="item-input item-detail" 
+            [ngModel]="globalDate() | date: 'yyyy-MM-dd':'+0:01'"
+            (ngModelChange)="globalDate.set($event); globalDateIncremented.set('');">
+        <div class="secondary-menu-label">Fin:</div>
+        <input 
+            type='date'
+            class="item-input item-detail" 
+            placeholder="please"
+            [ngModel]="globalDateIncrementComputed() | date: 'yyyy-MM-dd':'+0:01'"
+            (ngModelChange)="globalDateIncremented.set($event);">
+    </div>
+
+    <div class="container-row" [ngStyle]="{'width':'auto', 'align-items':'center', 'display':'inline-flex', 'overflow':'visible'}">
+        <label class="secondary-menu-label" for="date_override">Sobrescribir fecha</label>
+        <input type="checkbox" id="date_override" [(ngModel)]="dateOverride" (click)="toggleDateOverride()">
+        <div class="help-tip">
+            <div class="help-tip-text">Permite seleccionar una fecha que será usada para facturar todos los items seleccionados sin importar el valor que esté seleccionado en cada uno de ellos de forma individual.</div>
+        </div>
+    </div>
 </top-bar>
 
 <div class="item-container">
     
-    <pendiente *ngFor="let pendiente of activosPendientesArray()" [activoItem]="pendiente"></pendiente>
+    <pendiente *ngFor="let pendiente of activosPendientesArray()" [activoItem]="pendiente" (isCheckedEvent)="actualizarSeleccion(pendiente, $event)"></pendiente>
 
 </div>

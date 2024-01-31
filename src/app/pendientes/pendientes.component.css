@@ -16,6 +16,7 @@
 
 .dropdown{
     height: 32px;
+    width: auto;
     padding-bottom: 2px;
     background-color: var(--Dark-dark-grey);
     color: white;
@@ -29,6 +30,8 @@
 .dropdown:focus{
     outline: none;
 }
+
+/* estilos adicionales */
 
 .item-container{
     --gap: 10px;
@@ -46,4 +49,43 @@
     overflow-y:auto;
     gap: var(--gap);
     padding: 10px;
+}
+
+.item-input{
+    border-bottom-style: solid;
+    border-bottom-color: var(--White);
+    border-bottom-width: 1px;
+    width: auto;
+    overflow: hidden;
+}
+
+.item-detail{ /*PENDIENTE*/
+    border-radius: 5px;
+    border-style: none;
+}
+
+/* .item-detail:read-only{
+    color: var(--White);
+    background-color: transparent;
+    font-size: 12px;
+    border: 0;
+} */
+
+input[type="date"] { 
+    font-size: 12px;
+}
+
+input[type="date"]::-webkit-datetime-edit-text { 
+    padding: 0px; 
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator { 
+    /* filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(210%) hue-rotate(194deg) brightness(116%) contrast(100%); */
+    filter: brightness(0) saturate(100%) invert(0);
+    border-radius: 5px;
+}
+
+input::-webkit-calendar-picker-indicator:hover {
+    filter: brightness(0) saturate(100%) invert(76%) sepia(71%) saturate(573%) hue-rotate(17deg) brightness(101%) contrast(81%);
+    cursor: pointer;
 }
