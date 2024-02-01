@@ -26,9 +26,4 @@ export class ModalesVistaClientesComponent {
     this.nit = undefined as any; 
     this.digitoVerificacion = undefined as any;
   }
-
-  ngOnInit(): void{
-    console.log(this.digitoVerificacion);
-  }
 }
-
