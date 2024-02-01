@@ -22,14 +22,14 @@ export class VistaFacturasComponent {
     windowTitle = 'Facturas';
 
     windowTitleEffect = effect(() => {
-        if(this.facturasArray().length != 0)
-          untracked(() => 
-            this.windowTitleService.setWindowTitle(
-              this.windowTitle.concat(`(${this.facturasArray().length})`)
-            )
-          );
-        }
-      );
+      if(this.facturasArray().length != 0)
+        untracked(() => 
+          this.windowTitleService.setWindowTitle(
+            this.windowTitle.concat(`(${this.facturasArray().length})`)
+          )
+        );
+      }
+    );
 
     filterText: Signal<string> = computed(() => 
         this.searchBarService.searchTextSignal().replace(/^\D+/g, '')

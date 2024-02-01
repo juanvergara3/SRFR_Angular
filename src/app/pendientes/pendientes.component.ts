@@ -1,4 +1,4 @@
-import { Component, Signal, computed, signal, WritableSignal, inject, effect } from '@angular/core';
+import { Component, Signal, computed, signal, WritableSignal, inject, effect, untracked } from '@angular/core';
 
 import { Activo } from '../interfaces/activo';
 import { ActivoService } from '../services/activo.service';
@@ -24,6 +24,16 @@ export class PendientesComponent {
   public windowTitleService = inject(WindowTitleService);
   windowTitle = `Pendientes`;
 
+  windowTitleEffect = effect(() => {
+    if(this.activosPendientesArray().length != 0)
+      untracked(() => 
+        this.windowTitleService.setWindowTitle(
+          this.windowTitle.concat(`(${this.activosPendientesArray().length})`)
+        )
+      );
+    }
+  );
+
   // activos
   activosPendientesArray: WritableSignal<Activo[]> = signal([]);
   activosSeleccionados: Activo[] = [];
@@ -44,7 +54,7 @@ export class PendientesComponent {
   latestFacturasArray: WritableSignal<Factura[]> = signal([]);
   selectedFactura!: number;
   selectedFacturaEffect = effect(() => {
-    if(this.latestFacturasArray()[0] != undefined)
+    if(this.latestFacturasArray().length != 0)
       this.selectedFactura = this.latestFacturasArray()[0].id_factura;
   });
 
@@ -85,8 +95,7 @@ export class PendientesComponent {
     for (const activo of this.activosSeleccionados)
       ids.push(activo.id_activo);
 
-    //this.periodoService.newPeriodosBulk(this.selectedFactura, this.globalDate(), this.globalDateIncrementComputed(), ids);
-    console.log(this.selectedFactura, this.globalDate(), this.globalDateIncrementComputed(), ids);
+    this.periodoService.newPeriodosBulk(this.selectedFactura, this.globalDate(), this.globalDateIncrementComputed(), ids);
   }
 
   ngOnInit(): void {
