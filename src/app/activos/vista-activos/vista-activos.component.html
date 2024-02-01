@@ -5,6 +5,6 @@
 
 <div class="item-container">
 
-    <grupo-activos *ngFor="let grupo of gruposArray()" [grupoItem]="grupo"></grupo-activos> <!--poner un ngFor para ver varios grupos de activos-->
+    <grupo-activos *ngFor="let grupo of gruposArray()" [grupoItem]="grupo" (activosAmountChanged)="updateActivosAmount($event)"></grupo-activos> <!--poner un ngFor para ver varios grupos de activos-->
 
 </div>

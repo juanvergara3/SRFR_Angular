@@ -1,7 +1,4 @@
-import { Component, Signal, computed, signal, WritableSignal, inject } from '@angular/core';
-
-import { Ubicacion } from 'src/app/interfaces/ubicacion';
-import { UbicacionService } from 'src/app/services/ubicacion.service';
+import { Component, Signal, computed, signal, WritableSignal, inject, effect, untracked } from '@angular/core';
 
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -25,6 +22,16 @@ export class VistaUbicacionesComponent {
   clientesArray: WritableSignal<Cliente[]> = signal([]);
 
   windowTitle = `Ubicaciones`;
+  ubicacionesAmount: WritableSignal<number> = signal(0);
+
+  windowTitleEffect = effect(() => {
+    if(this.ubicacionesAmount() != 0)
+      untracked(() => 
+      this.windowTitleService.setWindowTitle(
+        this.windowTitle.concat(`(${this.ubicacionesAmount()})`)
+      ));
+    }
+  );
 
   filterText: Signal<string> = computed(() => 
   this.searchBarService.searchTextSignal().toLocaleLowerCase()
@@ -36,6 +43,10 @@ export class VistaUbicacionesComponent {
       cliente?.nit.toString().includes(this.filterText())
     )
   );
+
+  updateUbicacionesAmount(amount: number) {
+    this.ubicacionesAmount.set(this.ubicacionesAmount() + amount);
+  }
 
   getClientes(): void {
     this.clienteService.getClientes().subscribe(clientesReturned => this.clientesArray.set(clientesReturned));

@@ -6,6 +6,6 @@
 
 <div class="item-container">
 
-    <grupo-ubicaciones *ngFor="let cliente of filteredClientesArray()" [clienteItem]="cliente"></grupo-ubicaciones>
+    <grupo-ubicaciones *ngFor="let cliente of filteredClientesArray()" [clienteItem]="cliente" (ubicacionesAmountChanged)="updateUbicacionesAmount($event)"></grupo-ubicaciones>
 
 </div>

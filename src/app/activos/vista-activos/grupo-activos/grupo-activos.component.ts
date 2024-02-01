@@ -1,4 +1,4 @@
-import { Component, WritableSignal, signal, inject, Input } from '@angular/core';
+import { Component, WritableSignal, signal, inject, Input, Output, EventEmitter, effect, untracked } from '@angular/core';
 
 import { Activo } from 'src/app/interfaces/activo';
 import { ActivoService } from 'src/app/services/activo.service';
@@ -18,6 +18,16 @@ export class GrupoActivosComponent{
 
   @Input()
   grupoItem!: Grupo;
+
+  @Output()
+  activosAmountChanged: EventEmitter<number> = new EventEmitter<number>();
+
+  activosAmountChangedEffect = effect(() => {
+    if(this.activosArray().length != 0)
+      untracked(() => 
+        this.activosAmountChanged.emit(this.activosArray().length)
+      )
+  });
  
   showGroup: boolean = true;
 

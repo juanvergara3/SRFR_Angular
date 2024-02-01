@@ -1,4 +1,4 @@
-import { Component, Signal, computed, WritableSignal, signal, inject } from '@angular/core';
+import { Component, Signal, computed, WritableSignal, signal, inject, effect, untracked } from '@angular/core';
 
 import { Factura } from 'src/app/interfaces/factura';
 import { FacturaService } from 'src/app/services/factura.service';
@@ -20,6 +20,16 @@ export class VistaFacturasComponent {
     private routerService = inject(RouterService);
 
     windowTitle = 'Facturas';
+
+    windowTitleEffect = effect(() => {
+        if(this.facturasArray().length != 0)
+          untracked(() => 
+            this.windowTitleService.setWindowTitle(
+              this.windowTitle.concat(`(${this.facturasArray().length})`)
+            )
+          );
+        }
+      );
 
     filterText: Signal<string> = computed(() => 
         this.searchBarService.searchTextSignal().replace(/^\D+/g, '')
@@ -48,5 +58,4 @@ export class VistaFacturasComponent {
 
         this.windowTitleService.setWindowTitle(this.windowTitle);
     }
-    
 }

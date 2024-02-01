@@ -1,4 +1,4 @@
-import { Component, Signal, computed, WritableSignal, signal, inject, Input  } from '@angular/core';
+import { Component, Signal, computed, WritableSignal, signal, inject, Input, Output, EventEmitter, effect, untracked } from '@angular/core';
 
 import { Ubicacion } from 'src/app/interfaces/ubicacion';
 import { UbicacionService } from 'src/app/services/ubicacion.service';
@@ -18,6 +18,16 @@ export class GrupoUbicacionesComponent {
 
   @Input()
   clienteItem!: Cliente;
+  
+  @Output()
+  ubicacionesAmountChanged: EventEmitter<number> = new EventEmitter<number>();
+
+  ubicacionesAmountChangedEffect = effect(() => {
+    if(this.ubicacionesArray().length != 0)
+      untracked(() => 
+        this.ubicacionesAmountChanged.emit(this.ubicacionesArray().length)
+      )
+  });
 
   showGroup: boolean = true;
 
@@ -34,5 +44,4 @@ export class GrupoUbicacionesComponent {
   ngOnInit(): void {
     this.getUbicacionesByCliente(this.clienteItem.id_cliente);
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, Signal, computed, signal, WritableSignal, inject } from '@angular/core';
+import { Component, Signal, computed, signal, WritableSignal, inject, effect, untracked } from '@angular/core';
 
 import { Responsable } from 'src/app/interfaces/responsable';
 import { ResponsableService } from 'src/app/services/responsable.service';
@@ -19,7 +19,17 @@ export class VistaResponsablesComponent {
 
   responsablesArray: WritableSignal<Responsable[]> = signal([]);
 
-  windowTitle = `Responsables(${this.responsablesArray().length})`;
+  windowTitle = `Responsables`;
+
+  windowTitleEffect = effect(() => {
+    if(this.responsablesArray().length != 0)
+      untracked(() => 
+        this.windowTitleService.setWindowTitle(
+          this.windowTitle.concat(`(${this.responsablesArray().length})`)
+        )
+      );
+    }
+  );
 
   filterText: Signal<string> = computed( 
     () => this.searchBarService.searchTextSignal().toLocaleLowerCase()

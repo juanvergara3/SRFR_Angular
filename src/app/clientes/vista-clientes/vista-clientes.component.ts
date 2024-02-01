@@ -1,4 +1,4 @@
-import { Component, Signal, computed, signal, WritableSignal, inject } from '@angular/core';
+import { Component, Signal, computed, signal, WritableSignal, inject, effect, untracked } from '@angular/core';
 
 import { Cliente } from 'src/app/interfaces/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -19,7 +19,17 @@ export class VistaClientesComponent {
 
   clientesArray:  WritableSignal<Cliente[]> = signal([]);
 
-  windowTitle = `Clientes(${this.clientesArray().length})`;
+  windowTitle = `Clientes`;
+
+  windowTitleEffect = effect(() => {
+    if(this.clientesArray().length != 0)
+      untracked(() => 
+        this.windowTitleService.setWindowTitle(
+          this.windowTitle.concat(`(${this.clientesArray().length})`)
+        )
+      );
+    }
+  );
 
   filterText: Signal<string> = computed(() => 
     this.searchBarService.searchTextSignal().toLocaleLowerCase()
@@ -43,5 +53,4 @@ export class VistaClientesComponent {
 
       this.windowTitleService.setWindowTitle(this.windowTitle);
   }
-
 }
