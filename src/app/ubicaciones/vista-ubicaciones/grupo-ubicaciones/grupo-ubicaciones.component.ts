@@ -24,12 +24,13 @@ export class GrupoUbicacionesComponent {
 
   ubicacionesAmountChangedEffect = effect(() => {
     if(this.ubicacionesArray().length != 0)
-      untracked(() => 
-        this.ubicacionesAmountChanged.emit(this.ubicacionesArray().length)
-      )
+      untracked(() => {
+        this.ubicacionesAmountChanged.emit(this.ubicacionesArray().length);
+        this.showGroup = true;
+    })
   });
 
-  showGroup: boolean = true;
+  showGroup: boolean = false;
 
   collapse(){
     this.showGroup = !this.showGroup;

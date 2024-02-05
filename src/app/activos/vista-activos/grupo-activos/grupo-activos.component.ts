@@ -24,12 +24,13 @@ export class GrupoActivosComponent{
 
   activosAmountChangedEffect = effect(() => {
     if(this.activosArray().length != 0)
-      untracked(() => 
-        this.activosAmountChanged.emit(this.activosArray().length)
-      )
+      untracked(() => {
+        this.activosAmountChanged.emit(this.activosArray().length);
+      this.showGroup = true;
+    })
   });
  
-  showGroup: boolean = true;
+  showGroup: boolean = false;
 
   collapse(){
     this.showGroup = !this.showGroup;
