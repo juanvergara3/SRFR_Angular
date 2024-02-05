@@ -42,6 +42,7 @@ import { ModalesDetallesActivoComponent } from './activos/detalles-activo/modale
 import { ModalesVistaUbicacionesComponent } from './ubicaciones/vista-ubicaciones/modales-vista-ubicaciones/modales-vista-ubicaciones.component';
 import { ModalesVistaResponsablesComponent } from './responsables/vista-responsables/modales-vista-responsables/modales-vista-responsables.component';
 import { ModalesVistaClientesComponent } from './clientes/vista-clientes/modales-vista-clientes/modales-vista-clientes.component';
+import { ModalesVistaActivosComponent } from './activos/vista-activos/modales-vista-activos/modales-vista-activos.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { ModalesVistaClientesComponent } from './clientes/vista-clientes/modales
     ModalesVistaUbicacionesComponent,
     ModalesVistaResponsablesComponent,
     ModalesVistaClientesComponent,
+    ModalesVistaActivosComponent,
   ],
   imports: [
     BrowserModule,
