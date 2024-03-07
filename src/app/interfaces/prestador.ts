@@ -1,4 +1,4 @@
 export interface Prestador {
-    id: number;
+    id_prestador: number;
     nombre: string;
 }

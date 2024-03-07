@@ -49,6 +49,19 @@ export class ActivoService {
 
     return activosArrayObservable;
   }
+
+  newActivo(numeroSerie: string, modelo: string, facturaCompra: string, fechaCompra: string, valor: number, precioRenta: number, 
+            idMarca: number, idProveedor: number, idPrestador: number, idTipo: number, idEstado: number, idGrupo?: number) {
+              
+    let response = this.apiService.postRequest(this.url, 
+      {numero_serie: numeroSerie, modelo: modelo, factura_compra: facturaCompra, fecha_compra: fechaCompra, valor: valor, precio_renta: precioRenta,
+      id_marca: idMarca, id_proveedor: idProveedor, id_prestador: idPrestador, id_tipo: idTipo, id_estado: idEstado, id_grupo: idGrupo}
+    );
+    
+    response.subscribe((data) => 
+      this.messageService.add(data.toString())
+    );
+  }
   
   calculteContrast(color: string): string {
 

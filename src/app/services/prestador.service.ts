@@ -14,9 +14,9 @@ export class PrestadorService {
 
   url: string = 'prestadores';
 
-  getPrestadores(): Observable<Prestador> {
+  getPrestadores(): Observable<Prestador[]> {
 
-    const prestadoresArrayObservable = this.apiService.getRequest(this.url) as Observable<Prestador>;
+    const prestadoresArrayObservable = this.apiService.getRequest(this.url) as Observable<Prestador[]>;
 
     return prestadoresArrayObservable;
   }

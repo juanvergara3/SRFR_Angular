@@ -10,3 +10,91 @@
         </div>                    
     </div>
 </dialog>
+
+<dialog id="newActivoModal" class="modal">
+    <div class="container-column modal-flex">
+
+        <div class="container-row modal-flex">
+            <label class="modal-label">S/N</label>
+            <input type="text" class="modal-input" [(ngModel)]="numeroSerie">
+        </div>
+
+        <div class="container-row" [ngStyle]="{'gap':'1.5ch'}">
+            <div class="container-row modal-flex" [ngStyle]="{'gap':'5px'}">
+                <label class="modal-label">Tipo</label>
+                <select class="dropdown" title="tipo_dropdown" [(ngModel)]="idTipo">
+                    <option *ngFor="let tipo of tiposArray()" [value]="tipo.id_tipo" ngDefaultControl>{{tipo.formfactor}}</option> 
+                </select>
+            </div>
+            <div class="container-row modal-flex" [ngStyle]="{'gap':'5px'}">
+                <label class="modal-label">Marca</label>
+                <select class="dropdown" title="marca_dropdown" [(ngModel)]="idMarca">
+                    <option *ngFor="let marca of marcasArray()" [value]="marca.id_marca" ngDefaultControl>{{marca.nombre}}</option> 
+                </select>
+            </div>
+            <div class="container-row modal-flex" [ngStyle]="{'gap':'5px'}">
+                <label class="modal-label">Modelo</label>
+                <input type="text" class="modal-input" [(ngModel)]="modelo">
+            </div>
+        </div>
+
+        <div class="container-row modal-flex">
+            <label class="modal-label">Estado</label>
+            <select class="dropdown" title="estado_dropdown" [(ngModel)]="idEstado">
+                <option *ngFor="let estado of estadosArray()" [value]="estado.id_estado" ngDefaultControl 
+                        [ngStyle]="{'background-color': '#' + estado.color, 'color': calculateContrast(estado.color)}">
+                    {{estado.estado}}
+                </option> 
+            </select>
+        </div>
+
+        <div class="container-row modal-flex">
+            <label class="modal-label">Precio de renta mensual</label>
+            <input type="number" class="modal-input" [(ngModel)]="precioRenta">
+        </div>
+
+        <div class="container-row modal-flex">
+            <label class="modal-label">Proveedor</label>
+            <select class="dropdown" title="proveedor_dropdown" [(ngModel)]="idProveedor">
+                <option *ngFor="let proveedor of proveedoresArray()" [value]="proveedor.id_proveedor" ngDefaultControl>{{proveedor.nombre}}</option> 
+            </select>
+        </div>
+
+        <div class="container-row modal-flex">
+            <label class="modal-label">Factura de compra</label>
+            <input type="text" class="modal-input" [(ngModel)]="facturaCompra">
+        </div>
+
+        <div class="container-row modal-flex">
+            <label class="modal-label">Fecha de compra</label>
+            <input type="date" class="modal-input" [(ngModel)]="fechaCompra">
+        </div>
+
+        <div class="container-row modal-flex">
+            <label class="modal-label">Valor comercial</label>
+            <input type="number" class="modal-input" [(ngModel)]="valor">
+        </div>
+
+        <div class="container-row modal-flex">
+            <label class="modal-label">Prestador por</label>
+            <select class="dropdown" title="prestador_dropdown" [(ngModel)]="idPrestador">
+                <option *ngFor="let prestador of prestadoresArray()" [value]="prestador.id_prestador" ngDefaultControl>{{prestador.nombre}}</option> 
+            </select>
+        </div>
+
+        <div class="container-row modal-flex">
+            <label class="modal-label">Grupo</label>
+            <select class="dropdown" title="grupo_dropdown" [(ngModel)]="idGrupo">
+                <option *ngFor="let grupo of gruposArray()" [value]="grupo.id_grupo" ngDefaultControl>{{grupo.nombre}}</option> 
+            </select>
+        </div>
+
+        <div class="container-row modal-flex">
+            <button class="modal-secondary-button" onclick="newActivoModal.close()" (click)="clearSelections()">Descartar</button>
+            <button class="modal-main-button" 
+                    [disabled]="( numeroSerie == '' || modelo == '' || facturaCompra == '' || fechaCompra == '' || valor == undefined || precioRenta == undefined 
+                    || valor < 0 || precioRenta < 0 || idEstado == 0 || idMarca == 0 || idProveedor == 0 || idPrestador == 0 || idTipo == 0 )" 
+                (click)="submitNewActivo()" onclick="newActivoModal.close()">Guardar</button>
+        </div>                    
+    </div>
+</dialog>
