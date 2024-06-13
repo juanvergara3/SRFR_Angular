@@ -14,7 +14,7 @@
 }
 
 .item-title{
-    color: black;
+    color: var(--Black);
     font-size: 14px;
 }
 

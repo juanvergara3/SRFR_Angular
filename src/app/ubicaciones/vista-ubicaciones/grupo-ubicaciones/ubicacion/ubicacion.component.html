@@ -25,10 +25,10 @@
         </div>
     </div>
     <div class="container-column item-button-container">
-        <button class="item-button" id="editar_responsable" (click)="editing = true" *ngIf="!editing">
+        <button class="item-button" id="editar_ubicacion" (click)="editing = true" *ngIf="!editing">
             <img class="item-icon" src="../../assets/icons/edit_icon.png" alt="Ícono de edición">
         </button>
-        <button class="item-submit-button" (click)="submitEditResponsable()" *ngIf="editing"
+        <button class="item-submit-button" (click)="submitEditUbicacion()" *ngIf="editing"
             [disabled]="(nombre == '' || direccion == '')">✓</button>
         <button class="item-cancel-button" (click)="resetValues()" *ngIf="editing">X</button>
     </div>

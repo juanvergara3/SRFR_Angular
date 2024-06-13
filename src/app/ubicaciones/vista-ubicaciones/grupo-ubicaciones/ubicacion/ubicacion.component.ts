@@ -26,7 +26,7 @@ export class UbicacionComponent {
     this.initValues();
   }
 
-  submitEditResponsable() {
+  submitEditUbicacion() {
     this.ubicacionService.editUbicacion(this.ubicacionItem.id_ubicacion, this.idCliente, this.nombre, this.direccion, this.telefono);
 
     this.ubicacionItem.id_cliente = this.idCliente;
